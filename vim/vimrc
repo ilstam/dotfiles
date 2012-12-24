@@ -1,7 +1,4 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" My vimrc file
-" -------------
-"
 " Maintainer:
 "       Ilias Stamatis <stamatis.iliass@gmail.com>
 "
@@ -85,9 +82,6 @@
     inoremap <F1> <ESC>
     nnoremap <F1> <ESC>
     vnoremap <F1> <ESC>
-
-    " When vimrc is edited, reload it
-    autocmd! bufwritepost vimrc source ~/.vim/vimrc
 " }
 
 " Indentation, Tabs, Spaces {
