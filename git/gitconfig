@@ -1,0 +1,20 @@
+[user]
+	email = stamatis.iliass@gmail.com
+	name = Ilias Stamatis
+
+[core]
+	editor = vim
+
+[merge]
+	tool = vimdiff
+
+[alias]
+	unstage = reset HEAD
+	uns = reset HEAD
+	co = checkout
+
+	br = branch
+	ci = commit
+	st = status
+
+	last = log -1 HEAD

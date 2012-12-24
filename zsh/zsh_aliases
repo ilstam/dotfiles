@@ -1,0 +1,19 @@
+# zsh_aliases
+
+alias ls='ls --color=auto'
+alias d='cd /media/data/'
+alias dd='cd /media/data/dotfiles/'
+
+# Applications aliases
+alias gv='gvim'
+alias p2='python2'
+alias p3='python3'
+alias ip2='ipython2'
+alias ip3='ipython3'
+
+# Functions
+function subs(){
+    iconv -fiso-8859-7 -tutf8 $1 > ~~temp.srt
+    mv ~~temp.srt $1;
+}
+

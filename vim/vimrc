@@ -1,0 +1,298 @@
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" My vimrc file
+" -------------
+"
+" Maintainer:
+"       Ilias Stamatis <stamatis.iliass@gmail.com>
+"
+" Initially based on:
+"       https://github.com/spf13/spf13-vim
+"       https://bitbucket.org/pmav99/dotfiles/src/fdd48164c029/vim/vimrc
+"
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Setup Environment {
+    " The following two lines are required by Vundle.
+    set nocompatible        " be iMproved (must be first line)
+    filetype off            " required!
+
+    " Setup Vundle
+    set rtp+=~/.vim/bundle/vundle
+    call vundle#rc()
+" }
+
+" Bundles {
+    " Dependencies {
+        Bundle 'gmarik/vundle'
+    " }
+
+    " Colors and themes {
+    " }
+
+    " General {
+    " }
+
+    " General Programming {
+    " }
+
+    " Python {
+    " }
+" }
+
+" General {
+    filetype plugin indent on   " automatically detect file types
+    syntax on                   " syntax highlighting
+    set synmaxcol=120           " don't try to highlight lines longer than 120 chars.
+    set mouse-=a                " automatically disable mouse usage
+    scriptencoding utf-8
+    set encoding=utf-8
+    set modelines=2
+    set laststatus=2            " always show a status line
+    set showmode                " display the current mode
+    set showcmd                 " show partial commands in status line and
+    set visualbell
+    set ttyfast
+    set ruler                   " show the ruler
+    set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%)
+    set backspace=indent,eol,start  " backspace for dummies
+    set history=1000            " store a ton of history (default is 20)
+    set shell=$SHELL            " use user's default shell
+    set fillchars=diff:⣿,vert:│
+    set autowrite               " autosave files
+    set title
+
+    colorscheme darkblue      " load colorscheme
+    set background=dark
+" }
+
+" Basic Stuff {
+    " With a map leader it's possible to do extra key combinations
+    let mapleader = ","
+    let maplocalleader = '\\'
+
+    " Swap ; and :
+    " Saves typing and eliminates :Q style typos due to lazy holding shift
+    nnoremap ; :
+
+    " Fast saving
+    nmap <leader>w :w!<cr>
+
+    " Use jk to exit normal mode as
+    "<Esc> is inconvinient as it requires stretching to the top of the keyboard
+    inoremap jk <Esc>
+
+    " Map F1 (help) to esc
+    inoremap <F1> <ESC>
+    nnoremap <F1> <ESC>
+    vnoremap <F1> <ESC>
+
+    " When vimrc is edited, reload it
+    autocmd! bufwritepost vimrc source ~/.vim/vimrc
+" }
+
+" Indentation, Tabs, Spaces {
+    set tabstop=4                   " show tabs as 4 spaces
+    set shiftwidth=4                " use indents of 4 spaces
+    set shiftround                  " always round to multiple of 'shiftwidth'
+    set softtabstop=4               " let backspace delete indent
+    set expandtab                   " tabs are spaces, not tabs
+    set smarttab
+    set formatoptions=qrn1
+    set autoindent                  " indent at the same level of the previous line
+" }
+
+" Whitespace {
+    " Remove trailing whitespaces when saving
+    autocmd BufWritePre * :%s/\s\+$//e
+
+    " Insert empty line above or below while staying in normal mode
+    nnoremap <leader>o :set paste<CR>m`o<Esc>``:set nopaste<CR>
+    nnoremap <leader>O :set paste<CR>m`O<Esc>``:set nopaste<CR>
+" }
+
+" Line Numbers {
+    set number                    " in case relative line numbers are not supported
+    set relativenumber            " relative line numbers on
+
+    " Switch between relative and absolute line number
+    function! g:ToggleNuMode()
+        if(&relativenumber == 1)
+            set number
+        else
+            set relativenumber
+        endif
+    endfunc
+
+    nnoremap <leader>n :call g:ToggleNuMode()<CR>
+" }
+
+" Scrolling and Folding {
+    set scrolloff=3               " minimum lines to keep above and below cursor
+    set foldenable                " auto fold code
+
+    nnoremap <space> za           " map space to toggle the current fold open/closed
+
+    " Code folding options
+    nnoremap <leader>f0 :set foldlevel=0<CR>
+    nnoremap <leader>f1 :set foldlevel=1<CR>
+    nnoremap <leader>f2 :set foldlevel=2<CR>
+    nnoremap <leader>f3 :set foldlevel=3<CR>
+    nnoremap <leader>f4 :set foldlevel=4<CR>
+    nnoremap <leader>f5 :set foldlevel=5<CR>
+    nnoremap <leader>f6 :set foldlevel=6<CR>
+    nnoremap <leader>f7 :set foldlevel=7<CR>
+    nnoremap <leader>f8 :set foldlevel=8<CR>
+    nnoremap <leader>f9 :set foldlevel=9<CR>
+" }
+
+" Wrap, Vertical Line {
+    set nowrap                      " not wrap long lines
+    set whichwrap=b,s,h,l,<,>,[,]   " backspace and cursor keys wrap to
+
+    " Wrapped lines goes down/up to next row, rather than next line in file.
+    nnoremap j gj
+    nnoremap k gk
+
+    " Show/hide vertical line
+    function! g:ToggleColorColumn()
+        if(&colorcolumn == 0)
+            set colorcolumn=80
+        else
+            set colorcolumn=0
+        endif
+    endfunc
+
+    nnoremap <leader>l :call g:ToggleColorColumn()<CR>
+" }
+
+" Buffers, Windows, Tabs {
+    set hidden                    " allow buffer switching without saving
+    set winminheight=0            " windows can be 0 line high
+    set splitbelow                " when splitting put new window below of the current one
+    set splitright                " when splitting put new window to the right of the current one
+    au VimResized * :wincmd =     " resize splits when the windows is resized.
+    au FocusLost * : silent! wall " save when losing focus
+
+    " Redraw screen
+    nnoremap <leader>u :syntax sync fromstart<cr>:redraw!<cr>
+
+    " Easier moving in windows
+    map <C-J> <C-W>j<C-W>_
+    map <C-K> <C-W>k<C-W>_
+    map <C-L> <C-W>l<C-W>_
+    map <C-H> <C-W>h<C-W>_
+
+    map <Leader>= <C-w>=          " adjust viewports to the same size
+
+    " Useful mappings for managing tabs
+    map <leader>tn :tabnew<cr>
+    map <leader>to :tabonly<cr>
+    map <leader>tc :tabclose<cr>
+    map <leader>tm :tabmove
+
+    " Jump to the desired tab immediately
+    function! MoveToTab(tabposition)
+        tabfirst
+        for i in range(a:tabposition)
+            tabnext
+        endfor
+    endfunction
+
+    nnoremap <leader>t0 :call MoveToTab(0)<CR>
+    nnoremap <leader>t1 :call MoveToTab(1)<CR>
+    nnoremap <leader>t2 :call MoveToTab(2)<CR>
+    nnoremap <leader>t3 :call MoveToTab(3)<CR>
+    nnoremap <leader>t4 :call MoveToTab(4)<CR>
+    nnoremap <leader>t5 :call MoveToTab(5)<CR>
+    nnoremap <leader>t6 :call MoveToTab(6)<CR>
+    nnoremap <leader>t7 :call MoveToTab(7)<CR>
+    nnoremap <leader>t8 :call MoveToTab(8)<CR>
+    nnoremap <leader>t9 :call MoveToTab(9)<CR>
+" }
+
+" TimeOuts {
+    " Time out on key codes but not mappings.
+    " Basically this makes terminal Vim work sanely.
+    set notimeout
+    set ttimeout
+    set ttimeoutlen=10
+" }
+
+" Highlight and Searching {
+    set incsearch                   " incremental search
+    set hlsearch                    " highlight search terms
+    set ignorecase                  " case insensitive search
+    set smartcase                   " case sensitive when uc present
+
+    " Use sane regexes.
+    nnoremap / /\v
+    vnoremap / /\v
+
+    " Matching pairs
+    set showmatch                   " show matching symbols (parens etc)
+    set matchtime=3                 " time to show matching paren
+    set matchpairs+=(:)
+    set matchpairs+=[:]
+    set matchpairs+={:}
+    set matchpairs+=<:>
+
+    " Clear highlighted search
+    nmap <silent> <leader>/ :nohlsearch<cr>
+
+    " Keep search matches in the middle of the window.
+    nnoremap n nzzzv
+" }
+
+" Backup and Swap {
+    " Backup {
+        let directory = $HOME . "/.vim/backup/"
+        execute "set backupdir=".directory
+        set backup                  " enable backups
+
+        " Create backup directory if it doesn't exists
+        if !isdirectory(directory)
+            execute "!mkdir -p ".directory
+        endif
+    " }
+
+    " Swap {
+        set noswapfile              " turn swap off
+    " }
+" }
+
+" Languages {
+    " Greek {
+        " Use Greek letters in command mode
+        :set langmap=ΑA,ΒB,ΨC,ΔD,ΕE,ΦF,ΓG,ΗH,ΙI,ΞJ,ΚK,ΛL,ΜM,ΝN,ΟO,ΠP,QQ,ΡR,ΣS,ΤT,ΘU,ΩV,WW,ΧX,ΥY,ΖZ,αa,βb,ψc,δd,εe,φf,γg,ηh,ιi,ξj,κk,λl,μm,νn,οo,πp,qq,ρr,σs,τt,θu,ωv,ςw,χx,υy,ζz
+    " }
+" }
+
+" Misc {
+    " Clipboard {
+        if has ('x') && has ('gui') " on Linux use + register for copy-paste
+            set clipboard=unnamedplus
+        elseif has ('gui')          " one mac and windows, use * register for copy-paste
+            set clipboard=unnamed
+        endif
+
+        noremap <leader>y "*y
+        noremap <leader>p :set paste<CR>"*p<CR>:set nopaste<CR>
+        noremap <leader>P :set paste<CR>"*P<CR>:set nopaste<CR>
+        vnoremap <leader>y "*ygv
+
+        " Yank from the cursor to the end of the line, to be consistent with C and D.
+        nnoremap Y y$
+    " }
+
+    " Make sure Vim returns to the same line when you reopen a file.
+    augroup line_return
+        au!
+        au BufReadPost *
+            \ if line("'\"") > 0 && line("'\"") <= line("$") |
+            \     execute 'normal! g`"zvzz' |
+            \ endif
+    augroup END
+
+    " For when you forget to sudo.. Really Write the file.
+    cmap w!! w !sudo tee % >/dev/null
+" }

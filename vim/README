@@ -1,0 +1,8 @@
+My vimrc is plugin free at the moment but many (programming) plugins
+will be added soon. It makes uses of Vundle plugin management system
+to have a well organized vim directory. Vundle also ensures that the
+latest versions of your plugins are installed and makes it easy to keep
+them up to date.
+
+Vundle homepage: https://github.com/gmarik/vundle
+
