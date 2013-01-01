@@ -30,6 +30,7 @@
         Bundle 'scrooloose/nerdtree'
         Bundle 'jistr/vim-nerdtree-tabs'
         Bundle 'spf13/vim-autoclose'
+        Bundle 'mbbill/undotree'
     " }
 
     " General Programming {
@@ -46,7 +47,7 @@
 
     " Python {
         if has('python')
-            " Bundle 'klen/python-mode'
+             " Bundle 'klen/python-mode'
         endif
 
     " }
@@ -411,6 +412,11 @@
         if has('conceal')
             set conceallevel=2 concealcursor=i
         endif
+    " }
+
+    " UndoTree {
+        nnoremap <Leader>u :UndotreeToggle<CR>
+        let g:undotree_SetFocusWhenToggle=1 " if undotree is opened, it is likely one wants to interact with it.
     " }
 
     " python-mode {
