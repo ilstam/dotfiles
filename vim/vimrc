@@ -41,7 +41,7 @@
         Bundle 'scrooloose/nerdcommenter'
         if executable('ctags')
             Bundle 'majutsushi/tagbar'
-        endif"
+        endif
     " }
 
     " Python {
@@ -84,7 +84,10 @@
     nnoremap ; :
 
     " Fast saving
-    nmap <leader>w :w!<cr>
+    nnoremap <leader>w :w!<cr>
+
+    " Move to the beginning of a line
+    nnoremap 0 ^
 
     " Use jk to exit normal mode as
     "<Esc> is inconvinient as it requires stretching to the top of the keyboard
