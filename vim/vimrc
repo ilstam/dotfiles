@@ -53,7 +53,7 @@
 " General {
     filetype plugin indent on   " automatically detect file types
     syntax on                   " syntax highlighting
-    set synmaxcol=120           " don't try to highlight lines longer than 120 chars.
+    set synmaxcol=120           " don't try to highlight lines longer than 120 chars
     set mouse-=a                " automatically disable mouse usage
     scriptencoding utf-8
     set encoding=utf-8
@@ -91,9 +91,17 @@
     " Move to the beginning of a line
     nnoremap 0 ^
 
-    " Use jk to exit normal mode as
+    " Use jk to exit normal mode
     "<Esc> is inconvinient as it requires stretching to the top of the keyboard
     inoremap jk <Esc>
+
+    " Use s (insert before) or S (insert after) to insert a single character
+    " Returns to normal mode automatically and it allows repetitions
+    function! RepeatChar(char, count)
+        return repeat(a:char, a:count)
+    endfunction
+    nnoremap s :<C-U>exec "normal i".RepeatChar(nr2char(getchar()), v:count1)<CR>
+    nnoremap S :<C-U>exec "normal a".RepeatChar(nr2char(getchar()), v:count1)<CR>
 
     " Map F1 (help) to esc
     inoremap <F1> <ESC>
@@ -277,8 +285,8 @@
 " }
 
 " Shell Commands Output {
-    " Display output of shell commands in new window.
-    " Only one window by command, if a window already exists for a command, it will be reused.
+    " Display output of shell commands in new window
+    " Only one window by command, if a window already exists for a command, it will be reused
     " E.g. :Shell ls
     function! s:ExecuteInShell(command, bang)
         let _ = a:bang != '' ? s:_ : a:command == '' ? '' : join(map(split(a:command), 'expand(v:val)'))
@@ -317,7 +325,6 @@
     autocmd FileType c nnoremap <leader>r :!clear; ./%:r<cr>
     autocmd FileType c nnoremap <leader>m :w<cr> :Shell clear; make<cr>
 " }
-
 
 " Languages {
     " Greek {
