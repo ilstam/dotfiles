@@ -2,15 +2,13 @@ My vimrc makes uses of Vundle plugin management system to have a well
 organized vim directory. Vundle also ensures that the latest versions
 of your plugins are installed and makes it easy to keep them up to date.
 
-Vundle homepage: https://github.com/gmarik/vundle
-
 
 Plugins (By alphabetical order)
 --------------------------------
 
 Name                   Description
 -------                ------------
-neocomplcache:         amazing autocomplete plugin
+neocomplcache          amazing autocomplete plugin
 neosnippet             snippet support
 nerdcommenter          wrangle code comments, regardless of filetype
 nerdtree               file explorer
