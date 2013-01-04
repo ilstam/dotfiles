@@ -95,6 +95,9 @@
     "<Esc> is inconvinient as it requires stretching to the top of the keyboard
     inoremap jk <Esc>
 
+    " Del key is to far...
+    inoremap <leader>d <Del>
+
     " Use s (insert before) or S (insert after) to insert a single character
     " Returns to normal mode automatically and it allows repetitions
     function! RepeatChar(char, count)
