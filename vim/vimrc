@@ -327,6 +327,9 @@
     autocmd FileType python nnoremap <leader>r :w<cr> :!clear; ./%<cr>
     autocmd FileType c nnoremap <leader>r :!clear; ./%:r<cr>
     autocmd FileType c nnoremap <leader>m :w<cr> :Shell clear; make<cr>
+
+    " Make file executable and reload it.
+    nnoremap <leader>x :!chmod +x %<cr> :e %<cr>
 " }
 
 " Languages {
