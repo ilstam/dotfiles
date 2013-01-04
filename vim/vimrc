@@ -10,10 +10,10 @@
 
 " Setup Environment {
     " The following two lines are required by Vundle.
-    set nocompatible        " be iMproved (must be first line)
-    filetype off            " required!
+    set nocompatible                " be iMproved (must be first line)
+    filetype off                    " required!
 
-    " Setup Vundle
+    " Setup Vundle.
     set rtp+=~/.vim/bundle/vundle
     call vundle#rc()
 " }
@@ -31,7 +31,7 @@
     " }
 
     " General Programming {
-        " Code completion
+        " Code completion.
         Bundle 'Shougo/neocomplcache'
         Bundle 'Shougo/neosnippet'
         Bundle 'honza/snipmate-snippets'
@@ -51,67 +51,67 @@
 " }
 
 " General {
-    filetype plugin indent on   " automatically detect file types
-    syntax on                   " syntax highlighting
-    set synmaxcol=120           " don't try to highlight lines longer than 120 chars
-    set mouse-=a                " automatically disable mouse usage
+    filetype plugin indent on       " automatically detect file types
+    syntax on                       " syntax highlighting
+    set synmaxcol=120               " don't try to highlight lines longer than 120 chars
+    set mouse-=a                    " automatically disable mouse usage
     scriptencoding utf-8
     set encoding=utf-8
     set modelines=2
-    set laststatus=2            " always show a status line
-    set showmode                " display the current mode
-    set showcmd                 " show partial commands in status line and
+    set laststatus=2                " always show a status line
+    set showmode                    " display the current mode
+    set showcmd                     " show partial commands in status line and
     set visualbell
     set ttyfast
-    set ruler                   " show the ruler
+    set ruler                       " show the ruler
     set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%)
     set backspace=indent,eol,start  " backspace for dummies
-    set history=1000            " store a ton of history (default is 20)
-    set shell=$SHELL            " use user's default shell
+    set history=1000                " store a ton of history (default is 20)
+    set shell=$SHELL                " use user's default shell
     set fillchars=diff:⣿,vert:│
-    set autowrite               " autosave files
+    set autowrite                   " autosave files
     set title
 
-    colorscheme darkblue      " load colorscheme
+    colorscheme darkblue            " load colorscheme
     set background=dark
 " }
 
 " Basic Stuff {
-    " With a map leader it's possible to do extra key combinations
+    " With a map leader it's possible to do extra key combinations.
     let mapleader = ","
     let maplocalleader = '\\'
 
-    " Swap ; and :
-    " Saves typing and eliminates :Q style typos due to lazy holding shift
+    " Swap ; and :.
+    " Saves typing and eliminates :Q style typos due to lazy holding shift.
     nnoremap ; :
 
-    " Fast saving
+    " Fast saving.
     nnoremap <leader>w :w!<cr>
 
-    " Move to the beginning of a line
+    " Move to the beginning of a line.
     nnoremap 0 ^
 
-    " Use jk to exit normal mode
-    "<Esc> is inconvinient as it requires stretching to the top of the keyboard
+    " Use jk to exit normal mode.
+    " <Esc> is inconvinient as it requires stretching to the top of the keyboard.
     inoremap jk <Esc>
 
-    " Del key is to far...
+    " Del key is too far...
     inoremap <leader>d <Del>
 
-    " Use s (insert before) or S (insert after) to insert a single character
-    " Returns to normal mode automatically and it allows repetitions
+    " Use s (insert before) or S (insert after) to insert a single character.
+    " Returns to normal mode automatically. It allows repetitions as well.
     function! RepeatChar(char, count)
         return repeat(a:char, a:count)
     endfunction
     nnoremap s :<C-U>exec "normal i".RepeatChar(nr2char(getchar()), v:count1)<CR>
     nnoremap S :<C-U>exec "normal a".RepeatChar(nr2char(getchar()), v:count1)<CR>
 
-    " Map F1 (help) to esc
+    " Map F1 (help) to esc.
     inoremap <F1> <ESC>
     nnoremap <F1> <ESC>
     vnoremap <F1> <ESC>
 
-    " When vimrc is edited, reload it
+    " When vimrc is edited, reload it.
     autocmd! bufwritepost vimrc source ~/.dotfiles/vim/vimrc
 " }
 
@@ -127,19 +127,19 @@
 " }
 
 " Whitespace {
-    " Remove trailing whitespaces when saving
+    " Remove trailing whitespaces when saving.
     autocmd BufWritePre * :%s/\s\+$//e
 
-    " Insert empty line above or below while staying in normal mode
+    " Insert empty line above or below while staying in normal mode.
     nnoremap <leader>o :set paste<CR>m`o<Esc>``:set nopaste<CR>
     nnoremap <leader>O :set paste<CR>m`O<Esc>``:set nopaste<CR>
 " }
 
 " Line Numbers {
-    set number                    " in case relative line numbers are not supported
-    set relativenumber            " relative line numbers on
+    set number                      " in case relative line numbers are not supported
+    set relativenumber              " relative line numbers on
 
-    " Switch between relative and absolute line number
+    " Switch between relative and absolute line number.
     function! g:ToggleNuMode()
         if(&relativenumber == 1)
             set number
@@ -152,12 +152,12 @@
 " }
 
 " Scrolling and Folding {
-    set scrolloff=3               " minimum lines to keep above and below cursor
-    set foldenable                " auto fold code
+    set scrolloff=3                 " minimum lines to keep above and below cursor
+    set foldenable                  " auto fold code
 
-    nnoremap <space> za           " map space to toggle the current fold open/closed
+    nnoremap <space> za             " map space to toggle the current fold open/closed
 
-    " Code folding options
+    " Code folding options.
     nnoremap <leader>f0 :set foldlevel=0<CR>
     nnoremap <leader>f1 :set foldlevel=1<CR>
     nnoremap <leader>f2 :set foldlevel=2<CR>
@@ -178,7 +178,7 @@
     nnoremap j gj
     nnoremap k gk
 
-    " Show/hide vertical line
+    " Show/hide vertical line.
     function! g:ToggleColorColumn()
         if(&colorcolumn == 0)
             set colorcolumn=80
@@ -191,33 +191,33 @@
 " }
 
 " Buffers, Windows, Tabs {
-    set hidden                    " allow buffer switching without saving
-    set winminheight=0            " windows can be 0 line high
-    set splitbelow                " when splitting put new window below of the current one
-    set splitright                " when splitting put new window to the right of the current one
-    au VimResized * :wincmd =     " resize splits when the windows is resized.
-    au FocusLost * : silent! wall " save when losing focus
+    set hidden                      " allow buffer switching without saving
+    set winminheight=0              " windows can be 0 line high
+    set splitbelow                  " when splitting put new window below of the current one
+    set splitright                  " when splitting put new window to the right of the current one
+    au VimResized * :wincmd =       " resize splits when the windows is resized.
+    au FocusLost * : silent! wall   " save when losing focus
 
-    " Redraw screen
+    " Redraw screen.
     nnoremap <leader>u :syntax sync fromstart<cr>:redraw!<cr>
 
-    " Easier moving in windows
-    map <C-J> <C-W>j<C-W>_
-    map <C-K> <C-W>k<C-W>_
-    map <C-L> <C-W>l<C-W>_
-    map <C-H> <C-W>h<C-W>_
+    " Easier moving in windows.
+    noremap <C-J> <C-W>j<C-W>_
+    noremap <C-K> <C-W>k<C-W>_
+    noremap <C-L> <C-W>l<C-W>_
+    noremap <C-H> <C-W>h<C-W>_
 
-    map <Leader>= <C-w>=          " adjust viewports to the same size
+    noremap <Leader>= <C-w>=        " adjust viewports to the same size
 
-    " Useful mappings for managing tabs
-    map <leader>tn :tabnew<cr>
-    map <leader>to :tabonly<cr>
-    map <leader>tc :tabclose<cr>
-    map <leader>tm :tabmove
+    " Useful mappings for managing tabs.
+    noremap <leader>tn :tabnew<cr>
+    noremap <leader>to :tabonly<cr>
+    noremap <leader>tc :tabclose<cr>
+    noremap <leader>tm :tabmove
     nnoremap > gt
     nnoremap < gT
 
-    " Jump to the desired tab immediately
+    " Jump to the desired tab immediately.
     function! MoveToTab(tabposition)
         tabfirst
         for i in range(a:tabposition)
@@ -255,7 +255,7 @@
     nnoremap / /\v
     vnoremap / /\v
 
-    " Matching pairs
+    " Matching pairs.
     set showmatch                   " show matching symbols (parens etc)
     set matchtime=3                 " time to show matching paren
     set matchpairs+=(:)
@@ -263,8 +263,8 @@
     set matchpairs+={:}
     set matchpairs+=<:>
 
-    " Clear highlighted search
-    nmap <silent> <leader>/ :nohlsearch<cr>
+    " Clear highlighted search.
+    nnoremap <silent> <leader>/ :nohlsearch<cr>
 
     " Keep search matches in the middle of the window.
     nnoremap n nzzzv
@@ -276,7 +276,7 @@
         execute "set backupdir=".directory
         set backup                  " enable backups
 
-        " Create backup directory if it doesn't exists
+        " Create backup directory if it doesn't exists.
         if !isdirectory(directory)
             execute "!mkdir -p ".directory
         endif
@@ -288,8 +288,8 @@
 " }
 
 " Shell Commands Output {
-    " Display output of shell commands in new window
-    " Only one window by command, if a window already exists for a command, it will be reused
+    " Display output of shell commands in new window.
+    " Only one window by command, if a window already exists for a command, it will be reused.
     " E.g. :Shell ls
     function! s:ExecuteInShell(command, bang)
         let _ = a:bang != '' ? s:_ : a:command == '' ? '' : join(map(split(a:command), 'expand(v:val)'))
@@ -311,9 +311,9 @@
             silent! execute 'autocmd BufUnload <buffer> execute bufwinnr(' . bufnr . ') . ''wincmd w'''
             silent! execute 'autocmd BufEnter <buffer> execute ''resize '' .  line(''$'')'
             silent! execute 'nnoremap <silent> <buffer> <CR> :call <SID>ExecuteInShell(''' . _ . ''', '''')<CR>'
-            " Reexecute command with <localleader>r in a window opened by :Shell
+            " Reexecute command with <localleader>r in a window opened by :Shell.
             silent! execute 'nnoremap <silent> <buffer> <LocalLeader>r :call <SID>ExecuteInShell(''' . _ . ''', '''')<CR>'
-            " Go to the previous window with <localleader>g
+            " Go to the previous window with <localleader>g.
             silent! execute 'nnoremap <silent> <buffer> <LocalLeader>g :execute bufwinnr(' . bufnr . ') . ''wincmd w''<CR>'
             nnoremap <silent> <buffer> <C-W>_ :execute 'resize ' . line('$')<CR>
             silent! syntax on
@@ -331,7 +331,7 @@
 
 " Languages {
     " Greek {
-        " Use Greek letters in command mode
+        " Use Greek letters in command mode.
         :set langmap=ΑA,ΒB,ΨC,ΔD,ΕE,ΦF,ΓG,ΗH,ΙI,ΞJ,ΚK,ΛL,ΜM,ΝN,ΟO,ΠP,QQ,ΡR,ΣS,ΤT,ΘU,ΩV,WW,ΧX,ΥY,ΖZ,αa,βb,ψc,δd,εe,φf,γg,ηh,ιi,ξj,κk,λl,μm,νn,οo,πp,qq,ρr,σs,τt,θu,ωv,ςw,χx,υy,ζz
     " }
 " }
@@ -363,7 +363,7 @@
     augroup END
 
     " For when you forget to sudo.. Really Write the file.
-    cmap w!! w !sudo tee % >/dev/null
+    cnoremap w!! w !sudo tee % >/dev/null
 " }
 
 " Plugins {
@@ -382,10 +382,10 @@
         let g:neocomplcache_force_overwrite_completefunc = 1
 
         " SuperTab like snippets behavior.
-        imap <silent><expr><TAB> neosnippet#expandable() ?
+        inoremap <silent><expr><TAB> neosnippet#expandable() ?
             \ "\<Plug>(neosnippet_expand_or_jump)" : (pumvisible() ?
             \ "\<C-e>" : "\<TAB>")
-        smap <TAB> <Right><Plug>(neosnippet_jump_or_expand)
+        snoremap <TAB> <Right><Plug>(neosnippet_jump_or_expand)
 
         " Define dictionary.
         let g:neocomplcache_dictionary_filetype_lists = {
@@ -401,8 +401,8 @@
         let g:neocomplcache_keyword_patterns._ = '\h\w*'
 
         " Plugin key-mappings.
-        imap <C-k> <Plug>(neosnippet_expand_or_jump)
-        smap <C-k> <Plug>(neosnippet_expand_or_jump)
+        inoremap <C-k> <Plug>(neosnippet_expand_or_jump)
+        snoremap <C-k> <Plug>(neosnippet_expand_or_jump)
         inoremap <expr><C-g> neocomplcache#undo_completion()
         inoremap <expr><C-l> neocomplcache#complete_common_string()
         inoremap <expr><CR> neocomplcache#complete_common_string()
@@ -433,7 +433,7 @@
         let g:neocomplcache_omni_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
         let g:neocomplcache_omni_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
         let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
-        " use honza's snippets
+        " Use honza's snippets.
         let g:neosnippet#snippets_directory='~/.vim/bundle/snipmate-snippets/snippets'
 
         " For snippet_complete marker.
@@ -443,9 +443,9 @@
     " }
 
     " NerdTree {
-        map <C-e> :NERDTreeToggle<CR>:NERDTreeMirror<CR>
-        map <leader>e :NERDTreeFind<CR>
-        nmap <leader>nt :NERDTreeFind<CR>
+        noremap <C-e> :NERDTreeToggle<CR>:NERDTreeMirror<CR>
+        noremap <leader>e :NERDTreeFind<CR>
+        nnoremap <leader>nt :NERDTreeFind<CR>
 
         let NERDTreeShowBookmarks=1
         let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
@@ -462,31 +462,30 @@
     " }
 
     " python-mode {
-        " Disable if python support not present
+        " Disable if python support not present.
         if has('python')
-            " Disable pymode's custom syntax highlighting
+            " Disable pymode's custom syntax highlighting.
             let g:pymode_syntax = 0
-            " Disable all python highlightings
+            " Disable all python highlightings.
             let g:pymode_syntax_all = 0
 
-            " Disable pylint checking every save
+            " Disable pylint checking every save.
             let g:pymode_lint_write = 0
-
-            " Do not load run code plugin"
+            " Do not load run code plugin.
             let g:pymode_run = 0
-
-            " Disable python folding
+            " Disable python folding.
             let g:pymode_folding = 0
 
-             " Switch pylint, pyflakes, pep8, mccabe code-checkers
-             " Can have multiply values "pep8,pyflakes,mcccabe"
-             let g:pymode_lint_checker = "pyflakes,mccabe"
+            " Switch pylint, pyflakes, pep8, mccabe code-checkers.
+            " Can have multiply values "pep8,pyflakes,mcccabe".
+            let g:pymode_lint_checker = "pyflakes,mccabe"
         endif
     " }
 
     " undotree {
+        " If undotree is opened, it is likely one wants to interact with it.
+        let g:undotree_setfocuswhentoggle=1
         nnoremap <leader>u :undotreetoggle<cr>
-        let g:undotree_setfocuswhentoggle=1 " if undotree is opened, it is likely one wants to interact with it.
     " }
 
     " misc {
@@ -494,4 +493,3 @@
         let b:match_ignorecase = 1
     " }
 " }
-
