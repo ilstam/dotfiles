@@ -103,8 +103,8 @@
     function! RepeatChar(char, count)
         return repeat(a:char, a:count)
     endfunction
-    nnoremap s :<C-U>exec "normal i".RepeatChar(nr2char(getchar()), v:count1)<CR>
-    nnoremap S :<C-U>exec "normal a".RepeatChar(nr2char(getchar()), v:count1)<CR>
+    nnoremap s :<C-U>exec "normal i".RepeatChar(nr2char(getchar()), v:count1)<cr>
+    nnoremap S :<C-U>exec "normal a".RepeatChar(nr2char(getchar()), v:count1)<cr>
 
     " Map F1 (help) to esc.
     inoremap <F1> <ESC>
@@ -131,8 +131,8 @@
     autocmd BufWritePre * :%s/\s\+$//e
 
     " Insert empty line above or below while staying in normal mode.
-    nnoremap <leader>o :set paste<CR>m`o<Esc>``:set nopaste<CR>
-    nnoremap <leader>O :set paste<CR>m`O<Esc>``:set nopaste<CR>
+    nnoremap <leader>o :set paste<cr>m`o<Esc>``:set nopaste<cr>
+    nnoremap <leader>O :set paste<cr>m`O<Esc>``:set nopaste<cr>
 " }
 
 " Line Numbers {
@@ -148,7 +148,7 @@
         endif
     endfunc
 
-    nnoremap <leader>n :call g:ToggleNuMode()<CR>
+    nnoremap <leader>n :call g:ToggleNuMode()<cr>
 " }
 
 " Scrolling and Folding {
@@ -158,16 +158,16 @@
     nnoremap <space> za             " map space to toggle the current fold open/closed
 
     " Code folding options.
-    nnoremap <leader>f0 :set foldlevel=0<CR>
-    nnoremap <leader>f1 :set foldlevel=1<CR>
-    nnoremap <leader>f2 :set foldlevel=2<CR>
-    nnoremap <leader>f3 :set foldlevel=3<CR>
-    nnoremap <leader>f4 :set foldlevel=4<CR>
-    nnoremap <leader>f5 :set foldlevel=5<CR>
-    nnoremap <leader>f6 :set foldlevel=6<CR>
-    nnoremap <leader>f7 :set foldlevel=7<CR>
-    nnoremap <leader>f8 :set foldlevel=8<CR>
-    nnoremap <leader>f9 :set foldlevel=9<CR>
+    nnoremap <leader>f0 :set foldlevel=0<cr>
+    nnoremap <leader>f1 :set foldlevel=1<cr>
+    nnoremap <leader>f2 :set foldlevel=2<cr>
+    nnoremap <leader>f3 :set foldlevel=3<cr>
+    nnoremap <leader>f4 :set foldlevel=4<cr>
+    nnoremap <leader>f5 :set foldlevel=5<cr>
+    nnoremap <leader>f6 :set foldlevel=6<cr>
+    nnoremap <leader>f7 :set foldlevel=7<cr>
+    nnoremap <leader>f8 :set foldlevel=8<cr>
+    nnoremap <leader>f9 :set foldlevel=9<cr>
 " }
 
 " Wrap, Vertical Line {
@@ -187,7 +187,7 @@
         endif
     endfunc
 
-    nnoremap <leader>l :call g:ToggleColorColumn()<CR>
+    nnoremap <leader>l :call g:ToggleColorColumn()<cr>
 " }
 
 " Buffers, Windows, Tabs {
@@ -225,16 +225,16 @@
         endfor
     endfunction
 
-    nnoremap <leader>t0 :call MoveToTab(0)<CR>
-    nnoremap <leader>t1 :call MoveToTab(1)<CR>
-    nnoremap <leader>t2 :call MoveToTab(2)<CR>
-    nnoremap <leader>t3 :call MoveToTab(3)<CR>
-    nnoremap <leader>t4 :call MoveToTab(4)<CR>
-    nnoremap <leader>t5 :call MoveToTab(5)<CR>
-    nnoremap <leader>t6 :call MoveToTab(6)<CR>
-    nnoremap <leader>t7 :call MoveToTab(7)<CR>
-    nnoremap <leader>t8 :call MoveToTab(8)<CR>
-    nnoremap <leader>t9 :call MoveToTab(9)<CR>
+    nnoremap <leader>t0 :call MoveToTab(0)<cr>
+    nnoremap <leader>t1 :call MoveToTab(1)<cr>
+    nnoremap <leader>t2 :call MoveToTab(2)<cr>
+    nnoremap <leader>t3 :call MoveToTab(3)<cr>
+    nnoremap <leader>t4 :call MoveToTab(4)<cr>
+    nnoremap <leader>t5 :call MoveToTab(5)<cr>
+    nnoremap <leader>t6 :call MoveToTab(6)<cr>
+    nnoremap <leader>t7 :call MoveToTab(7)<cr>
+    nnoremap <leader>t8 :call MoveToTab(8)<cr>
+    nnoremap <leader>t9 :call MoveToTab(9)<cr>
 " }
 
 " TimeOuts {
@@ -310,12 +310,12 @@
             silent! execute 'syntax on'
             silent! execute 'autocmd BufUnload <buffer> execute bufwinnr(' . bufnr . ') . ''wincmd w'''
             silent! execute 'autocmd BufEnter <buffer> execute ''resize '' .  line(''$'')'
-            silent! execute 'nnoremap <silent> <buffer> <CR> :call <SID>ExecuteInShell(''' . _ . ''', '''')<CR>'
+            silent! execute 'nnoremap <silent> <buffer> <cr> :call <SID>ExecuteInShell(''' . _ . ''', '''')<cr>'
             " Reexecute command with <localleader>r in a window opened by :Shell.
-            silent! execute 'nnoremap <silent> <buffer> <LocalLeader>r :call <SID>ExecuteInShell(''' . _ . ''', '''')<CR>'
+            silent! execute 'nnoremap <silent> <buffer> <LocalLeader>r :call <SID>ExecuteInShell(''' . _ . ''', '''')<cr>'
             " Go to the previous window with <localleader>g.
-            silent! execute 'nnoremap <silent> <buffer> <LocalLeader>g :execute bufwinnr(' . bufnr . ') . ''wincmd w''<CR>'
-            nnoremap <silent> <buffer> <C-W>_ :execute 'resize ' . line('$')<CR>
+            silent! execute 'nnoremap <silent> <buffer> <LocalLeader>g :execute bufwinnr(' . bufnr . ') . ''wincmd w''<cr>'
+            nnoremap <silent> <buffer> <C-W>_ :execute 'resize ' . line('$')<cr>
             silent! syntax on
         endif
     endfunction
@@ -348,8 +348,8 @@
         endif
 
         noremap <leader>y "+y
-        noremap <leader>p :set paste<CR>"+p<CR>:set nopaste<CR>
-        noremap <leader>P :set paste<CR>"+P<CR>:set nopaste<CR>
+        noremap <leader>p :set paste<cr>"+p<cr>:set nopaste<cr>
+        noremap <leader>P :set paste<cr>"+P<cr>:set nopaste<cr>
         vnoremap <leader>y "+ygv
 
         " Yank from the cursor to the end of the line, to be consistent with C and D.
@@ -408,14 +408,14 @@
         snoremap <C-k> <Plug>(neosnippet_expand_or_jump)
         inoremap <expr><C-g> neocomplcache#undo_completion()
         inoremap <expr><C-l> neocomplcache#complete_common_string()
-        inoremap <expr><CR> neocomplcache#complete_common_string()
+        inoremap <expr><cr> neocomplcache#complete_common_string()
         " <TAB>: completion.
         inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
         inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<TAB>"
-        " <CR>: close popup
-        " <s-CR>: close popup and save indent.
-        inoremap <expr><s-CR> pumvisible() ? neocomplcache#close_popup()"\<CR>" : "\<CR>"
-        inoremap <expr><CR> pumvisible() ? neocomplcache#close_popup() : "\<CR>"
+        " <cr>: close popup
+        " <s-cr>: close popup and save indent.
+        inoremap <expr><s-cr> pumvisible() ? neocomplcache#close_popup()"\<cr>" : "\<cr>"
+        inoremap <expr><cr> pumvisible() ? neocomplcache#close_popup() : "\<cr>"
         " <C-h>, <BS>: close popup and delete backword char.
         inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
         inoremap <expr><C-y> neocomplcache#close_popup()
@@ -446,9 +446,9 @@
     " }
 
     " NerdTree {
-        noremap <C-e> :NERDTreeToggle<CR>:NERDTreeMirror<CR>
-        noremap <leader>e :NERDTreeFind<CR>
-        nnoremap <leader>nt :NERDTreeFind<CR>
+        noremap <C-e> :NERDTreeToggle<cr>:NERDTreeMirror<cr>
+        noremap <leader>e :NERDTreeFind<cr>
+        nnoremap <leader>nt :NERDTreeFind<cr>
 
         let NERDTreeShowBookmarks=1
         let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
@@ -461,7 +461,7 @@
     " }
 
     " TagBar {
-         nnoremap <silent> <leader>tt :TagbarToggle<CR>
+         nnoremap <silent> <leader>tt :TagbarToggle<cr>
     " }
 
     " python-mode {
