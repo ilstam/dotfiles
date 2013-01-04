@@ -6,6 +6,26 @@
 "       https://github.com/spf13/spf13-vim
 "       https://bitbucket.org/pmav99/dotfiles/src/fdd48164c029/vim/vimrc
 "
+" Sections:
+"       -> Setup Environment
+"       -> Bundles
+"       -> General
+"       -> Basic Stuff
+"       -> Indentation, Tabs, Spaces
+"       -> Whitespace
+"       -> Line Number
+"       -> Scrolling and Folding
+"       -> Wrap, Vertical Line
+"       -> Buffers, Windows, Tabs
+"       -> TimeOuts
+"       -> Highlight and Searching
+"       -> Backup and Swap
+"       -> Shell Commands Output
+"       -> Compile and Run Code
+"       -> Languages
+"       -> Misc
+"       -> Plugins
+"
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Setup Environment {
@@ -495,3 +515,4 @@
         let b:match_ignorecase = 1
     " }
 " }
+
