@@ -464,8 +464,8 @@
         endif
     " }
 
-    " NerdTree {
-        noremap <C-e> :NERDTreeToggle<cr>:NERDTreeMirror<cr>
+    " NerdTree - NerdTreeTabs {
+        noremap <C-e> :NERDTreeTabsToggle<cr>
         noremap <leader>e :NERDTreeFind<cr>
         nnoremap <leader>nt :NERDTreeFind<cr>
 
