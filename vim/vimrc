@@ -51,11 +51,8 @@
     " }
 
     " General Programming {
-        " Code completion.
         Bundle 'Shougo/neocomplcache'
         Bundle 'Shougo/neosnippet'
-        Bundle 'honza/snipmate-snippets'
-
         Bundle 'scrooloose/nerdcommenter'
         if executable('ctags')
             Bundle 'majutsushi/tagbar'
@@ -455,8 +452,6 @@
         let g:neocomplcache_omni_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
         let g:neocomplcache_omni_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
         let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
-        " Use honza's snippets.
-        let g:neosnippet#snippets_directory='~/.vim/bundle/snipmate-snippets/snippets'
 
         " For snippet_complete marker.
         if has('conceal')
