@@ -11,7 +11,6 @@ Name                   Description
 neocomplcache          amazing autocomplete plugin
 nerdcommenter          wrangle code comments, regardless of filetype
 nerdtree               file explorer
-python-mode            python support using pylint, rope, pyflakes, etc
 tagbar                 provides a panel to easily navigate via files tags
 undotree               keeps undid changes
 vim-autoclose          automatically close brackets, parens, quotes, etc

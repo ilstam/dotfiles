@@ -57,12 +57,6 @@
             Bundle 'majutsushi/tagbar'
         endif
     " }
-
-    " Python {
-        if has('python')
-            Bundle 'klen/python-mode'
-        endif
-    " }
 " }
 
 " General {
@@ -465,27 +459,6 @@
 
     " TagBar {
          nnoremap <silent> <leader>tt :TagbarToggle<cr>
-    " }
-
-    " python-mode {
-        " Disable if python support not present.
-        if has('python')
-            " Disable pymode's custom syntax highlighting.
-            let g:pymode_syntax = 0
-            " Disable all python highlightings.
-            let g:pymode_syntax_all = 0
-
-            " Disable pylint checking every save.
-            let g:pymode_lint_write = 0
-            " Do not load run code plugin.
-            let g:pymode_run = 0
-            " Disable python folding.
-            let g:pymode_folding = 0
-
-            " Switch pylint, pyflakes, pep8, mccabe code-checkers.
-            " Can have multiply values "pep8,pyflakes,mcccabe".
-            let g:pymode_lint_checker = "pyflakes,mccabe"
-        endif
     " }
 
     " undotree {
