@@ -94,18 +94,14 @@
     " Saves typing and eliminates :Q style typos due to lazy holding shift.
     nnoremap ; :
 
-    " Fast saving.
-    nnoremap <leader>w :w!<cr>
+    nnoremap <leader>w :w!<cr>      " fast saving
+    nnoremap 0 ^                    " move to the begginging of a line
 
-    " Move to the beginning of a line.
-    nnoremap 0 ^
-
-    " Use jk to exit normal mode.
+    " Use jk to exit insert mode.
     " <Esc> is inconvinient as it requires stretching to the top of the keyboard.
     inoremap jk <Esc>
 
-    " Del key is too far...
-    inoremap <leader>d <Del>
+    inoremap <leader>d <Del>        " <Del> key is too far...
 
     " Use s (insert before) or S (insert after) to insert a single character.
     " Returns to normal mode automatically. It allows repetitions as well.
@@ -114,14 +110,6 @@
     endfunction
     nnoremap s :<C-U>exec "normal i".RepeatChar(nr2char(getchar()), v:count1)<cr>
     nnoremap S :<C-U>exec "normal a".RepeatChar(nr2char(getchar()), v:count1)<cr>
-
-    " Highlight word occurrences but do not jump to the next result.
-    nnoremap <leader>* *N
-
-    " Map F1 (help) to esc.
-    inoremap <F1> <ESC>
-    nnoremap <F1> <ESC>
-    vnoremap <F1> <ESC>
 
     " When vimrc is edited, reload it.
     autocmd! bufwritepost vimrc source ~/.dotfiles/vim/vimrc
@@ -280,6 +268,9 @@
 
     " Keep search matches in the middle of the window.
     nnoremap n nzzzv
+
+    " Highlight word occurrences but do not jump to the next result.
+    nnoremap <leader>* *N
 " }
 
 " Backup and Swap {
