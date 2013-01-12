@@ -502,7 +502,7 @@
     " undotree {
         " If undotree is opened, it is likely one wants to interact with it.
         let g:undotree_setfocuswhentoggle=1
-        nnoremap <leader>u :undotreetoggle<cr>
+        nnoremap <leader>u :UndotreeToggle<cr>
     " }
 
     " misc {
