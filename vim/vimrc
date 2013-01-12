@@ -94,14 +94,15 @@
     " Saves typing and eliminates :Q style typos due to lazy holding shift.
     nnoremap ; :
 
-    nnoremap <leader>w :w!<cr>      " fast saving
-    nnoremap 0 ^                    " move to the begginging of a line
+    nnoremap <leader>w :w!<cr>
+    nnoremap 0 ^
 
     " Use jk to exit insert mode.
     " <Esc> is inconvinient as it requires stretching to the top of the keyboard.
     inoremap jk <Esc>
 
-    inoremap <leader>d <Del>        " <Del> key is too far...
+    " <Del> key is too far...
+    inoremap <leader>d <Del>
 
     " Use s (insert before) or S (insert after) to insert a single character.
     " Returns to normal mode automatically. It allows repetitions as well.
@@ -155,7 +156,8 @@
     set scrolloff=3                 " minimum lines to keep above and below cursor
     set foldenable                  " auto fold code
 
-    nnoremap <space> za             " map space to toggle the current fold open/closed
+    " Map space to toggle the current fold open/closed.
+    nnoremap <space> za
 
     " Code folding options.
     nnoremap <leader>f0 :set foldlevel=0<cr>
@@ -207,7 +209,8 @@
     noremap <C-L> <C-W>l<C-W>_
     noremap <C-H> <C-W>h<C-W>_
 
-    noremap <Leader>= <C-w>=        " adjust viewports to the same size
+    " Adjust viewports to the same size.
+    noremap <Leader>= <C-w>=
 
     " Useful mappings for managing tabs.
     noremap <leader>tn :tabnew<cr>
