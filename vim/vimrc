@@ -96,7 +96,7 @@
     let mapleader = ","
     let maplocalleader = '\\'
 
-    " Swap ; and :.
+    " Map ; to :.
     " Saves typing and eliminates :Q style typos due to lazy holding shift.
     nnoremap ; :
 
@@ -120,6 +120,9 @@
     endfunction
     nnoremap s :<C-U>exec "normal i".RepeatChar(nr2char(getchar()), v:count1)<cr>
     nnoremap S :<C-U>exec "normal a".RepeatChar(nr2char(getchar()), v:count1)<cr>
+
+    " Highlight word occurrences but do not jump to the next result.
+    nnoremap <leader>* *N
 
     " Map F1 (help) to esc.
     inoremap <F1> <ESC>
