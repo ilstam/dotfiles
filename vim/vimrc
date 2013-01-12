@@ -164,7 +164,7 @@
         endif
     endfunc
 
-    nnoremap <leader>n :call g:ToggleNuMode()<cr>
+    nnoremap <leader>rn :call g:ToggleNuMode()<cr>
 " }
 
 " Scrolling and Folding {
