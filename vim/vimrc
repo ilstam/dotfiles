@@ -344,15 +344,14 @@
 
 " Misc {
     " Clipboard {
-        if has ('x') && has ('gui') " on Linux use + register for copy-paste
+        if has ('x') && has ('gui')
+            " Use + register for copy-paste.
             set clipboard=unnamedplus
-        elseif has ('gui')          " one mac and windows, use * register for copy-paste
-            set clipboard=unnamed
         endif
 
-        noremap <leader>y "+y
         noremap <leader>p :set paste<cr>"+p<cr>:set nopaste<cr>
         noremap <leader>P :set paste<cr>"+P<cr>:set nopaste<cr>
+        noremap <leader>y "+y
         vnoremap <leader>y "+ygv
 
         " Yank from the cursor to the end of the line, to be consistent with C and D.
