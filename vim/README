@@ -9,7 +9,6 @@ Plugins (By alphabetical order)
 Name                   Description
 -------                ------------
 neocomplcache          amazing autocomplete plugin
-neosnippet             snippets support
 nerdcommenter          wrangle code comments, regardless of filetype
 nerdtree               file explorer
 python-mode            python support using pylint, rope, pyflakes, etc

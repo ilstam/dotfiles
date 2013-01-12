@@ -52,7 +52,6 @@
 
     " General Programming {
         Bundle 'Shougo/neocomplcache'
-        Bundle 'Shougo/neosnippet'
         Bundle 'scrooloose/nerdcommenter'
         if executable('ctags')
             Bundle 'majutsushi/tagbar'
@@ -400,12 +399,6 @@
         let g:neocomplcache_max_list = 15
         let g:neocomplcache_force_overwrite_completefunc = 1
 
-        " SuperTab like snippets behavior.
-        inoremap <silent><expr><TAB> neosnippet#expandable() ?
-            \ "\<Plug>(neosnippet_expand_or_jump)" : (pumvisible() ?
-            \ "\<C-e>" : "\<TAB>")
-        snoremap <TAB> <Right><Plug>(neosnippet_jump_or_expand)
-
         " Define dictionary.
         let g:neocomplcache_dictionary_filetype_lists = {
             \ 'default' : '',
@@ -420,8 +413,6 @@
         let g:neocomplcache_keyword_patterns._ = '\h\w*'
 
         " Plugin key-mappings.
-        inoremap <C-k> <Plug>(neosnippet_expand_or_jump)
-        snoremap <C-k> <Plug>(neosnippet_expand_or_jump)
         inoremap <expr><C-g> neocomplcache#undo_completion()
         inoremap <expr><C-l> neocomplcache#complete_common_string()
         inoremap <expr><cr> neocomplcache#complete_common_string()
@@ -452,11 +443,6 @@
         let g:neocomplcache_omni_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
         let g:neocomplcache_omni_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
         let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
-
-        " For snippet_complete marker.
-        if has('conceal')
-            set conceallevel=2 concealcursor=i
-        endif
     " }
 
     " NerdTree - NerdTreeTabs {
