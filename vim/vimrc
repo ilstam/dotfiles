@@ -203,20 +203,23 @@
     " Redraw screen.
     nnoremap <leader>u :syntax sync fromstart<cr>:redraw!<cr>
 
+    " Fast close window.
+    nnoremap <leader>q :q<cr>
+
     " Easier moving in windows.
-    noremap <C-J> <C-W>j<C-W>_
-    noremap <C-K> <C-W>k<C-W>_
-    noremap <C-L> <C-W>l<C-W>_
-    noremap <C-H> <C-W>h<C-W>_
+    nnoremap <C-J> <C-W>j<C-W>_
+    nnoremap <C-K> <C-W>k<C-W>_
+    nnoremap <C-L> <C-W>l<C-W>_
+    nnoremap <C-H> <C-W>h<C-W>_
 
     " Adjust viewports to the same size.
-    noremap <Leader>= <C-w>=
+    nnoremap <Leader>= <C-w>=
 
     " Useful mappings for managing tabs.
-    noremap <leader>tn :tabnew<cr>
-    noremap <leader>to :tabonly<cr>
-    noremap <leader>tc :tabclose<cr>
-    noremap <leader>tm :tabmove
+    nnoremap <leader>tn :tabnew<cr>
+    nnoremap <leader>to :tabonly<cr>
+    nnoremap <leader>tc :tabclose<cr>
+    nnoremap <leader>tm :tabmove
     nnoremap > gt
     nnoremap < gT
 
@@ -354,9 +357,9 @@
             set clipboard=unnamedplus
         endif
 
-        noremap <leader>p :set paste<cr>"+p<cr>:set nopaste<cr>
-        noremap <leader>P :set paste<cr>"+P<cr>:set nopaste<cr>
-        noremap <leader>y "+y
+        nnoremap <leader>p :set paste<cr>"+p<cr>:set nopaste<cr>
+        nnoremap <leader>P :set paste<cr>"+P<cr>:set nopaste<cr>
+        nnoremap <leader>y "+y
         vnoremap <leader>y "+ygv
 
         " Yank from the cursor to the end of the line, to be consistent with C and D.
@@ -438,8 +441,8 @@
     " }
 
     " NerdTree - NerdTreeTabs {
-        noremap <C-e> :NERDTreeTabsToggle<cr>
-        noremap <leader>e :NERDTreeFind<cr>
+        nnoremap <C-e> :NERDTreeTabsToggle<cr>
+        nnoremap <leader>e :NERDTreeFind<cr>
         nnoremap <leader>nt :NERDTreeFind<cr>
 
         let NERDTreeShowBookmarks=1
