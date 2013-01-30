@@ -104,6 +104,9 @@
     " <Del> key is too far...
     inoremap <leader>d <Del>
 
+    " Automaticaly close C comments.
+    inoremap /* /*  */<Left><Left><Left>
+
     " Use s (insert before) or S (insert after) to insert a single character.
     " Returns to normal mode automatically. It allows repetitions as well.
     function! RepeatChar(char, count)
