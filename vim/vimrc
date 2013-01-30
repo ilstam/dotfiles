@@ -173,7 +173,7 @@
 " }
 
 " Wrap, Vertical Line {
-    set nowrap                      " not wrap long lines
+    set wrap                      " wrap long lines
     set whichwrap=b,s,h,l,<,>,[,]   " backspace and cursor keys wrap to
 
     " Wrapped lines goes down/up to next row, rather than next line in file.
