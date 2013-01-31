@@ -129,8 +129,7 @@
     set formatoptions=qrn1
     set autoindent                  " indent at the same level of the previous line
 
-    autocmd FileType c set tabstop=8 | set shiftwidth=8 | set softtabstop=8
-    autocmd FileType cpp set tabstop=8 | set shiftwidth=8 | set softtabstop=8
+    autocmd FileType c,cpp,make set tabstop=8 | set shiftwidth=8 | set softtabstop=8
 
     function! g:ToggleIndentation()
         if(&shiftwidth == 4)
