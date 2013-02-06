@@ -120,16 +120,16 @@
 " }
 
 " Indentation, Tabs, Spaces {
-    set tabstop=4                   " show tabs as 4 spaces
-    set shiftwidth=4                " use indents of 4 spaces
+    set tabstop=8                   " show tabs as 8 spaces
+    set shiftwidth=8                " use indents of 4 spaces
     set shiftround                  " always round to multiple of 'shiftwidth'
-    set softtabstop=4               " let backspace delete indent
-    set expandtab                   " tabs are spaces, not tabs
+    set softtabstop=8               " let backspace delete indent
+    set noexpandtab                 " tabs are tabs, not spaces
     set smarttab
     set formatoptions=qrn1
     set autoindent                  " indent at the same level of the previous line
 
-    autocmd FileType c,cpp,make set tabstop=8 | set shiftwidth=8 | set softtabstop=8
+    autocmd FileType python set tabstop=4 | set shiftwidth=4 | set softtabstop=4 | set expandtab
 
     function! g:ToggleIndentation()
         if(&shiftwidth == 4)
