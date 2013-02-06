@@ -66,7 +66,6 @@
     set mouse-=a                    " automatically disable mouse usage
     scriptencoding utf-8
     set encoding=utf-8
-    set modelines=2
     set laststatus=2                " always show a status line
     set showmode                    " display the current mode
     set showcmd                     " show partial commands in status line and
@@ -491,5 +490,9 @@
         let g:nerdshutup=1
         let b:match_ignorecase = 1
     " }
+" }
+
+" Modeline {
+" vim: set tabstop=4 shiftwidth=4 softtabstop=4 expandtab:
 " }
 
