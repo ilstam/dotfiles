@@ -103,9 +103,6 @@
     " <Del> key is too far...
     inoremap <localleader>d <Del>
 
-    " Automaticaly close C comments.
-    inoremap /* /*  */<Left><Left><Left>
-
     " Use s (insert before) or S (insert after) to insert a single character.
     " Returns to normal mode automatically. It allows repetitions as well.
     function! RepeatChar(char, count)
@@ -386,6 +383,9 @@
         " Yank from the cursor to the end of the line, to be consistent with C and D.
         nnoremap Y y$
     " }
+
+    " Automaticaly close C comments.
+    inoremap /* /*  */<Left><Left><Left>
 
     " Make sure Vim returns to the same line when you reopen a file.
     augroup line_return
