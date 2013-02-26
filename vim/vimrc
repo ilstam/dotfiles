@@ -101,7 +101,7 @@
     inoremap jk <Esc>
 
     " <Del> key is too far...
-    inoremap <leader>d <Del>
+    inoremap <localleader>d <Del>
 
     " Automaticaly close C comments.
     inoremap /* /*  */<Left><Left><Left>
