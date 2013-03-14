@@ -13,6 +13,9 @@ alias ip3='ipython'
 alias g89='gcc -Wall -W -pedantic -ansi -std=c89'
 alias g99='gcc -Wall -W -pedantic -ansi -std=c99'
 
+# Arch linux - system upgrade
+alias up='sudo pacman -Syu'
+
 # Functions
 function subs(){
     iconv -fiso-8859-7 -tutf8 $1 > ~~temp.srt
