@@ -101,7 +101,7 @@
     inoremap jk <Esc>
 
     " <Del> key is too far...
-    inoremap <localleader>d <Del>
+    inoremap <leader>d <Del>
 
     " Use s (insert before) or S (insert after) to insert a single character.
     " Returns to normal mode automatically. It allows repetitions as well.
