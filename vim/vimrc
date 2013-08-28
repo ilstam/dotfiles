@@ -118,7 +118,7 @@
 
 " Indentation, Tabs, Spaces {
     set tabstop=8                   " show tabs as 8 spaces
-    set shiftwidth=8                " use indents of 4 spaces
+    set shiftwidth=8                " use indents of 8 spaces
     set shiftround                  " always round to multiple of 'shiftwidth'
     set softtabstop=8               " let backspace delete indent
     set noexpandtab                 " tabs are tabs, not spaces
@@ -126,7 +126,8 @@
     set formatoptions=qrn1
     set autoindent                  " indent at the same level of the previous line
 
-    autocmd FileType python set tabstop=4 | set shiftwidth=4 | set softtabstop=4 | set expandtab
+    autocmd FileType python,css set tabstop=4 | set shiftwidth=4 | set softtabstop=4 | set expandtab
+    autocmd FileType html set tabstop=2 | set shiftwidth=2 | set softtabstop=2 | set expandtab
 
     function! g:ToggleIndentation()
         if(&shiftwidth == 4)
