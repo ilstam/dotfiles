@@ -8,6 +8,7 @@ Plugins:
 Name                   Description
 -------                ------------
 neocomplcache          amazing autocomplete plugin
+snipmate               code snippets completion
 tagbar                 easily navigation via files tags
 nerdtree               file explorer
 vim-nerdtree-tabs      nerdtree, independent of tabs

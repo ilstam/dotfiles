@@ -52,6 +52,7 @@
 
     " General Programming {
         Bundle 'Shougo/neocomplcache'
+        Bundle 'msanders/snipmate.vim'
         Bundle 'scrooloose/nerdcommenter'
         if executable('ctags')
             Bundle 'majutsushi/tagbar'
