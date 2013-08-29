@@ -97,10 +97,11 @@
     nnoremap <leader>w :w!<cr>
     nnoremap 0 ^
 
-    " Use jk and ξκ (for greek layout) to exit insert mode.
+    " Use jk and ξκ (for greek layout) to exit insert/select mode.
     " <Esc> is inconvinient as it requires stretching to the top of the keyboard.
     inoremap jk <Esc>
     inoremap ξκ <Esc>
+    snoremap jk <Esc>
 
     " <Del> key is too far...
     inoremap <leader>d <Del>
