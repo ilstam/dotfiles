@@ -15,3 +15,16 @@ vim-nerdtree-tabs      nerdtree, independent of tabs
 undotree               undo history graph
 nerdcommenter          code comments wrangle
 vim-autoclose          autoclose brackets, parens, quotes, etc
+
+
+Notes:
+
+snipmate_remap
+---------------
+Neocomplcache and snipmate plugins are not compatible by default because
+both are using tab key for completion. I wrote a simple script called
+snipmate_remap.py for remapping snipmate's trigger key in order the two
+plugins to be able to work together. By default it sets ')'to be the new
+trigger key. You can set it to what you wish by editing the script directly.
+Each time you update your snipmate installation (by running :BundleUpdate
+if you use Vundle) you should run snipmate_remap as well.
