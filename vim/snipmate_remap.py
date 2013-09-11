@@ -8,7 +8,7 @@ import shutil
 import fnmatch
 
 # new trigger key
-TRIGGER_KEY = ')'
+TRIGGER_KEY = '*'
 # your snipmate directory location
 SNIPMATE_DIR = '/home/ilias/.vim/bundle/snipmate.vim/'
 
