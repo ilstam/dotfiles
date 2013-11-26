@@ -3,6 +3,7 @@
 alias ls='ls --color=auto'
 alias d='cd /media/data/'
 alias dd='cd /media/data/dotfiles/'
+alias tmp='cd /tmp'
 
 # Applications aliases
 alias gv='gvim'
