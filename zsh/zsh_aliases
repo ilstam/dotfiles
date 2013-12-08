@@ -1,5 +1,4 @@
-# zsh_aliases
-
+# zsh aliases
 alias ls='ls --color=auto'
 alias d='cd /media/data/'
 alias dd='cd /media/data/dotfiles/'
@@ -14,12 +13,16 @@ alias ip3='ipython'
 alias g89='gcc -Wall -W -pedantic -ansi -std=c89'
 alias g99='gcc -Wall -W -pedantic -ansi -std=c99'
 
-# Arch linux - system upgrade
-alias up='sudo pacman -Syu'
+# Arch Linux aliases
+alias up='sudo pacman -Syu' # for system upgrade
+alias packer='packer --noedit'
+
+# When using sudo, use alias expansion (otherwise sudo ignores your aliases)
+alias sudo='sudo '
 
 # Functions
-function subs(){
+function subs()
+{
     iconv -fiso-8859-7 -tutf8 $1 > ~~temp.srt
     mv ~~temp.srt $1;
 }
-
