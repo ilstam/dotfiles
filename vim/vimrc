@@ -355,12 +355,17 @@
 " }
 
 " Compile and Run Code {
+    " run
     autocmd FileType python nnoremap <leader>r :w<cr> :!clear; ./%<cr>
     autocmd FileType c,cpp nnoremap <leader>r :!clear; ./%:r<cr>
-    autocmd FileType c,cpp nnoremap <leader>m :w<cr> :Shell clear; make<cr>
+    autocmd FileType java nnoremap <leader>r :!clear; java %:r<cr>
+
+    " compile
+    autocmd FileType c,cpp,java nnoremap <leader>m :w<cr> :Shell clear; make<cr>
     autocmd FileType c nnoremap <leader>c8 :Shell gcc -Wall -W -pedantic -ansi -std=c89 -o %:r %<cr>
     autocmd FileType c nnoremap <leader>c9 :Shell gcc -Wall -W -pedantic -ansi -std=c99 -o %:r %<cr>
     autocmd FileType cpp nnoremap <leader>c1 :Shell g++ -std=c++11 -o %:r %<cr>
+    autocmd FileType java nnoremap <leader>c9 :Shell javac %<cr>
 
     " Make file executable and reload it.
     nnoremap <leader>x :!chmod +x %<cr> :e %<cr>
