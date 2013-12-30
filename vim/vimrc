@@ -200,7 +200,7 @@
     nnoremap j gj
     nnoremap k gk
 
-    autocmd FileType c,cpp,python set colorcolumn=80
+    autocmd FileType c,cpp,java,python set colorcolumn=80
 
     " Show/hide vertical line.
     function! g:ToggleColorColumn()
