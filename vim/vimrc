@@ -356,10 +356,11 @@
 
 " Compile and Run Code {
     autocmd FileType python nnoremap <leader>r :w<cr> :!clear; ./%<cr>
-    autocmd FileType c nnoremap <leader>r :!clear; ./%:r<cr>
-    autocmd FileType c nnoremap <leader>m :w<cr> :Shell clear; make<cr>
+    autocmd FileType c,cpp nnoremap <leader>r :!clear; ./%:r<cr>
+    autocmd FileType c,cpp nnoremap <leader>m :w<cr> :Shell clear; make<cr>
     autocmd FileType c nnoremap <leader>c8 :Shell gcc -Wall -W -pedantic -ansi -std=c89 -o %:r %<cr>
     autocmd FileType c nnoremap <leader>c9 :Shell gcc -Wall -W -pedantic -ansi -std=c99 -o %:r %<cr>
+    autocmd FileType cpp nnoremap <leader>c1 :Shell g++ -std=c++11 -o %:r %<cr>
 
     " Make file executable and reload it.
     nnoremap <leader>x :!chmod +x %<cr> :e %<cr>
