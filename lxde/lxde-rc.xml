@@ -35,7 +35,7 @@
     <primaryMonitor>1</primaryMonitor>
   </placement>
   <theme>
-    <name>Ambiance-Xfce-LXDE</name>
+    <name>Ambiance-Orange-Xfce-LXDE</name>
     <titleLayout>NLIMC</titleLayout>
     <!--
       available characters are NDSLIMC, each can occur at most once.
