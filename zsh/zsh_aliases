@@ -12,10 +12,14 @@ alias ip2='ipython2'
 alias ip3='ipython'
 alias g89='gcc -Wall -W -pedantic -ansi -std=c89'
 alias g99='gcc -Wall -W -pedantic -ansi -std=c99'
-
-# Arch Linux aliases
-alias up='sudo pacman -Syu' # for system upgrade
 alias packer='packer --noedit'
+
+# System upgrade alias depending on distribution
+if [ -f /var/log/pacman.log ]; then
+	alias up='sudo pacman -Syu'
+elif [ -d /var/log/apt/ ] || [ -f /var/log/apt.log ]; then
+	alias up='sudo apt-get update && sudo apt-get upgrade'
+fi
 
 # When using sudo, use alias expansion (otherwise sudo ignores your aliases)
 alias sudo='sudo '
