@@ -2,6 +2,7 @@ My vimrc uses Vundle plugin management system to have a well organized vim
 directory. Vundle also ensures that the latest versions of your plugins are
 installed and makes it easy to keep them up to date.
 
+Vundle homepage: https://github.com/gmarik/vundle
 
 Plugins:
 
@@ -24,7 +25,7 @@ snipmate_remap
 Neocomplcache and snipmate plugins are not compatible by default because
 both are using tab key for completion. I wrote a simple script called
 snipmate_remap.py for remapping snipmate's trigger key in order the two
-plugins to be able to work together. By default it sets '*'to be the new
+plugins to be able to work together. By default it sets '*' to be the new
 trigger key. You can set it to what you wish by editing the script directly.
 Each time you update your snipmate installation (by running :BundleUpdate
 if you use Vundle) you should run snipmate_remap as well.
