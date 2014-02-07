@@ -1,5 +1,5 @@
 # zsh aliases
-alias ls='ls --color=auto'
+alias ls='ls --group-directories-first --color=auto'
 alias d='cd /media/data/'
 alias m='cd /media/data/Movies'
 alias tmp='cd /tmp'
@@ -14,6 +14,9 @@ alias g89='gcc -Wall -W -pedantic -ansi -std=c89'
 alias g99='gcc -Wall -W -pedantic -ansi -std=c99'
 alias packer='packer --noedit'
 
+# When using sudo, use alias expansion (otherwise sudo ignores your aliases)
+alias sudo='sudo '
+
 # System upgrade alias depending on distribution
 if [ -f /var/log/pacman.log ]; then
 	alias up='sudo pacman -Syu'
@@ -21,8 +24,17 @@ elif [ -d /var/log/apt/ ] || [ -f /var/log/apt.log ]; then
 	alias up='sudo apt-get update && sudo apt-get upgrade'
 fi
 
-# When using sudo, use alias expansion (otherwise sudo ignores your aliases)
-alias sudo='sudo '
+# systemd aliases and functions
+# each ends in the letter 'd' to avoid conflicts with zsh builtins such as enable
+# startd = start daemon ... etc.
+
+alias listd='find /etc/systemd/system -mindepth 1 -type d | xargs ls -l --color'
+startd() { sudo systemctl start $1.service; sudo systemctl status $1.service; }
+stopd() { sudo systemctl stop $1.service; sudo systemctl status $1.service; }
+restartd() { sudo systemctl restart $1.service; sudo systemctl status $1.service; }
+statusd() { sudo systemctl status $1.service; }
+enabled() { sudo systemctl enable $1.service; listd; }
+disabled() { sudo systemctl disable $1.service; listd; }
 
 # Functions
 function subs()
