@@ -49,6 +49,3 @@ bindkey -v
 
 # This feature is annoying sometimes. It corrects you, when you are trying to create new files, for example.
 unsetopt correctall
-
-# turn off DPMS and disable screen saver blanking
-xset -dpms s off
