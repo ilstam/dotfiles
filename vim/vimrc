@@ -128,23 +128,14 @@
     set formatoptions=qrn1
     set autoindent                  " indent at the same level of the previous line
 
-    autocmd FileType python,css set tabstop=4 | set shiftwidth=4 | set softtabstop=4 | set expandtab
-    autocmd FileType html set tabstop=2 | set shiftwidth=2 | set softtabstop=2 | set expandtab
+    autocmd FileType python,html,css call g:ToggleIndentation(4)
+    autocmd FileType python set expandtab  " in python tabs are spaces
 
-    function! g:ToggleIndentation()
-        if(&shiftwidth == 4)
-            set tabstop=8
-            set shiftwidth=8
-            set softtabstop=8
-        else
-            set tabstop=4
-            set shiftwidth=4
-            set softtabstop=4
-        endif
+    function! g:ToggleIndentation(num)
+	execute 'set tabstop='.a:num
+	execute 'set shiftwidth='.a:num
+	execute 'set softtabstop='.a:num
     endfunc
-
-    nnoremap <localleader>i :call g:ToggleIndentation()<cr>
-
 " }
 
 " Whitespace {
@@ -200,7 +191,7 @@
     nnoremap j gj
     nnoremap k gk
 
-    autocmd FileType c,cpp,java,python set colorcolumn=80
+    autocmd FileType c,cpp,java,python,javascript set colorcolumn=80
 
     " Show/hide vertical line.
     function! g:ToggleColorColumn()
