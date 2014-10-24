@@ -49,3 +49,6 @@ bindkey -v
 
 # This feature is annoying sometimes. It corrects you, when you are trying to create new files, for example.
 unsetopt correctall
+
+# Print an empty line before the prompt is rendered.
+precmd() { print "" }
