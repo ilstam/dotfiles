@@ -128,8 +128,8 @@
     set formatoptions=qrn1
     set autoindent                  " indent at the same level of the previous line
 
-    autocmd FileType python,html,css call g:ToggleIndentation(4)
-    autocmd FileType python set expandtab  " in python tabs are spaces
+    autocmd FileType python,html,css,asm call g:ToggleIndentation(4)
+    autocmd FileType python set expandtab  " tabs are spaces
 
     function! g:ToggleIndentation(num)
 	execute 'set tabstop='.a:num
