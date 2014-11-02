@@ -14,8 +14,8 @@ fi
 
 # overwrite vimrc
 cat > ~/.vimrc << "EOF"
-if filereadable(expand("/home/ilias/.dotfiles/vim/vimrc"))
-    source /home/ilias/.dotfiles/vim/vimrc
+if filereadable(expand("$HOME/.dotfiles/vim/vimrc"))
+    source $HOME/.dotfiles/vim/vimrc
 endif
 EOF
 
