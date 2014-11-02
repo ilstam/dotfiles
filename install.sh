@@ -1,8 +1,8 @@
 #!/bin/sh
 
 export DOTFILES=$HOME/.dotfiles
-if [ $(pwd) != $DOTFILES ]; then
-	cp -R $(pwd) $DOTFILES
+if [ $(dirname $0) != $DOTFILES ]; then
+	cp -R $(dirname $0) $DOTFILES
 fi
 
 $DOTFILES/git/install.sh
