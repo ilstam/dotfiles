@@ -18,6 +18,6 @@ source $HOME/.dotfiles/zsh/zshrc
 EOF
 
 # use mytheme
-cp $DOTFILES/zsh/mytheme.zsh-theme ~/.oh-my-zsh/themes
+cp $(dirname $0)/mytheme.zsh-theme ~/.oh-my-zsh/themes
 
 echo -e "\ndone...\n"
