@@ -10,7 +10,7 @@ import fnmatch
 # new trigger key
 TRIGGER_KEY = '*'
 # your snipmate directory location
-SNIPMATE_DIR = '/home/ilias/.vim/bundle/snipmate.vim/'
+SNIPMATE_DIR = os.getenv('HOME') + '/.vim/bundle/snipmate.vim/'
 
 files = []
 for root, dirnames, filenames in os.walk(SNIPMATE_DIR):
