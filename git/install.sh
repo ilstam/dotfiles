@@ -8,6 +8,9 @@ if [ -f ~/.gitconfig ]; then
 fi
 
 # create symbolic link to the gitconfig
+if [ -z "$DOTFILES" ]; then
+	DOTFILES=$HOME/.dotfiles
+fi
 ln -s $DOTFILES/git/gitconfig ~/.gitconfig
 
 echo -e "\ndone...\n"
