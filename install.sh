@@ -1,9 +1,14 @@
 #!/bin/sh
 
 export DOTFILES=$HOME/.dotfiles
+DOTFILESOLD="${DOTFILES}old"
+
 if [ $(dirname $0) != "$DOTFILES" ]; then
 	if [ -d "$DOTFILES" ]; then
-		mv "$DOTFILES" "${DOTFILES}old"
+		if [ -d "$DOTFILESOLD" ]; then
+			rm -rf "$DOTFILESOLD"
+		fi
+		mv "$DOTFILES" "$DOTFILESOLD"
 	fi
 	cp -R $(dirname $0) "$DOTFILES"
 fi
