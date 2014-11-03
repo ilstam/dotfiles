@@ -19,8 +19,10 @@ if filereadable(expand("$HOME/.dotfiles/vim/vimrc"))
 endif
 EOF
 
+# install vim plugins
+vim +PluginInstall +qall
+
 # run snipmate_remap.py
 python3 $(dirname $0)/snipmate_remap.py
 
-echo -e "\ndone..."
-echo -e "do not forget to install vim plugins...\n"
+echo -e "\ndone...\n"
