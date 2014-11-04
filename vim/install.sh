@@ -23,6 +23,6 @@ EOF
 vim +PluginInstall +qall
 
 # run snipmate_remap.py
-python3 $(dirname $0)/snipmate_remap.py
+python $(dirname $0)/snipmate_remap.py
 
 echo -e "\ndone...\n"
