@@ -4,7 +4,7 @@ echo -e "vim configuraton...\n"
 
 # install vundle
 if [ ! -d ~/.vim/bundle/vundle/ ]; then
-	git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+	git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/Vundle.vim
 fi
 
 # backup existing ~/.vimrc file

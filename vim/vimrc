@@ -8,7 +8,7 @@
 "
 " Sections:
 "       -> Setup Environment
-"       -> Bundles
+"       -> Plugins
 "       -> General
 "       -> Basic Stuff
 "       -> Indentation, Tabs, Spaces
@@ -33,35 +33,37 @@
     set nocompatible                " be iMproved (must be first line)
     filetype off                    " required!
 
-    " Setup Vundle.
-    set rtp+=~/.vim/bundle/vundle
-    call vundle#rc()
+    " set the runtime path to include Vundle and initialize
+    set rtp+=~/.vim/bundle/Vundle.vim
+    call vundle#begin()
 " }
 
-" Bundles {
+" Plugins {
     " Dependencies {
-        Bundle 'gmarik/vundle'
+        Plugin 'gmarik/Vundle.vim'
     " }
 
     " General {
-        Bundle 'scrooloose/nerdtree'
-        Bundle 'jistr/vim-nerdtree-tabs'
-        Bundle 'spf13/vim-autoclose'
-        Bundle 'mbbill/undotree'
+        Plugin 'scrooloose/nerdtree'
+        Plugin 'jistr/vim-nerdtree-tabs'
+        Plugin 'spf13/vim-autoclose'
+        Plugin 'mbbill/undotree'
     " }
 
     " General Programming {
-        Bundle 'Shougo/neocomplcache'
-        Bundle 'msanders/snipmate.vim'
-        Bundle 'scrooloose/nerdcommenter'
+        Plugin 'Shougo/neocomplcache'
+        Plugin 'msanders/snipmate.vim'
+        Plugin 'scrooloose/nerdcommenter'
         if executable('ctags')
-            Bundle 'majutsushi/tagbar'
+            Plugin 'majutsushi/tagbar'
         endif
     " }
+
+    call vundle#end()               " required
+    filetype plugin indent on       " required, automatically detect file types
 " }
 
 " General {
-    filetype plugin indent on       " automatically detect file types
     syntax on                       " syntax highlighting
     set synmaxcol=120               " don't try to highlight lines longer than 120 chars
     set mouse-=a                    " automatically disable mouse usage
@@ -132,9 +134,9 @@
     autocmd FileType python set expandtab  " tabs are spaces
 
     function! g:ToggleIndentation(num)
-	execute 'set tabstop='.a:num
-	execute 'set shiftwidth='.a:num
-	execute 'set softtabstop='.a:num
+        execute 'set tabstop='.a:num
+        execute 'set shiftwidth='.a:num
+        execute 'set softtabstop='.a:num
     endfunc
 " }
 
