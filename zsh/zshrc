@@ -38,7 +38,7 @@ source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
 
-DOTFILES=$HOME/.dotfiles
+export DOTFILES=$HOME/.dotfiles
 export EDITOR=vim
 
 # Load aliases
