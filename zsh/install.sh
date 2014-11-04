@@ -17,7 +17,7 @@ if [ -f ~/.zshrc ]; then
 fi
 
 # overwrite zshrc
-cat > ~/.zshrc << "EOF"
+cat > ~/.zshrc << EOF
 source $DOTFILES/zsh/zshrc
 EOF
 

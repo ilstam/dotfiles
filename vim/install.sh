@@ -7,7 +7,7 @@ fi
 echo -e "vim configuraton...\n"
 
 # install vundle
-if [ ! -d ~/.vim/bundle/vundle/ ]; then
+if [ ! -d ~/.vim/bundle/Vundle.vim/ ]; then
 	git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/Vundle.vim
 fi
 
@@ -17,7 +17,7 @@ if [ -f ~/vimrc ]; then
 fi
 
 # overwrite vimrc
-cat > ~/.vimrc << "EOF"
+cat > ~/.vimrc << EOF
 if filereadable(expand("$DOTFILES/vim/vimrc"))
     source $DOTFILES/vim/vimrc
 endif
