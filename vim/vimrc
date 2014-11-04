@@ -300,7 +300,7 @@
 
         " Create backup directory if it doesn't exists.
         if !isdirectory(directory)
-            execute "!mkdir -p ".directory
+            silent! execute "!mkdir -p ".directory
         endif
     " }
 
