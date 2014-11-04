@@ -1,5 +1,9 @@
 #!/bin/sh
 
+if [ -z "$DOTFILES" ]; then
+	DOTFILES=$HOME/.dotfiles
+fi
+
 echo -e "vim configuraton...\n"
 
 # install vundle
@@ -14,8 +18,8 @@ fi
 
 # overwrite vimrc
 cat > ~/.vimrc << "EOF"
-if filereadable(expand("$HOME/.dotfiles/vim/vimrc"))
-    source $HOME/.dotfiles/vim/vimrc
+if filereadable(expand("$DOTFILES/vim/vimrc"))
+    source $DOTFILES/vim/vimrc
 endif
 EOF
 

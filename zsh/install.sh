@@ -1,5 +1,9 @@
 #!/bin/sh
 
+if [ -z "$DOTFILES" ]; then
+	DOTFILES=$HOME/.dotfiles
+fi
+
 echo -e "zsh configuration...\n"
 
 # install oh-my-zsh
@@ -14,7 +18,7 @@ fi
 
 # overwrite zshrc
 cat > ~/.zshrc << "EOF"
-source $HOME/.dotfiles/zsh/zshrc
+source $DOTFILES/zsh/zshrc
 EOF
 
 # use mytheme
