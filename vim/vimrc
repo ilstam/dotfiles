@@ -59,6 +59,10 @@
         endif
     " }
 
+    " Themes {
+	Plugin 'altercation/vim-colors-solarized'
+    " }
+
     call vundle#end()               " required
     filetype plugin indent on       " required, automatically detect file types
 " }
@@ -83,8 +87,14 @@
     set autowrite                   " autosave files
     set title
 
-    colorscheme darkblue            " load colorscheme
     set background=dark
+
+    if has('gui_running')
+        colorscheme solarized
+    else
+        colorscheme darkblue
+    endif
+
 " }
 
 " Basic Stuff {

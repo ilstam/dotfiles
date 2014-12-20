@@ -16,6 +16,7 @@ vim-nerdtree-tabs      nerdtree, independent of tabs
 undotree               undo history graph
 nerdcommenter          code comments wrangle
 vim-autoclose          autoclose brackets, parens, quotes, etc
+vim-colors-solarized   the solarized colorscheme
 
 
 Notes:
