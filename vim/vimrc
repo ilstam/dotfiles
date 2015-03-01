@@ -161,18 +161,21 @@
 
 " Line Numbers {
     set number                      " in case relative line numbers are not supported
-    set relativenumber              " relative line numbers on
 
-    " Switch between relative and absolute line number.
-    function! g:ToggleNuMode()
-        if(&relativenumber == 1)
-            set number
-        else
-            set relativenumber
-        endif
-    endfunc
+    if exists('+relativenumber')
+        set relativenumber          " relative line numbers on
 
-    nnoremap <leader>nn :call g:ToggleNuMode()<cr>
+        " Switch between relative and absolute line number.
+        function! g:ToggleNuMode()
+            if(&relativenumber == 1)
+                set number
+            else
+                set relativenumber
+            endif
+        endfunc
+
+        nnoremap <leader>nn :call g:ToggleNuMode()<cr>
+    endif
 " }
 
 " Scrolling and Folding {
@@ -203,18 +206,20 @@
     nnoremap j gj
     nnoremap k gk
 
-    autocmd FileType c,cpp,java,python,javascript set colorcolumn=80
+    if exists('+colorcolumn')
+        autocmd FileType c,cpp,java,python,javascript set colorcolumn=80
 
-    " Show/hide vertical line.
-    function! g:ToggleColorColumn()
-        if(&colorcolumn == 0)
-            set colorcolumn=80
-        else
-            set colorcolumn=0
-        endif
-    endfunc
+        " Show/hide vertical line.
+        function! g:ToggleColorColumn()
+            if(&colorcolumn == 0)
+                set colorcolumn=80
+            else
+                set colorcolumn=0
+            endif
+        endfunc
 
-    nnoremap <leader>l :call g:ToggleColorColumn()<cr>
+        nnoremap <leader>l :call g:ToggleColorColumn()<cr>
+    endif
 " }
 
 " Buffers, Windows, Tabs {
