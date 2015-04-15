@@ -2,15 +2,23 @@ My vimrc uses Vundle plugin management system to have a well organized vim
 directory. Vundle also ensures that the latest versions of your plugins are
 installed and makes it easy to keep them up to date.
 
+Quick vundle start:
+
+Vim command       Description
+------------      ------------
+:PluginInstall    install new plugins
+:PluginUpdate     update all plugins
+:PluginClean      remove unused plugins
+
 Vundle homepage: https://github.com/gmarik/vundle
 
-Plugins:
+Plugins used:
 
 Name                   Description
 -------                ------------
-neocomplcache          amazing autocomplete plugin
+neocomplcache          autocompletion
 snipmate               code snippets completion
-tagbar                 easily navigation via files tags
+tagbar                 navigation via file tags
 nerdtree               file explorer
 vim-nerdtree-tabs      nerdtree, independent of tabs
 undotree               undo history graph
@@ -18,15 +26,14 @@ nerdcommenter          code comments wrangle
 vim-autoclose          autoclose brackets, parens, quotes, etc
 vim-colors-solarized   the solarized colorscheme
 
-
 Notes:
 
-snipmate_remap
----------------
+snipmate_remap.py
+------------------
 Neocomplcache and snipmate plugins are not compatible by default because
-both are using tab key for completion. I wrote a simple script called
-snipmate_remap.py for remapping snipmate's trigger key in order the two
-plugins to be able to work together. By default it sets '*' to be the new
+both are using the tab key for completion. I wrote a simple script called
+snipmate_remap.py which remaps snipmate's trigger key, in order the two
+plugins to be able to work together. By default it sets '*' as the new
 trigger key. You can set it to what you wish by editing the script directly.
-Each time you update your snipmate installation (by running :BundleUpdate
-if you use Vundle) you should run snipmate_remap as well.
+Each time you update your snipmate installation you should run snipmate_remap
+as well.
