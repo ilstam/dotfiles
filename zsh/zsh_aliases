@@ -1,6 +1,7 @@
 # general aliases
 alias ls='ls --group-directories-first --color=auto'
 alias d='cd /media/data/'
+alias riv='cd ~/.wine/drive_c/users/ilias/op_admin/tmp'
 
 # applications aliases
 alias p2='python2'
