@@ -22,10 +22,17 @@ alias euclid='ssh ilias@euclid'
 # when using sudo, use alias expansion (otherwise sudo ignores your aliases)
 alias sudo='sudo '
 
-# system upgrade alias depending on distribution
+# pacman aliases
 if [ -f /var/log/pacman.log ]; then
 	alias up='sudo pacman -Syu'
-elif [ -d /var/log/apt/ ] || [ -f /var/log/apt.log ]; then
+	alias orphansls='pacman -Qdt'
+	alias orphansrm='sudo pacman -Rns $(pacman -Qtdq)'
+	alias cacheclean='sudo pacman -Sc'
+	alias fromaur='pacman -Qm'
+fi
+
+# apt aliases
+if [ -d /var/log/apt/ ] || [ -f /var/log/apt.log ]; then
 	alias up='sudo apt-get update && sudo apt-get upgrade'
 fi
 
