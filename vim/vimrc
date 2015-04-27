@@ -11,6 +11,7 @@
 "       -> Plugins
 "       -> General
 "       -> Basic Stuff
+"       -> Profiles
 "       -> Indentation, Tabs, Spaces
 "       -> Whitespace
 "       -> Line Number
@@ -94,7 +95,6 @@
     else
         colorscheme darkblue
     endif
-
 " }
 
 " Basic Stuff {
@@ -109,10 +109,9 @@
     nnoremap <leader>w :w!<cr>
     nnoremap 0 ^
 
-    " Use jk and ξκ (for greek layout) to exit insert/select mode.
+    " Use jk to exit insert/select mode.
     " <Esc> is inconvinient as it requires stretching to the top of the keyboard.
     inoremap jk <Esc>
-    inoremap ξκ <Esc>
     snoremap jk <Esc>
 
     " <Del> key is too far...
@@ -128,6 +127,13 @@
 
     " When vimrc is edited, reload it.
     autocmd! bufwritepost vimrc source ~/.dotfiles/vim/vimrc
+" }
+
+" Profiles {
+    " load greek profile
+    if filereadable(expand("~/.dotfiles/vim/vimrc.greek"))
+        source ~/.dotfiles/vim/vimrc.greek
+    endif
 " }
 
 " Indentation, Tabs, Spaces {

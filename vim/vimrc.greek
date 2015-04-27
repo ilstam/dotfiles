@@ -1,0 +1,17 @@
+" my greek vim profile
+" each mapping is preceded by the original one
+" for rationale of each mapping refer to vimrc
+
+"nnoremap <leader>w :w!<cr>
+nnoremap <leader>ς :w!<cr>
+
+"inoremap jk <Esc>
+"snoremap jk <Esc>
+inoremap ξκ <Esc>
+snoremap ξκ <Esc>
+
+"inoremap <leader>d <Del>
+inoremap <leader>δ <Del>
+
+"nnoremap <leader>q :q<cr>
+nnoremap <leader>; :q<cr>
