@@ -44,7 +44,6 @@
 
     " General {
         Plugin 'scrooloose/nerdtree'
-        Plugin 'jistr/vim-nerdtree-tabs'
         Plugin 'spf13/vim-autoclose'
         Plugin 'mbbill/undotree'
     " }
@@ -478,19 +477,11 @@
         let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
     " }
 
-    " NerdTree - NerdTreeTabs {
-        nnoremap <C-e> :NERDTreeTabsToggle<cr>
-        nnoremap <leader>e :NERDTreeFind<cr>
-        nnoremap <leader>nt :NERDTreeFind<cr>
+    " NerdTree {
+	nnoremap <leader>e :NERDTreeFind<cr>
 
-        let NERDTreeShowBookmarks=1
-        let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
-        let NERDTreeChDirMode=0
-        let NERDTreeQuitOnOpen=1
-        let NERDTreeMouseMode=2
-        let NERDTreeShowHidden=1
-        let NERDTreeKeepTreeInNewTab=1
-        let g:nerdtree_tabs_open_on_gui_startup=0
+	let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
+	let NERDTreeQuitOnOpen=1
     " }
 
     " TagBar {

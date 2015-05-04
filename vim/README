@@ -20,7 +20,6 @@ neocomplcache          autocompletion
 snipmate               code snippets completion
 tagbar                 navigation via file tags
 nerdtree               file explorer
-vim-nerdtree-tabs      nerdtree, independent of tabs
 undotree               undo history graph
 nerdcommenter          code comments wrangle
 vim-autoclose          autoclose brackets, parens, quotes, etc
