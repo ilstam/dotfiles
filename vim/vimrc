@@ -11,7 +11,6 @@
 "       -> Plugins
 "       -> General
 "       -> Basic Stuff
-"       -> Profiles
 "       -> Indentation, Tabs, Spaces
 "       -> Whitespace
 "       -> Line Number
@@ -127,13 +126,6 @@
 
     " When vimrc is edited, reload it.
     autocmd! bufwritepost vimrc source ~/.dotfiles/vim/vimrc
-" }
-
-" Profiles {
-    " load greek profile
-    if filereadable(expand("~/.dotfiles/vim/vimrc.greek"))
-        source ~/.dotfiles/vim/vimrc.greek
-    endif
 " }
 
 " Indentation, Tabs, Spaces {
@@ -387,8 +379,13 @@
 
 " Languages {
     " Greek {
-        " Use Greek letters in command mode.
-        :set langmap=ΑA,ΒB,ΨC,ΔD,ΕE,ΦF,ΓG,ΗH,ΙI,ΞJ,ΚK,ΛL,ΜM,ΝN,ΟO,ΠP,QQ,ΡR,ΣS,ΤT,ΘU,ΩV,WW,ΧX,ΥY,ΖZ,αa,βb,ψc,δd,εe,φf,γg,ηh,ιi,ξj,κk,λl,μm,νn,οo,πp,qq,ρr,σs,τt,θu,ωv,ςw,χx,υy,ζz
+        set keymap=greek_utf-8
+        " easy change keymap
+        inoremap <leader>g <c-^>
+
+        " don't enable keymap by default in Insert mode and when entering a search pattern
+        set iminsert=0
+        set imsearch=-1
     " }
 " }
 
