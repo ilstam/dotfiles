@@ -11,16 +11,15 @@
 "       -> Plugins
 "       -> General
 "       -> Basic Stuff
+"       -> Clipboard
 "       -> Indentation, Tabs, Spaces
 "       -> Whitespace
 "       -> Line Number
 "       -> Scrolling and Folding
 "       -> Wrap, Vertical Line
 "       -> Buffers, Windows, Tabs
-"       -> TimeOuts
 "       -> Highlight and Searching
 "       -> Backup and Swap
-"       -> Shell Commands Output
 "       -> Compile and Run Code
 "       -> Languages
 "       -> Misc
@@ -60,7 +59,7 @@
     " }
 
     " Themes {
-	Plugin 'altercation/vim-colors-solarized'
+        Plugin 'altercation/vim-colors-solarized'
     " }
 
     call vundle#end()               " required
@@ -126,6 +125,30 @@
 
     " When vimrc is edited, reload it.
     autocmd! bufwritepost vimrc source ~/.dotfiles/vim/vimrc
+
+    " Make sure Vim returns to the same line when you reopen a file.
+    augroup line_return
+        au!
+        au BufReadPost *
+            \ if line("'\"") > 0 && line("'\"") <= line("$") |
+            \     execute 'normal! g`"zvzz' |
+            \ endif
+    augroup END
+" }
+
+" Clipboard {
+    if has ('x') && has ('gui')
+        " Use + register for copy-paste.
+        set clipboard=unnamedplus
+    endif
+
+    nnoremap <leader>p :set paste<cr>"+p<cr>:set nopaste<cr>
+    nnoremap <leader>P :set paste<cr>"+P<cr>:set nopaste<cr>
+    nnoremap <leader>y "+y
+    vnoremap <leader>y "+ygv
+
+    " Yank from the cursor to the end of the line, to be consistent with C and D.
+    nnoremap Y y$
 " }
 
 " Indentation, Tabs, Spaces {
@@ -177,8 +200,8 @@
 " }
 
 " Scrolling and Folding {
+    set foldenable
     set scrolloff=3                 " minimum lines to keep above and below cursor
-    set foldenable                  " auto fold code
 
     " Map space to toggle the current fold open/closed.
     nnoremap <space> za
@@ -197,7 +220,7 @@
 " }
 
 " Wrap, Vertical Line {
-    set wrap                      " wrap long lines
+    set wrap                        " wrap long lines
     set whichwrap=b,s,h,l,<,>,[,]   " backspace and cursor keys wrap to
 
     " Wrapped lines goes down/up to next row, rather than next line in file.
@@ -271,14 +294,6 @@
     nnoremap <leader>t9 :call MoveToTab(9)<cr>
 " }
 
-" TimeOuts {
-    " Time out on key codes but not mappings.
-    " Basically this makes terminal Vim work sanely.
-    set notimeout
-    set ttimeout
-    set ttimeoutlen=10
-" }
-
 " Highlight and Searching {
     set incsearch                   " incremental search
     set hlsearch                    " highlight search terms
@@ -324,42 +339,6 @@
     " }
 " }
 
-" Shell Commands Output {
-    " Display output of shell commands in new window.
-    " Only one window by command, if a window already exists for a command, it will be reused.
-    " E.g. :Shell ls
-    function! s:ExecuteInShell(command, bang)
-        let _ = a:bang != '' ? s:_ : a:command == '' ? '' : join(map(split(a:command), 'expand(v:val)'))
-
-        if (_ != '')
-            let s:_ = _
-            let bufnr = bufnr('%')
-            let winnr = bufwinnr('^' . _ . '$')
-            silent! execute  winnr < 0 ? 'belowright new ' . fnameescape(_) : winnr . 'wincmd w'
-            setlocal buftype=nowrite bufhidden=wipe nobuflisted noswapfile wrap number
-            silent! :%d
-            let message = 'Execute ' . _ . '...'
-            call append(0, message)
-            echo message
-            silent! 2d | resize 1 | redraw
-            silent! execute 'silent! %!'. _
-            silent! execute 'resize ' . line('$')
-            silent! execute 'syntax on'
-            silent! execute 'autocmd BufUnload <buffer> execute bufwinnr(' . bufnr . ') . ''wincmd w'''
-            silent! execute 'autocmd BufEnter <buffer> execute ''resize '' .  line(''$'')'
-            silent! execute 'nnoremap <silent> <buffer> <cr> :call <SID>ExecuteInShell(''' . _ . ''', '''')<cr>'
-            " Reexecute command with <localleader>r in a window opened by :Shell.
-            silent! execute 'nnoremap <silent> <buffer> <LocalLeader>r :call <SID>ExecuteInShell(''' . _ . ''', '''')<cr>'
-            " Go to the previous window with <localleader>g.
-            silent! execute 'nnoremap <silent> <buffer> <LocalLeader>g :execute bufwinnr(' . bufnr . ') . ''wincmd w''<cr>'
-            nnoremap <silent> <buffer> <C-W>_ :execute 'resize ' . line('$')<cr>
-            silent! syntax on
-        endif
-    endfunction
-
-    command! -complete=shellcmd -nargs=* -bang Shell call s:ExecuteInShell(<q-args>, '<bang>')
-" }
-
 " Compile and Run Code {
     " run
     autocmd FileType python nnoremap <leader>r :w<cr> :!clear; ./%<cr>
@@ -390,35 +369,52 @@
 " }
 
 " Misc {
-    " Clipboard {
-        if has ('x') && has ('gui')
-            " Use + register for copy-paste.
-            set clipboard=unnamedplus
-        endif
-
-        nnoremap <leader>p :set paste<cr>"+p<cr>:set nopaste<cr>
-        nnoremap <leader>P :set paste<cr>"+P<cr>:set nopaste<cr>
-        nnoremap <leader>y "+y
-        vnoremap <leader>y "+ygv
-
-        " Yank from the cursor to the end of the line, to be consistent with C and D.
-        nnoremap Y y$
+    " TimeOuts {
+        " Time out on key codes but not mappings.
+        " Basically this makes terminal Vim work sanely.
+        set notimeout
+        set ttimeout
+        set ttimeoutlen=10
     " }
-
-    " Automaticaly close C comments.
-    inoremap /* /*  */<Left><Left><Left>
-
-    " Make sure Vim returns to the same line when you reopen a file.
-    augroup line_return
-        au!
-        au BufReadPost *
-            \ if line("'\"") > 0 && line("'\"") <= line("$") |
-            \     execute 'normal! g`"zvzz' |
-            \ endif
-    augroup END
 
     " For when you forget to sudo.. Really Write the file.
     cnoremap w!! w !sudo tee % >/dev/null
+
+    " Shell Command {
+        " Display output of shell commands in new window.
+        " Only one window by command, if a window already exists for a command, it will be reused.
+        " E.g. :Shell ls
+        function! s:ExecuteInShell(command, bang)
+            let _ = a:bang != '' ? s:_ : a:command == '' ? '' : join(map(split(a:command), 'expand(v:val)'))
+
+            if (_ != '')
+                let s:_ = _
+                let bufnr = bufnr('%')
+                let winnr = bufwinnr('^' . _ . '$')
+                silent! execute  winnr < 0 ? 'belowright new ' . fnameescape(_) : winnr . 'wincmd w'
+                setlocal buftype=nowrite bufhidden=wipe nobuflisted noswapfile wrap number
+                silent! :%d
+                let message = 'Execute ' . _ . '...'
+                call append(0, message)
+                echo message
+                silent! 2d | resize 1 | redraw
+                silent! execute 'silent! %!'. _
+                silent! execute 'resize ' . line('$')
+                silent! execute 'syntax on'
+                silent! execute 'autocmd BufUnload <buffer> execute bufwinnr(' . bufnr . ') . ''wincmd w'''
+                silent! execute 'autocmd BufEnter <buffer> execute ''resize '' .  line(''$'')'
+                silent! execute 'nnoremap <silent> <buffer> <cr> :call <SID>ExecuteInShell(''' . _ . ''', '''')<cr>'
+                " Reexecute command with <localleader>r in a window opened by :Shell.
+                silent! execute 'nnoremap <silent> <buffer> <LocalLeader>r :call <SID>ExecuteInShell(''' . _ . ''', '''')<cr>'
+                " Go to the previous window with <localleader>g.
+                silent! execute 'nnoremap <silent> <buffer> <LocalLeader>g :execute bufwinnr(' . bufnr . ') . ''wincmd w''<cr>'
+                nnoremap <silent> <buffer> <C-W>_ :execute 'resize ' . line('$')<cr>
+                silent! syntax on
+            endif
+        endfunction
+
+        command! -complete=shellcmd -nargs=* -bang Shell call s:ExecuteInShell(<q-args>, '<bang>')
+    " }
 " }
 
 " Plugins {
@@ -512,8 +508,3 @@
         let b:match_ignorecase = 1
     " }
 " }
-
-" Modeline {
-" vim: set tabstop=4 shiftwidth=4 softtabstop=4 expandtab:
-" }
-
