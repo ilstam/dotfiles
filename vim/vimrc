@@ -23,7 +23,7 @@
 "       -> Compile and Run Code
 "       -> Languages
 "       -> Misc
-"       -> Plugins
+"       -> Plugins Configuration
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -67,13 +67,13 @@
 
 " General {
     syntax on                       " syntax highlighting
-    set synmaxcol=120               " don't try to highlight lines longer than 120 chars
-    set mouse-=a                    " automatically disable mouse usage
-    scriptencoding utf-8
     set encoding=utf-8
+    scriptencoding utf-8
+
     set laststatus=2                " always show a status line
     set showmode                    " display the current mode
     set showcmd                     " show partial commands in status line and
+
     set visualbell
     set ttyfast
     set ruler                       " show the ruler
@@ -416,7 +416,7 @@
     " }
 " }
 
-" Plugins {
+" Plugins Configuration {
     " Ctags {
         set tags=./tags;/,~/.vimtags
     " }
@@ -502,10 +502,5 @@
         " For perlomni.vim setting.
         " https://github.com/c9s/perlomni.vim
         let g:neocomplcache_force_omni_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
-    " }
-
-    " misc {
-        let g:nerdshutup=1
-        let b:match_ignorecase = 1
     " }
 " }
