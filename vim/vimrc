@@ -22,7 +22,7 @@
 "       -> Backup and Swap
 "       -> Compile and Run Code
 "       -> Languages
-"       -> Misc
+"       -> Shell Command
 "       -> Plugins Configuration
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -70,23 +70,24 @@
     set encoding=utf-8
     scriptencoding utf-8
 
+    set title                       " set window title
     set laststatus=2                " always show a status line
     set showmode                    " display the current mode
     set showcmd                     " show partial commands in status line and
-
-    set visualbell
-    set ttyfast
+                                    " selected characters/lines in visual mode
     set ruler                       " show the ruler
     set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%)
+
     set backspace=indent,eol,start  " backspace for dummies
     set history=1000                " store a ton of history (default is 20)
     set shell=$SHELL                " use user's default shell
-    set fillchars=diff:⣿,vert:│
-    set autowrite                   " autosave files
-    set title
+
+    " time out on key codes but not mappings.
+    set notimeout
+    set ttimeout
+    set ttimeoutlen=10
 
     set background=dark
-
     if has('gui_running')
         colorscheme solarized
     else
@@ -122,9 +123,6 @@
     nnoremap s :<C-U>exec "normal i".RepeatChar(nr2char(getchar()), v:count1)<cr>
     nnoremap S :<C-U>exec "normal a".RepeatChar(nr2char(getchar()), v:count1)<cr>
 
-    " When vimrc is edited, reload it.
-    autocmd! bufwritepost vimrc source ~/.dotfiles/vim/vimrc
-
     " Make sure Vim returns to the same line when you reopen a file.
     augroup line_return
         au!
@@ -133,6 +131,9 @@
             \     execute 'normal! g`"zvzz' |
             \ endif
     augroup END
+
+    " For when you forget to sudo.. Really Write the file.
+    cnoremap w!! w !sudo tee % >/dev/null
 " }
 
 " Clipboard {
@@ -181,21 +182,20 @@
 
 " Line Numbers {
     set number                      " in case relative line numbers are not supported
-
     if exists('+relativenumber')
-        set relativenumber          " relative line numbers on
-
-        " Switch between relative and absolute line number.
-        function! g:ToggleNuMode()
-            if(&relativenumber == 1)
-                set number
-            else
-                set relativenumber
-            endif
-        endfunc
-
-        nnoremap <leader>nn :call g:ToggleNuMode()<cr>
+        set relativenumber
     endif
+
+    " Switch between relative and absolute line number.
+    function! g:ToggleNuMode()
+        if(&relativenumber == 1)
+            set norelativenumber
+        else
+            set relativenumber
+        endif
+    endfunc
+
+    nnoremap <leader>nn :call g:ToggleNuMode()<cr>
 " }
 
 " Scrolling and Folding {
@@ -228,18 +228,18 @@
 
     if exists('+colorcolumn')
         autocmd FileType c,cpp,java,python,javascript set colorcolumn=80
-
-        " Show/hide vertical line.
-        function! g:ToggleColorColumn()
-            if(&colorcolumn == 0)
-                set colorcolumn=80
-            else
-                set colorcolumn=0
-            endif
-        endfunc
-
-        nnoremap <leader>l :call g:ToggleColorColumn()<cr>
     endif
+
+    " Show/hide vertical line.
+    function! g:ToggleColorColumn()
+        if(&colorcolumn == 0)
+            set colorcolumn=80
+        else
+            set colorcolumn=0
+        endif
+    endfunc
+
+    nnoremap <leader>l :call g:ToggleColorColumn()<cr>
 " }
 
 " Buffers, Windows, Tabs {
@@ -367,53 +367,40 @@
     " }
 " }
 
-" Misc {
-    " TimeOuts {
-        " Time out on key codes but not mappings.
-        " Basically this makes terminal Vim work sanely.
-        set notimeout
-        set ttimeout
-        set ttimeoutlen=10
-    " }
+" Shell Command {
+    " Display output of shell commands in new window.
+    " Only one window by command, if a window already exists for a command, it will be reused.
+    " E.g. :Shell ls
+    function! s:ExecuteInShell(command, bang)
+        let _ = a:bang != '' ? s:_ : a:command == '' ? '' : join(map(split(a:command), 'expand(v:val)'))
 
-    " For when you forget to sudo.. Really Write the file.
-    cnoremap w!! w !sudo tee % >/dev/null
+        if (_ != '')
+            let s:_ = _
+            let bufnr = bufnr('%')
+            let winnr = bufwinnr('^' . _ . '$')
+            silent! execute  winnr < 0 ? 'belowright new ' . fnameescape(_) : winnr . 'wincmd w'
+            setlocal buftype=nowrite bufhidden=wipe nobuflisted noswapfile wrap number
+            silent! :%d
+            let message = 'Execute ' . _ . '...'
+            call append(0, message)
+            echo message
+            silent! 2d | resize 1 | redraw
+            silent! execute 'silent! %!'. _
+            silent! execute 'resize ' . line('$')
+            silent! execute 'syntax on'
+            silent! execute 'autocmd BufUnload <buffer> execute bufwinnr(' . bufnr . ') . ''wincmd w'''
+            silent! execute 'autocmd BufEnter <buffer> execute ''resize '' .  line(''$'')'
+            silent! execute 'nnoremap <silent> <buffer> <cr> :call <SID>ExecuteInShell(''' . _ . ''', '''')<cr>'
+            " Reexecute command with <localleader>r in a window opened by :Shell.
+            silent! execute 'nnoremap <silent> <buffer> <LocalLeader>r :call <SID>ExecuteInShell(''' . _ . ''', '''')<cr>'
+            " Go to the previous window with <localleader>g.
+            silent! execute 'nnoremap <silent> <buffer> <LocalLeader>g :execute bufwinnr(' . bufnr . ') . ''wincmd w''<cr>'
+            nnoremap <silent> <buffer> <C-W>_ :execute 'resize ' . line('$')<cr>
+            silent! syntax on
+        endif
+    endfunction
 
-    " Shell Command {
-        " Display output of shell commands in new window.
-        " Only one window by command, if a window already exists for a command, it will be reused.
-        " E.g. :Shell ls
-        function! s:ExecuteInShell(command, bang)
-            let _ = a:bang != '' ? s:_ : a:command == '' ? '' : join(map(split(a:command), 'expand(v:val)'))
-
-            if (_ != '')
-                let s:_ = _
-                let bufnr = bufnr('%')
-                let winnr = bufwinnr('^' . _ . '$')
-                silent! execute  winnr < 0 ? 'belowright new ' . fnameescape(_) : winnr . 'wincmd w'
-                setlocal buftype=nowrite bufhidden=wipe nobuflisted noswapfile wrap number
-                silent! :%d
-                let message = 'Execute ' . _ . '...'
-                call append(0, message)
-                echo message
-                silent! 2d | resize 1 | redraw
-                silent! execute 'silent! %!'. _
-                silent! execute 'resize ' . line('$')
-                silent! execute 'syntax on'
-                silent! execute 'autocmd BufUnload <buffer> execute bufwinnr(' . bufnr . ') . ''wincmd w'''
-                silent! execute 'autocmd BufEnter <buffer> execute ''resize '' .  line(''$'')'
-                silent! execute 'nnoremap <silent> <buffer> <cr> :call <SID>ExecuteInShell(''' . _ . ''', '''')<cr>'
-                " Reexecute command with <localleader>r in a window opened by :Shell.
-                silent! execute 'nnoremap <silent> <buffer> <LocalLeader>r :call <SID>ExecuteInShell(''' . _ . ''', '''')<cr>'
-                " Go to the previous window with <localleader>g.
-                silent! execute 'nnoremap <silent> <buffer> <LocalLeader>g :execute bufwinnr(' . bufnr . ') . ''wincmd w''<cr>'
-                nnoremap <silent> <buffer> <C-W>_ :execute 'resize ' . line('$')<cr>
-                silent! syntax on
-            endif
-        endfunction
-
-        command! -complete=shellcmd -nargs=* -bang Shell call s:ExecuteInShell(<q-args>, '<bang>')
-    " }
+    command! -complete=shellcmd -nargs=* -bang Shell call s:ExecuteInShell(<q-args>, '<bang>')
 " }
 
 " Plugins Configuration {
@@ -503,4 +490,8 @@
         " https://github.com/c9s/perlomni.vim
         let g:neocomplcache_force_omni_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
     " }
+" }
+
+" Modeline {
+" vim: set tabstop=4 shiftwidth=4 softtabstop=4 expandtab:
 " }
