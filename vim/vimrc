@@ -71,12 +71,18 @@
     scriptencoding utf-8
 
     set title                       " set window title
-    set laststatus=2                " always show a status line
-    set showmode                    " display the current mode
-    set showcmd                     " show partial commands in status line and
+
+    if has('statusline')
+        set laststatus=2            " always show a status line
+    endif
+
+    if has('cmdline_info')
+        set ruler                   " show the ruler
+        set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%)
+        set showmode                " display the current mode
+        set showcmd                 " show partial commands in status line and
                                     " selected characters/lines in visual mode
-    set ruler                       " show the ruler
-    set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%)
+    endif
 
     set backspace=indent,eol,start  " backspace for dummies
     set history=1000                " store a ton of history (default is 20)
@@ -323,14 +329,14 @@
 
 " Backup and Swap {
     " Backup {
-        let directory = $HOME . "/.vim/backup/"
-        execute "set backupdir=".directory
-        set backup                  " enable backups
-
         " Create backup directory if it doesn't exists.
+        let directory = $HOME . "/.vim/backup/"
         if !isdirectory(directory)
             silent! execute "!mkdir -p ".directory
         endif
+
+        set backup                  " enable backups
+        execute "set backupdir=".directory
     " }
 
     " Swap {
