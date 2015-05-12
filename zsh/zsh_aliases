@@ -10,8 +10,7 @@ alias ip2='ipython2'
 alias ip3='ipython3'
 alias g89='gcc -Wall -W -pedantic -ansi -std=c89'
 alias g99='gcc -Wall -W -pedantic -ansi -std=c99'
-alias packer='packer --noedit'
-alias packerno='packer --noedit --noconfirm'
+alias packer='packer --noedit --auronly'
 
 # quick ssh connections
 alias aetos='ssh istamati@aetos.it.teithe.gr'
