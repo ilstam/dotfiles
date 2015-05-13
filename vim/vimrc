@@ -32,7 +32,7 @@
     set nocompatible                " be iMproved (must be first line)
     filetype off                    " required!
 
-    " set the runtime path to include Vundle and initialize
+    " Set the runtime path to include Vundle and initialize.
     set rtp+=~/.vim/bundle/Vundle.vim
     call vundle#begin()
 " }
@@ -88,7 +88,7 @@
     set history=1000                " store a ton of history (default is 20)
     set shell=$SHELL                " use user's default shell
 
-    " time out on key codes but not mappings.
+    " Time out on key codes but not mappings.
     set notimeout
     set ttimeout
     set ttimeoutlen=10
@@ -106,14 +106,14 @@
     let mapleader = ","
     let maplocalleader = '\\'
 
-    " Map ; to :.
-    " Saves typing and eliminates :Q style typos due to lazy holding shift.
+    " Save typing and eliminate :Q style typos due to lazy holding shift.
     nnoremap ; :
 
+    " Quick save.
     nnoremap <leader>w :w!<cr>
+
     nnoremap 0 ^
 
-    " Use jk to exit insert/select mode.
     " <Esc> is inconvinient as it requires stretching to the top of the keyboard.
     inoremap jk <Esc>
     snoremap jk <Esc>
@@ -205,13 +205,12 @@
 " }
 
 " Scrolling and Folding {
-    set foldenable
+    set foldenable                  " enable folding
     set scrolloff=3                 " minimum lines to keep above and below cursor
 
     " Map space to toggle the current fold open/closed.
     nnoremap <space> za
 
-    " Code folding options.
     nnoremap <leader>f0 :set foldlevel=0<cr>
     nnoremap <leader>f1 :set foldlevel=1<cr>
     nnoremap <leader>f2 :set foldlevel=2<cr>
@@ -233,6 +232,7 @@
     nnoremap k gk
 
     if exists('+colorcolumn')
+        " Automatically show the vertical line for files containing source code.
         autocmd FileType c,cpp,java,python,javascript set colorcolumn=80
     endif
 
@@ -263,7 +263,7 @@
     nnoremap <C-L> <C-W>l
     nnoremap <C-H> <C-W>h
 
-    " Make all windows (almost) equally high and wide
+    " Make all windows (almost) equally high and wide.
     nnoremap <Leader>= <C-w>=
 
     " Useful mappings for managing tabs.
@@ -271,6 +271,8 @@
     nnoremap <leader>to :tabonly<cr>
     nnoremap <leader>tc :tabclose<cr>
     nnoremap <leader>tm :tabmove
+
+    " Go to right/left tab.
     nnoremap > gt
     nnoremap < gT
 " }
@@ -305,8 +307,9 @@
 
 " Backup and Swap {
     " Backup {
-        " Create backup directory if it doesn't exists.
         let directory = $HOME . "/.vim/backup/"
+
+        " Create backup directory if it doesn't exists.
         if !isdirectory(directory)
             silent! execute "!mkdir -p ".directory
         endif
@@ -321,17 +324,19 @@
 " }
 
 " Compile and Run Code {
-    " run
-    autocmd FileType python nnoremap <leader>r :w<cr> :!clear; ./%<cr>
-    autocmd FileType c,cpp nnoremap <leader>r :!clear; ./%:r<cr>
-    autocmd FileType java nnoremap <leader>r :!clear; java %:r<cr>
+    " Run {
+        autocmd FileType python nnoremap <leader>r :w<cr> :!clear; ./%<cr>
+        autocmd FileType c,cpp nnoremap <leader>r :!clear; ./%:r<cr>
+        autocmd FileType java nnoremap <leader>r :!clear; java %:r<cr>
+    " }
 
-    " compile
-    autocmd FileType c,cpp,java nnoremap <leader>m :w<cr> :Shell clear; make<cr>
-    autocmd FileType c nnoremap <leader>c8 :Shell gcc -Wall -W -pedantic -ansi -std=c89 -o %:r %<cr>
-    autocmd FileType c nnoremap <leader>c9 :Shell gcc -Wall -W -pedantic -ansi -std=c99 -o %:r %<cr>
-    autocmd FileType cpp nnoremap <leader>c1 :Shell g++ -std=c++11 -o %:r %<cr>
-    autocmd FileType java nnoremap <leader>c9 :Shell javac %<cr>
+    " Compile {
+        autocmd FileType c,cpp,java nnoremap <leader>m :w<cr> :Shell clear; make<cr>
+        autocmd FileType c nnoremap <leader>c8 :Shell gcc -Wall -W -pedantic -ansi -std=c89 -o %:r %<cr>
+        autocmd FileType c nnoremap <leader>c9 :Shell gcc -Wall -W -pedantic -ansi -std=c99 -o %:r %<cr>
+        autocmd FileType cpp nnoremap <leader>c1 :Shell g++ -std=c++11 -o %:r %<cr>
+        autocmd FileType java nnoremap <leader>c9 :Shell javac %<cr>
+    " }
 
     " Make file executable and reload it.
     nnoremap <leader>x :!chmod +x %<cr> :e %<cr>
@@ -340,13 +345,14 @@
 " Languages {
     " Greek {
         set keymap=greek_utf-8
-        " easy change keymap
-        inoremap <leader>g <c-^>
-
-        " don't enable keymap by default in Insert mode and when entering a search pattern
-        set iminsert=0
-        set imsearch=-1
     " }
+
+    " Easy change keymap.
+    inoremap <leader>g <c-^>
+
+    " Don't enable keymap by default in Insert mode and when entering a search pattern.
+    set iminsert=0
+    set imsearch=-1
 " }
 
 " Shell Command {
