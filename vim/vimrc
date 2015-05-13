@@ -130,13 +130,10 @@
     nnoremap S :<C-U>exec "normal a".RepeatChar(nr2char(getchar()), v:count1)<cr>
 
     " Make sure Vim returns to the same line when you reopen a file.
-    augroup line_return
-        au!
-        au BufReadPost *
-            \ if line("'\"") > 0 && line("'\"") <= line("$") |
-            \     execute 'normal! g`"zvzz' |
-            \ endif
-    augroup END
+    au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+
+    " Automatically change working directory to that of the current file.
+    autocmd BufEnter * silent! lcd %:p:h
 
     " For when you forget to sudo.. Really Write the file.
     cnoremap w!! w !sudo tee % >/dev/null
