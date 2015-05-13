@@ -181,6 +181,9 @@
     " Remove trailing whitespaces when saving.
     autocmd BufWritePre * :%s/\s\+$//e
 
+    " Clear a line quickly.
+    nnoremap <leader><space> ^D
+
     " Insert empty line above or below while staying in normal mode.
     nnoremap <leader>o :set paste<cr>m`o<Esc>``:set nopaste<cr>
     nnoremap <leader>O :set paste<cr>m`O<Esc>``:set nopaste<cr>
