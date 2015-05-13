@@ -23,7 +23,7 @@ nerdtree               file explorer
 undotree               undo history graph
 nerdcommenter          code comments wrangle
 vim-autoclose          autoclose brackets, parens, quotes, etc
-vim-colors-solarized   the solarized colorscheme
+vim-colors-solarized   the solarized colorscheme for gvim
 
 Notes:
 
