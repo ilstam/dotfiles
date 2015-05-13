@@ -250,25 +250,20 @@
 
 " Buffers, Windows, Tabs {
     set hidden                      " allow buffer switching without saving
-    set winminheight=0              " windows can be 0 line high
+    set winminheight=0              " windows can be 0 lines high
     set splitbelow                  " when splitting put new window below of the current one
     set splitright                  " when splitting put new window to the right of the current one
-    au VimResized * :wincmd =       " resize splits when the windows is resized.
-    au FocusLost * : silent! wall   " save when losing focus
-
-    " Redraw screen.
-    nnoremap <leader>u :syntax sync fromstart<cr>:redraw!<cr>
 
     " Fast close window.
     nnoremap <leader>q :q<cr>
 
     " Easier moving in windows.
-    nnoremap <C-J> <C-W>j<C-W>_
-    nnoremap <C-K> <C-W>k<C-W>_
-    nnoremap <C-L> <C-W>l<C-W>_
-    nnoremap <C-H> <C-W>h<C-W>_
+    nnoremap <C-J> <C-W>j
+    nnoremap <C-K> <C-W>k
+    nnoremap <C-L> <C-W>l
+    nnoremap <C-H> <C-W>h
 
-    " Adjust viewports to the same size.
+    " Make all windows (almost) equally high and wide
     nnoremap <Leader>= <C-w>=
 
     " Useful mappings for managing tabs.
@@ -278,25 +273,6 @@
     nnoremap <leader>tm :tabmove
     nnoremap > gt
     nnoremap < gT
-
-    " Jump to the desired tab immediately.
-    function! MoveToTab(tabposition)
-        tabfirst
-        for i in range(a:tabposition)
-            tabnext
-        endfor
-    endfunction
-
-    nnoremap <leader>t0 :call MoveToTab(0)<cr>
-    nnoremap <leader>t1 :call MoveToTab(1)<cr>
-    nnoremap <leader>t2 :call MoveToTab(2)<cr>
-    nnoremap <leader>t3 :call MoveToTab(3)<cr>
-    nnoremap <leader>t4 :call MoveToTab(4)<cr>
-    nnoremap <leader>t5 :call MoveToTab(5)<cr>
-    nnoremap <leader>t6 :call MoveToTab(6)<cr>
-    nnoremap <leader>t7 :call MoveToTab(7)<cr>
-    nnoremap <leader>t8 :call MoveToTab(8)<cr>
-    nnoremap <leader>t9 :call MoveToTab(9)<cr>
 " }
 
 " Highlight and Searching {
