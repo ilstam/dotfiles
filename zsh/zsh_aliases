@@ -2,6 +2,7 @@
 alias ls='ls --group-directories-first --color=auto'
 alias d='cd /media/data/'
 alias riv='cd ~/.wine/drive_c/users/ilias/op_admin/tmp'
+alias mysensors='sensors | egrep -A2 "k10temp|radeon"'
 
 # applications aliases
 alias p2='python2'
@@ -12,14 +13,14 @@ alias g89='gcc -Wall -W -pedantic -ansi -std=c89'
 alias g99='gcc -Wall -W -pedantic -ansi -std=c99'
 alias packer='packer --noedit --auronly'
 
+# when using sudo, use alias expansion (otherwise sudo ignores your aliases)
+alias sudo='sudo '
+
 # quick ssh connections
 alias aetos='ssh istamati@aetos.it.teithe.gr'
 alias stamkozanit='ssh ilias@stamkozanit'
 alias testserver='ssh ilias@testserver'
 alias euclid='ssh ilias@euclid'
-
-# when using sudo, use alias expansion (otherwise sudo ignores your aliases)
-alias sudo='sudo '
 
 # pacman aliases
 if [ -f /var/log/pacman.log ]; then
