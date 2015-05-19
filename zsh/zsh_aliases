@@ -1,8 +1,9 @@
 # general aliases
 alias ls='ls --group-directories-first --color=auto'
 alias d='cd /media/data/'
-alias riv='cd ~/.wine/drive_c/users/ilias/op_admin/tmp'
 alias mysensors='sensors | egrep -A2 "k10temp|radeon"'
+alias riv='cd ~/.wine/drive_c/users/ilias/op_admin/tmp'
+alias teithevpn='cd $DOTFILES/vpn/teithe/ && sudo openvpn tux-full-udp.ovpn'
 
 # applications aliases
 alias p2='python2'
