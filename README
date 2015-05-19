@@ -8,11 +8,3 @@ Just run the install.sh script in the top-level directory.
 There are different install scripts for each configuration bundle so
 you can edit the top install.sh script and select only the pieces you
 wish to install.
-
-License
---------
-All files and code are in the public domain and distributed in the hope
-that it will be useful, but WITHOUT ANY WARRANTY. Feel free to use, change
-and redistribute any of them.
-
-Maintainer: Ilias Stamatis <stamatis.iliass at gmail>
