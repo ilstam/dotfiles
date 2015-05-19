@@ -4,14 +4,14 @@ if [ -z "$DOTFILES" ]; then
 	DOTFILES=$HOME/.dotfiles
 fi
 
-echo -e "git configuration...\n"
+echo -e "configuring git...\n"
 
-# backup existing ~/.gitconfig file
 if [ -f ~/.gitconfig ]; then
+	echo "--> backup existing ~/.gitconfig file to ~/gitconfig.orig"
 	mv ~/.gitconfig ~/.gitconfig.orig
 fi
 
-# create symbolic link to the gitconfig
+echo "--> symlink ~/.gitconfig to the real gitconfig"
 ln -s $DOTFILES/git/gitconfig ~/.gitconfig
 
 echo -e "\ndone...\n"

@@ -4,29 +4,29 @@ if [ -z "$DOTFILES" ]; then
 	DOTFILES=$HOME/.dotfiles
 fi
 
-echo -e "vim configuraton...\n"
+echo -e "configuring vim...\n"
 
-# install vundle
 if [ ! -d ~/.vim/bundle/Vundle.vim/ ]; then
+	echo "--> install vundle"
 	git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/Vundle.vim
 fi
 
-# backup existing ~/.vimrc file
-if [ -f ~/vimrc ]; then
+if [ -f ~/.vimrc ]; then
+	echo "--> backup existing ~/.vimrc file to ~/vimrc.orig"
 	cp ~/.vimrc ~/.vimrc.orig
 fi
 
-# overwrite vimrc
+echo "--> overwrite ~/.vimrc"
 cat > ~/.vimrc << EOF
 if filereadable(expand("$DOTFILES/vim/vimrc"))
     source $DOTFILES/vim/vimrc
 endif
 EOF
 
-# install vim plugins
+echo "--> install vim plugins"
 vim +PluginInstall +qall
 
-# run snipmate_remap.py
+echo "--> run snipmate_remap.py script"
 python $(dirname $0)/snipmate_remap.py
 
 echo -e "\ndone...\n"
