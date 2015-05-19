@@ -1,10 +1,19 @@
-My personal configuration files.
-Containing files about vim, zsh and git.
+My personal configuration files about vim, zsh, git and vpn.
+
+Some of these files are probably more suitable for Linux.
 
 Installation
 -------------
-Just run the install.sh script in the top-level directory.
+To run the automatic install.sh script you need to have git already installed.
+Just run ./install.sh in the top-level directory.
 
-There are different install scripts for each configuration bundle so
-you can edit the top install.sh script and select only the pieces you
-wish to install.
+There are different installation scripts for each configuration bundle so you
+can edit the top install.sh script and select only the pieces you wish to install.
+
+Update
+-------
+For now, you can do a `git pull` to get the last changes from upstream.
+
+Contact
+--------
+stamatis.iliass <> gmail
