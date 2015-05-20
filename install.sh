@@ -3,7 +3,7 @@
 export DOTFILES=$HOME/.dotfiles
 DOTFILESOLD="${DOTFILES}old"
 
-if [ $(dirname $0) != "$DOTFILES" ]; then
+if [ $(readlink -f .) != "$DOTFILES" ]; then
 	if [ -d "$DOTFILES" ]; then
 		if [ -d "$DOTFILESOLD" ]; then
 			rm -rf "$DOTFILESOLD"
