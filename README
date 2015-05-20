@@ -5,14 +5,21 @@ Some of these files are probably more suitable for Linux.
 Installation
 -------------
 To run the automatic install.sh script you need to have git already installed.
-Just run ./install.sh in the top-level directory.
 
-There are different installation scripts for each configuration bundle so you
-can edit the top install.sh script and select only the pieces you wish to install.
+Just run `./install.sh` in the top-level directory.
+The installer will ask you which configurations you wish to apply.
+
+Each configuration bundle contains its own install script, which can also be
+run from its directory.
+
+Feel free to install only the pieces you want and need.
 
 Update
 -------
 For now, you can do a `git pull` to get the last changes from upstream.
+
+You can additionally run the installer again, in order to install any new
+configuration bundles.
 
 Contact
 --------

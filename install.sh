@@ -10,9 +10,16 @@ if [ $(readlink -f .) != "$DOTFILES" ]; then
 		fi
 		mv "$DOTFILES" "$DOTFILESOLD"
 	fi
-	cp -R $(dirname $0) "$DOTFILES"
+	cp -R $(dirname "$0") "$DOTFILES"
 fi
 
-$DOTFILES/git/install.sh
-$DOTFILES/vim/install.sh
-$DOTFILES/zsh/install.sh
+
+for i in vim zsh git; do
+	echo -n "Install ${i} configuration? (y/n) "
+	an=$(read a && echo "$a" | tr '[:upper:]' '[:lower:]')
+	echo ""
+
+	if [ -z "$an" -o "$an" == "y" -o "$an" == "yes" ]; then
+		"$DOTFILES"/"$i"/install.sh
+	fi
+done
