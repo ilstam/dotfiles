@@ -11,3 +11,11 @@ change the `auth-user-pass login.conf` line in tux-full-udp.ovpn to plain
 
 Don't forget that for granting access to this network, you should accept the
 relevant policy first: https://hydra.it.teithe.gr/nms/policy.php?serviceid=vpn
+
+Note:
+-----
+If you edit the login.conf file to add your credentials, git will mention
+the changes as it is a tracked file. This can be annoying.
+
+To force git ignore changes on this file:
+`git update-index --assume-unchanged login.conf`
