@@ -21,7 +21,9 @@ cat > ~/.zshrc << EOF
 source $DOTFILES/zsh/zshrc
 EOF
 
-echo "--> install custom theme"
-cp $(dirname $0)/mytheme.zsh-theme ~/.oh-my-zsh/themes
+if [ ! -f ~/.oh-my-zsh/themes/mytheme.zsh-theme -a ! -h ~/.oh-my-zsh/themes/mytheme.zsh-theme ]; then
+	echo "--> install custom theme"
+	ln -s "$DOTFILES"/zsh/mytheme.zsh-theme ~/.oh-my-zsh/themes/mytheme.zsh-theme
+fi
 
 echo -e "\ndone...\n"
