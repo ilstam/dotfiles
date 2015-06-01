@@ -1,18 +1,16 @@
 # general aliases
 alias ls='ls --group-directories-first --color=auto'
-alias d='cd /media/data/'
+alias packer='packer --noedit --auronly'
+alias pingg='ping -c3 www.google.com'
 alias mysensors='sensors | egrep -A2 "k10temp|radeon"'
-alias riv='cd ~/.wine/drive_c/users/ilias/op_admin/tmp'
 alias teithevpn='cd $DOTFILES/vpn/teithe/ && sudo openvpn tux-full-udp.ovpn'
+alias d='cd /media/data/'
 
 # applications aliases
 alias p2='python2'
 alias p3='python3'
 alias ip2='ipython2'
 alias ip3='ipython3'
-alias g89='gcc -Wall -W -pedantic -ansi -std=c89'
-alias g99='gcc -Wall -W -pedantic -ansi -std=c99'
-alias packer='packer --noedit --auronly'
 
 # when using sudo, use alias expansion (otherwise sudo ignores your aliases)
 alias sudo='sudo '
