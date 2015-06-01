@@ -13,10 +13,11 @@ source $ZSH/oh-my-zsh.sh
 # My configuration...
 
 export DOTFILES=$HOME/.dotfiles
-export EDITOR=vim
 
-# Load aliases
-source $DOTFILES/zsh/zsh_aliases
+export BROWSER='firefox'
+export EDITOR=vim
+export VISUAL='vim'
+export PAGER='less'
 
 # Use vi key bindings
 bindkey -v
@@ -26,3 +27,6 @@ unsetopt correctall
 
 # Print an empty line before the prompt is rendered.
 precmd() { echo }
+
+# Load aliases
+source $DOTFILES/zsh/zsh_aliases
