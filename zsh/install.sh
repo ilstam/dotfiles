@@ -12,13 +12,23 @@ if [ ! -d ~/.oh-my-zsh/ ]; then
 fi
 
 if [ -f ~/.zshrc ]; then
-	echo "--> backup existing ~/.zshrc file to ~/zshrc.orig"
+	echo "--> backup existing ~/.zshrc file to ~/.zshrc.orig"
 	cp ~/.zshrc ~/.zshrc.orig
+fi
+
+if [ -f ~/.zshenv ]; then
+	echo "--> backup existing ~/.zshenv file to ~/.zshenv.orig"
+	cp ~/.zshenv ~/.zshenv.orig
 fi
 
 echo "--> overwrite ~/.zshrc"
 cat > ~/.zshrc << EOF
-source $DOTFILES/zsh/zshrc
+source "$DOTFILES/zsh/zshrc"
+EOF
+
+echo "--> overwrite ~/.zshenv"
+cat > ~/.zshenv << EOF
+source "$DOTFILES/zsh/zshenv"
 EOF
 
 if [ ! -f ~/.oh-my-zsh/themes/mytheme.zsh-theme -a ! -h ~/.oh-my-zsh/themes/mytheme.zsh-theme ]; then
