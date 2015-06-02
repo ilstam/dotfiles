@@ -1,7 +1,7 @@
 #!/bin/sh
 
 if [ -z "$DOTFILES" ]; then
-	DOTFILES=$HOME/.dotfiles
+	DOTFILES=~/.dotfiles
 fi
 
 echo -e "configuring zsh...\n"
@@ -33,7 +33,7 @@ EOF
 
 if [ ! -f ~/.oh-my-zsh/themes/mytheme.zsh-theme -a ! -h ~/.oh-my-zsh/themes/mytheme.zsh-theme ]; then
 	echo "--> install custom theme"
-	ln -s "$DOTFILES"/zsh/mytheme.zsh-theme ~/.oh-my-zsh/themes/mytheme.zsh-theme
+	ln -s "$DOTFILES/zsh/mytheme.zsh-theme" ~/.oh-my-zsh/themes/mytheme.zsh-theme
 fi
 
 echo -n "--> do you want to make zsh your default shell? (y/n) "

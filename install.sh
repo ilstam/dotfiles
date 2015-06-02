@@ -1,6 +1,6 @@
 #!/bin/sh
 
-export DOTFILES=$HOME/.dotfiles
+export DOTFILES=~/.dotfiles
 DOTFILESOLD="${DOTFILES}old"
 
 if [ $(readlink -f .) != "$DOTFILES" ]; then
@@ -20,6 +20,6 @@ for i in vim zsh git; do
 	echo ""
 
 	if [ -z "$an" -o "$an" == "y" -o "$an" == "yes" ]; then
-		"$DOTFILES"/"$i"/install.sh
+		"$DOTFILES/$i/install.sh"
 	fi
 done

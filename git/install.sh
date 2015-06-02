@@ -1,7 +1,7 @@
 #!/bin/sh
 
 if [ -z "$DOTFILES" ]; then
-	DOTFILES=$HOME/.dotfiles
+	DOTFILES=~/.dotfiles
 fi
 
 echo -e "configuring git...\n"
@@ -12,6 +12,6 @@ if [ -f ~/.gitconfig ]; then
 fi
 
 echo "--> symlink ~/.gitconfig to the real gitconfig"
-ln -s $DOTFILES/git/gitconfig ~/.gitconfig
+ln -s "$DOTFILES/git/gitconfig" ~/.gitconfig
 
 echo -e "\ndone...\n"

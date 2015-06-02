@@ -1,7 +1,7 @@
 #!/bin/sh
 
 if [ -z "$DOTFILES" ]; then
-	DOTFILES=$HOME/.dotfiles
+	DOTFILES=~/.dotfiles
 fi
 
 echo -e "configuring vim...\n"
@@ -27,6 +27,6 @@ echo "--> install vim plugins"
 vim +PluginInstall +qall
 
 echo "--> run snipmate_remap.py script"
-python $(dirname $0)/snipmate_remap.py
+python "$(dirname $0)/snipmate_remap.py"
 
 echo -e "\ndone...\n"
