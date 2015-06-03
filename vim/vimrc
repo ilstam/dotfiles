@@ -261,6 +261,7 @@
 
     " Fast close window.
     nnoremap <leader>q :q<cr>
+    nnoremap <leader><leader>q :q!<cr>
 
     " Easier moving in windows.
     nnoremap <C-J> <C-W>j
