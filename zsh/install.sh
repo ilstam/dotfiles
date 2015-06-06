@@ -13,23 +13,19 @@ fi
 
 if [ -f ~/.zshrc ]; then
 	echo "--> backup existing ~/.zshrc file to ~/.zshrc.orig"
-	cp ~/.zshrc ~/.zshrc.orig
+	mv ~/.zshrc ~/.zshrc.orig
 fi
 
 if [ -f ~/.zshenv ]; then
 	echo "--> backup existing ~/.zshenv file to ~/.zshenv.orig"
-	cp ~/.zshenv ~/.zshenv.orig
+	mv ~/.zshenv ~/.zshenv.orig
 fi
 
-echo "--> overwrite ~/.zshrc"
-cat > ~/.zshrc << EOF
-source "$DOTFILES/zsh/zshrc"
-EOF
+echo "--> install (symlink) custom zshrc"
+ln -s "$DOTFILES/zsh/zshrc" ~/.zshrc
 
-echo "--> overwrite ~/.zshenv"
-cat > ~/.zshenv << EOF
-source "$DOTFILES/zsh/zshenv"
-EOF
+echo "--> install (symlink) custom zshenv"
+ln -s "$DOTFILES/zsh/zshenv" ~/.zshenv
 
 if [ ! -f ~/.oh-my-zsh/themes/mytheme.zsh-theme -a ! -h ~/.oh-my-zsh/themes/mytheme.zsh-theme ]; then
 	echo "--> install custom theme"
