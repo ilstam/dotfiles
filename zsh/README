@@ -1,6 +1,4 @@
-My zsh installation uses oh-my-zsh framework. You should install oh-my-zsh
-and then move mytheme.zsh-theme to /pathtoyourohmyzsh/themes in order to
-use my own theme.
+My zsh installation uses the oh-my-zsh framework.
 
-oh-my-zsh homepage: https://github.com/robbyrussell/oh-my-zsh
-
+It would also apply my own custom theme (with git and mercurial support),
+and ask you if you wish to make zsh your default shell.
