@@ -35,6 +35,9 @@ if [ -d /var/log/apt/ ] || [ -f /var/log/apt.log ]; then
 	alias up='sudo apt-get update && sudo apt-get upgrade'
 fi
 
+# functions
+clone() { git clone https://github.com/Ilias95/$1 }
+
 # systemd aliases and functions
 # each ends in the letter 'd' to avoid conflicts with zsh builtins such as enable
 # startd = start daemon ... etc.
@@ -47,3 +50,7 @@ restartd() { sudo systemctl restart $1.service; }
 statusd() { sudo systemctl status $1.service; }
 enabled() { sudo systemctl enable $1.service; }
 disabled() { sudo systemctl disable $1.service; }
+
+alias s1='systemctl poweroff'
+alias s2='systemctl suspend'
+alias s3='systemctl reboot'
