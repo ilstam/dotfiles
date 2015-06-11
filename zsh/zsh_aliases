@@ -46,10 +46,13 @@ alias listd='find /etc/systemd/system -mindepth 1 -type d | xargs ls -l --color'
 startd() { sudo systemctl start $1.service; }
 stopd() { sudo systemctl stop $1.service; }
 restartd() { sudo systemctl restart $1.service; }
-
-statusd() { sudo systemctl status $1.service; }
 enabled() { sudo systemctl enable $1.service; }
 disabled() { sudo systemctl disable $1.service; }
+maskd() { sudo systemctl mask $1.service; }
+unmaskd() { sudo systemctl unmask $1.service; }
+statusd() { sudo systemctl status $1.service; }
+
+maskedlist() { systemctl list-unit-files | awk '$2 == "masked" {print $1}' }
 
 alias s1='systemctl poweroff'
 alias s2='systemctl suspend'
