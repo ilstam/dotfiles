@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# Simple script for remapping snipMate plugin's default trigger key from tab
+# Simple script for remapping snipMate vim plugin's default trigger key from tab
 # to other, in order to not mess up with neocomplcache plugin's functionality.
 # Note: It doesn't work for all keys.
 from __future__ import with_statement

@@ -23,6 +23,6 @@ echo "--> install vim plugins"
 vim +PluginInstall +qall
 
 echo "--> run snipmate_remap.py script"
-python "$(dirname $0)/snipmate_remap.py"
+python "$DOTFILES/scripts/snipmate_remap.py"
 
 echo -e "\ndone...\n"
