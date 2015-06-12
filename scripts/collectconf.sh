@@ -1,5 +1,5 @@
 #!/bin/bash
-# backup all system essential configuration files
+# Backup system and personal configuration files
 
 # general
 files[0]=/etc/fstab
@@ -14,8 +14,10 @@ files[6]=~/.config/lxsession/LXDE/autostart
 files[7]=~/.config/openbox/lxde-rc.xml
 # syslinux
 files[8]=/boot/syslinux/syslinux.cfg
+# ssh
+files[9]=~/.ssh/*
 # add more...
-# files[9]=...
+#files[10]=...
 
 if [ ! -f ~/conffilesbackup.tar ]; then
 	tar -cvzf ~/conffilesbackup.tar ${files[*]}
