@@ -1,10 +1,12 @@
 # general aliases
-alias ls='ls --group-directories-first --color=auto'
-alias packer='packer --noedit --auronly'
-alias pingg='ping -c3 www.google.com'
+alias d='cd /media/data/'
+alias pingg='ping www.google.com'
 alias mysensors='sensors | egrep -A2 "k10temp|radeon"'
 alias teithevpn='cd $DOTFILES/vpn/teithe/ && sudo openvpn tux-full-udp.ovpn'
-alias d='cd /media/data/'
+
+# change the default behavior of these commands
+alias ls='ls --group-directories-first --color=auto'
+alias packer='packer --noedit --auronly'
 
 # applications aliases
 alias p2='python2'
@@ -12,16 +14,16 @@ alias p3='python3'
 alias ip2='ipython2'
 alias ip3='ipython3'
 
+# ssh connections
+alias aetos='ssh istamati@aetos.it.teithe.gr'
+
 # when using sudo, use alias expansion (otherwise sudo ignores your aliases)
 alias sudo='sudo '
 
-# quick ssh connections
-alias aetos='ssh istamati@aetos.it.teithe.gr'
-alias stamkozanit='ssh ilias@stamkozanit'
-alias testserver='ssh ilias@testserver'
-alias euclid='ssh ilias@euclid'
+# easy clone my github repos
+clone() { git clone https://github.com/Ilias95/$1 }
 
-# pacman aliases
+# pacman specific
 if [ -f /var/log/pacman.log ]; then
 	alias up='sudo pacman -Syu'
 	alias orphansls='pacman -Qdt'
@@ -30,19 +32,20 @@ if [ -f /var/log/pacman.log ]; then
 	alias fromaur='pacman -Qm'
 fi
 
-# apt aliases
+# apt specific
 if [ -d /var/log/apt/ ] || [ -f /var/log/apt.log ]; then
 	alias up='sudo apt-get update && sudo apt-get upgrade'
 fi
 
-# functions
-clone() { git clone https://github.com/Ilias95/$1 }
+# systemd specific
+alias s1='systemctl poweroff'
+alias s2='systemctl suspend'
+alias s3='systemctl reboot'
 
-# systemd aliases and functions
-# each ends in the letter 'd' to avoid conflicts with zsh builtins such as enable
-# startd = start daemon ... etc.
+# end in the letter 'd' to avoid conflicts with zsh builtins such as enable
 alias listd='find /etc/systemd/system -mindepth 1 -type d | xargs ls -l --color'
 
+statusd() { sudo systemctl status $1.service; }
 startd() { sudo systemctl start $1.service; }
 stopd() { sudo systemctl stop $1.service; }
 restartd() { sudo systemctl restart $1.service; }
@@ -50,10 +53,5 @@ enabled() { sudo systemctl enable $1.service; }
 disabled() { sudo systemctl disable $1.service; }
 maskd() { sudo systemctl mask $1.service; }
 unmaskd() { sudo systemctl unmask $1.service; }
-statusd() { sudo systemctl status $1.service; }
 
-maskedlist() { systemctl list-unit-files | awk '$2 == "masked" {print $1}' }
-
-alias s1='systemctl poweroff'
-alias s2='systemctl suspend'
-alias s3='systemctl reboot'
+listmasked() { systemctl list-unit-files | awk '$2 == "masked" {print $1}' }
