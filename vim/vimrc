@@ -331,7 +331,7 @@
 
 " Compile and Run Code {
     " Run {
-        autocmd FileType python nnoremap <leader>r :w<cr> :!clear; ./%<cr>
+        autocmd FileType python,sh,bash,zsh nnoremap <leader>r :w<cr> :!clear; ./%<cr>
         autocmd FileType c,cpp nnoremap <leader>r :!clear; ./%:r<cr>
         autocmd FileType java nnoremap <leader>r :!clear; java %:r<cr>
     " }
