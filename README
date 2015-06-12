@@ -1,10 +1,8 @@
-My personal configuration files about vim, zsh, git and vpn.
-
-Some of these files are probably more suitable for Linux.
+My personal configuration files and scripts.
 
 Installation
 -------------
-To run the automatic install.sh script you need to have git already installed.
+To run the installer you need to have git already installed.
 
 Just run `./install.sh` in the top-level directory.
 The installer will ask you which configurations you wish to apply.
