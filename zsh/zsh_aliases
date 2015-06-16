@@ -39,20 +39,23 @@ if [ -d /var/log/apt/ ] || [ -f /var/log/apt.log ]; then
 fi
 
 # systemd specific
-alias s1='systemctl poweroff'
-alias s2='systemctl suspend'
-alias s3='systemctl reboot'
-
 # end in the letter 'd' to avoid conflicts with zsh builtins such as enable
 alias listd='find /etc/systemd/system -mindepth 1 -type d | xargs ls -l --color'
 
-statusd() { sudo systemctl status $1.service; }
-startd() { sudo systemctl start $1.service; }
-stopd() { sudo systemctl stop $1.service; }
-restartd() { sudo systemctl restart $1.service; }
-enabled() { sudo systemctl enable $1.service; }
-disabled() { sudo systemctl disable $1.service; }
-maskd() { sudo systemctl mask $1.service; }
-unmaskd() { sudo systemctl unmask $1.service; }
+# append .service to service name if needed
+filterservicename() { if echo $1 | grep ".service" 1>/dev/null; then echo $1; else echo $1.service; fi }
+
+statusd() { sudo systemctl status $(filterservicename $1); }
+startd() { sudo systemctl start $(filterservicename $1); }
+stopd() { sudo systemctl stop $(filterservicename $1); }
+restartd() { sudo systemctl restart $(filterservicename $1); }
+enabled() { sudo systemctl enable $(filterservicename $1); }
+disabled() { sudo systemctl disable $(filterservicename $1); }
+maskd() { sudo systemctl mask $(filterservicename $1); }
+unmaskd() { sudo systemctl unmask $(filterservicename $1); }
 
 listmasked() { systemctl list-unit-files | awk '$2 == "masked" {print $1}' }
+
+alias s1='systemctl poweroff'
+alias s2='systemctl suspend'
+alias s3='systemctl reboot'
