@@ -44,7 +44,6 @@
 
     " General {
         Plugin 'scrooloose/nerdtree'
-        Plugin 'vim-scripts/Conque-Shell'
         Plugin 'spf13/vim-autoclose'
         Plugin 'mbbill/undotree'
     " }
