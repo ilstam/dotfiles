@@ -140,20 +140,10 @@
 " }
 
 " Clipboard {
-    if has('clipboard')
-        if has('unnamedplus')
-            " When possible (usually on Linux) use + register for copy-paste.
-            set clipboard=unnamed,unnamedplus
-
-            nnoremap <leader>p :set paste<cr>"+p<cr>:set nopaste<cr>
-            nnoremap <leader>P :set paste<cr>"+P<cr>:set nopaste<cr>
-            nnoremap <leader>y "+y
-            vnoremap <leader>y "+ygv
-        else
-            " On Mac and Windows, use * register for copy-paste.
-            set clipboard=unnamed
-        endif
-    endif
+    nnoremap <leader>p :set paste<cr>"+p<cr>:set nopaste<cr>
+    nnoremap <leader>P :set paste<cr>"+P<cr>:set nopaste<cr>
+    nnoremap <leader>y "+y
+    vnoremap <leader>y "+ygv
 
     " Yank from the cursor to the end of the line, to be consistent with C and D.
     nnoremap Y y$
