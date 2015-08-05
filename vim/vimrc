@@ -159,8 +159,11 @@
     set formatoptions=qrn1
     set autoindent                  " indent at the same level of the previous line
 
-    autocmd FileType python,html,htmldjango,css,asm call g:ToggleIndentation(4)
-    autocmd FileType python,html,htmldjango set expandtab  " tabs are spaces
+    autocmd FileType python,html,css,asm call g:ToggleIndentation(4)
+    autocmd FileType python,html set expandtab  " tabs are spaces
+
+    " all html files are html, no htmldjango etc.
+    au BufNewFile,BufRead *.html set filetype=html
 
     function! g:ToggleIndentation(num)
         execute 'set tabstop='.a:num
