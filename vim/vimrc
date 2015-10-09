@@ -44,8 +44,9 @@
 
     " General {
         Plugin 'scrooloose/nerdtree'
-        Plugin 'spf13/vim-autoclose'
+        Plugin 'Townk/vim-autoclose'
         Plugin 'mbbill/undotree'
+        Plugin 'tpope/vim-surround'
     " }
 
     " General Programming {
@@ -55,6 +56,12 @@
         if executable('ctags')
             Plugin 'majutsushi/tagbar'
         endif
+    " }
+
+    " Html {
+        Plugin 'mattn/emmet-vim'
+        Plugin 'vim-scripts/HTML-AutoCloseTag'
+        Plugin 'edsono/vim-matchit'
     " }
 
     " Themes {

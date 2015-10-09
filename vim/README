@@ -23,7 +23,11 @@ nerdtree               file explorer
 undotree               undo history graph
 nerdcommenter          code comments wrangle
 vim-autoclose          autoclose brackets, parens, quotes, etc
+vim-surround           easily delete, change and add surroundings
 vim-colors-solarized   the solarized colorscheme for gvim
+emmet-vim              expand abbreviation like emmet
+vim-matchit            jump between opening and closing HTML tags
+HTML-AutoCloseTag      autoclose html tags
 
 Notes:
 
