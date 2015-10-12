@@ -39,33 +39,47 @@
 
 " Plugins {
     " Dependencies {
+        " Plugin Manager
         Plugin 'gmarik/Vundle.vim'
     " }
 
     " General {
+        " File explorer
         Plugin 'scrooloose/nerdtree'
+        " Brackets, parnes, quotes, etc. autocloser
         Plugin 'Townk/vim-autoclose'
+        " Undo history graph
         Plugin 'mbbill/undotree'
+        " Easily delete, change and add surroundings
         Plugin 'tpope/vim-surround'
     " }
 
     " General Programming {
+        " Code completion
         " Plugin 'Shougo/neocomplcache'
+        " Code completion
         Plugin 'Valloric/YouCompleteMe'
+        " Code snippets completion
         Plugin 'msanders/snipmate.vim'
+        " Code comments wrangle
         Plugin 'scrooloose/nerdcommenter'
         if executable('ctags')
+            " Navigation via file tags
             Plugin 'majutsushi/tagbar'
         endif
     " }
 
     " Html {
+        " Expand abbreviation like emmet
         Plugin 'mattn/emmet-vim'
+        " Autoclose html tags
         Plugin 'vim-scripts/HTML-AutoCloseTag'
+        " Jump between opening and closing HTML tags
         Plugin 'edsono/vim-matchit'
     " }
 
     " Themes {
+        " The solarized colorscheme for gvim
         Plugin 'altercation/vim-colors-solarized'
     " }
 

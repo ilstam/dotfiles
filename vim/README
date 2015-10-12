@@ -16,7 +16,7 @@ Plugins used:
 
 Name                   Description
 -------                ------------
-neocomplcache          autocompletion
+YouCompleteMe          code-completion
 snipmate               code snippets completion
 tagbar                 navigation via file tags
 nerdtree               file explorer
