@@ -22,7 +22,7 @@ ln -s "$DOTFILES/vim/vimrc" ~/.vimrc
 echo "--> install vim plugins"
 vim +PluginInstall +qall
 
-echo -ne "\nDo you want to compile YCM library now? (y/n) "
+echo -ne "\nDo you want to compile YCM library now (for vim 7.4+)? (y/n) "
 an=$(read a && echo "$a" | tr '[:upper:]' '[:lower:]')
 
 if [ -z "$an" -o "$an" == "y" -o "$an" == "yes" ]; then
