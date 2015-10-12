@@ -22,6 +22,18 @@ ln -s "$DOTFILES/vim/vimrc" ~/.vimrc
 echo "--> install vim plugins"
 vim +PluginInstall +qall
 
+echo -ne "\nDo you want to compile YCM library now? (y/n) "
+an=$(read a && echo "$a" | tr '[:upper:]' '[:lower:]')
+
+if [ -z "$an" -o "$an" == "y" -o "$an" == "yes" ]; then
+	if [ -f ~/.vim/bundle/YouCompleteMe/install.py ]; then
+		echo -e "\n--> compiling YCM library"
+		python2 ~/.vim/bundle/YouCompleteMe/install.py
+	else
+		echo -e "Error: couldn't find YCM folder\n"
+	fi
+fi
+
 echo "--> run snipmate_remap.py script"
 python "$DOTFILES/scripts/snipmate_remap.py"
 
