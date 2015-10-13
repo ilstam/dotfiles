@@ -62,14 +62,21 @@
             " Code completion
             Plugin 'Valloric/YouCompleteMe'
         endif
-        " Code snippets completion
-        Plugin 'msanders/snipmate.vim'
         " Code comments wrangle
         Plugin 'scrooloose/nerdcommenter'
         if executable('ctags')
             " Navigation via file tags
             Plugin 'majutsushi/tagbar'
         endif
+
+    " Snippets {
+        " Snippets completion
+        Plugin 'garbas/vim-snipmate'
+        " Various snippets collection
+        Plugin 'honza/vim-snippets'
+        " Dependencies of vim-snipmate
+        Plugin 'MarcWeber/vim-addon-mw-utils'
+        Plugin 'tomtom/tlib_vim'
     " }
 
     " Html {
@@ -416,6 +423,10 @@
 " }
 
 " Plugins Configuration {
+    " snipmate {
+        imap <expr> ss pumvisible() ? '<esc><Plug>snipMateNextOrTrigger' : '<Plug>snipMateNextOrTrigger'
+    " }
+
     " Ctags {
         set tags=./tags;/,~/.vimtags
     " }

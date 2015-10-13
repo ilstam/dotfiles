@@ -17,7 +17,7 @@ Plugins used:
 Name                   Description
 -------                ------------
 YouCompleteMe          code-completion
-snipmate               code snippets completion
+vim-snipmate           code snippets completion
 tagbar                 navigation via file tags
 nerdtree               file explorer
 undotree               undo history graph
@@ -28,15 +28,3 @@ vim-colors-solarized   the solarized colorscheme for gvim
 emmet-vim              expand abbreviation like emmet
 vim-matchit            jump between opening and closing HTML tags
 HTML-AutoCloseTag      autoclose html tags
-
-Notes:
-
-snipmate_remap.py
-------------------
-Neocomplcache and snipmate plugins are not compatible by default because
-both are using the tab key for completion. I wrote a simple script called
-snipmate_remap.py which remaps snipmate's trigger key, in order the two
-plugins to be able to work together. By default it sets '*' as the new
-trigger key. You can set it to what you wish by editing the script directly.
-Each time you update your snipmate installation you should run snipmate_remap
-as well.
