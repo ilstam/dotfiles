@@ -34,7 +34,4 @@ if [ -z "$an" -o "$an" == "y" -o "$an" == "yes" ]; then
 	fi
 fi
 
-echo "--> run snipmate_remap.py script"
-python "$DOTFILES/scripts/snipmate_remap.py"
-
 echo -e "\ndone...\n"
