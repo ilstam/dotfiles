@@ -1,61 +1,68 @@
-# general aliases
-alias d='cd /media/data/'
-alias pingg='ping www.google.com'
-alias mysensors='sensors | egrep -A2 "k10temp|radeon"'
-alias teithevpn='cd $DOTFILES/vpn/teithe/ && sudo openvpn tux-full-udp.ovpn'
+# General {
+	alias pingg='ping www.google.com'
 
-# change the default behavior of these commands
-alias ls='ls --group-directories-first --color=auto'
-alias packer='packer --noedit --auronly'
+	# When using sudo, use alias expansion (otherwise sudo ignores your aliases).
+	alias sudo='sudo '
 
-# applications aliases
-alias p2='python2'
-alias p3='python3'
-alias ip2='ipython2'
-alias ip3='ipython3'
+	# Change the default behavior of the following commands.
+	alias ls='ls --group-directories-first --color=auto'
+	alias packer='packer --noedit --auronly'
+# }
 
-# ssh connections
-alias aetos='ssh istamati@aetos.it.teithe.gr'
+# Applications (quick launch) {
+	alias p2='python2'
+	alias p3='python3'
+	alias ip2='ipython2'
+	alias ip3='ipython3'
+# }
 
-# when using sudo, use alias expansion (otherwise sudo ignores your aliases)
-alias sudo='sudo '
+# Personal {
+	alias d='cd /media/data/'
+	alias teithevpn='cd $DOTFILES/vpn/teithe/ && sudo openvpn tux-full-udp.ovpn'
+	alias mysensors='sensors | egrep -A2 "k10temp|radeon"'
+	alias aetos='ssh istamati@aetos.it.teithe.gr'
 
-# easy clone my git repos
-clone() { git clone https://github.com/Ilias95/$1 }
-cloneaur() { git clone ssh://aur@aur4.archlinux.org/$1.git }
+	# Easy clone my git repos.
+	clone() { git clone https://github.com/Ilias95/$1 }
+	cloneaur() { git clone ssh://aur@aur4.archlinux.org/$1.git }
+# }
 
-# pacman specific
-if [ -f /var/log/pacman.log ]; then
-	alias up='sudo pacman -Syu'
-	alias orphansls='pacman -Qdt'
-	alias orphansrm='sudo pacman -Rns $(pacman -Qtdq)'
-	alias cacheclean='sudo pacman -Sc'
-	alias fromaur='pacman -Qm'
-fi
+# Pacman {
+	if [ -f /var/log/pacman.log ]; then
+		alias up='sudo pacman -Syu'
+		alias orphansls='pacman -Qdt'
+		alias orphansrm='sudo pacman -Rns $(pacman -Qtdq)'
+		alias cacheclean='sudo pacman -Sc'
+		alias fromaur='pacman -Qm'
+	fi
+# }
 
-# apt specific
-if [ -d /var/log/apt/ ] || [ -f /var/log/apt.log ]; then
-	alias up='sudo apt-get update && sudo apt-get upgrade'
-fi
+# Apt {
+	if [ -d /var/log/apt/ ] || [ -f /var/log/apt.log ]; then
+		alias up='sudo apt-get update && sudo apt-get upgrade'
+	fi
+# }
 
-# systemd specific
-# end in the letter 'd' to avoid conflicts with zsh builtins such as enable
-alias listd='find /etc/systemd/system -mindepth 1 -type d | xargs ls -l --color'
+# Systemd {
+	# End in the letter 'd' to avoid conflicts with zsh builtins such as enable.
+	alias listd='find /etc/systemd/system -mindepth 1 -type d | xargs ls -l --color'
 
-# append .service to service name if needed
-filterservicename() { if echo $1 | grep ".service" 1>/dev/null; then echo $1; else echo $1.service; fi }
+	# Append .service to service name if needed.
+	filterservicename() { if echo $1 | grep ".service" 1>/dev/null; then echo $1; else echo $1.service; fi }
 
-statusd() { sudo systemctl status $(filterservicename $1); }
-startd() { sudo systemctl start $(filterservicename $1); }
-stopd() { sudo systemctl stop $(filterservicename $1); }
-restartd() { sudo systemctl restart $(filterservicename $1); }
-enabled() { sudo systemctl enable $(filterservicename $1); }
-disabled() { sudo systemctl disable $(filterservicename $1); }
-maskd() { sudo systemctl mask $(filterservicename $1); }
-unmaskd() { sudo systemctl unmask $(filterservicename $1); }
+	statusd() { sudo systemctl status $(filterservicename $1); }
+	startd() { sudo systemctl start $(filterservicename $1); }
+	stopd() { sudo systemctl stop $(filterservicename $1); }
+	restartd() { sudo systemctl restart $(filterservicename $1); }
+	enabled() { sudo systemctl enable $(filterservicename $1); }
+	disabled() { sudo systemctl disable $(filterservicename $1); }
+	maskd() { sudo systemctl mask $(filterservicename $1); }
+	unmaskd() { sudo systemctl unmask $(filterservicename $1); }
 
-listmasked() { systemctl list-unit-files | awk '$2 == "masked" {print $1}' }
+	listmasked() { systemctl list-unit-files | awk '$2 == "masked" {print $1}' }
 
-alias s1='systemctl poweroff'
-alias s2='systemctl suspend'
-alias s3='systemctl reboot'
+	# Power control.
+	alias s1='systemctl poweroff'
+	alias s2='systemctl suspend'
+	alias s3='systemctl reboot'
+# }
