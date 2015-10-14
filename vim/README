@@ -18,6 +18,7 @@ Name                   Description
 -------                ------------
 YouCompleteMe          code-completion
 vim-snipmate           code snippets completion
+vim-easymotion         vim motions
 tagbar                 navigation via file tags
 nerdtree               file explorer
 undotree               undo history graph

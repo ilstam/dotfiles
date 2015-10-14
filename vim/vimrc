@@ -58,6 +58,10 @@
         " Easily delete, change and add surroundings
         " Usage: https://github.com/tpope/vim-surround
         Plugin 'tpope/vim-surround'
+
+        " Vim motions. This plugin is really awesome!
+        " Usage: for example type <leader><leader>w and navigate quickly
+        Plugin 'easymotion/vim-easymotion'
     " }
 
     " General Programming {
