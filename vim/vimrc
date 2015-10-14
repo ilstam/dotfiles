@@ -39,18 +39,24 @@
 
 " Plugins {
     " Dependencies {
-        " Plugin Manager
+        " The plugin manager
         Plugin 'gmarik/Vundle.vim'
     " }
 
     " General {
         " File explorer
+        " Usage: Open explorer with <leader>e (custom map)
         Plugin 'scrooloose/nerdtree'
-        " Brackets, parnes, quotes, etc. autocloser
+
+        " Autoclose brackets, parnes, quotes, etc.
         Plugin 'Townk/vim-autoclose'
+
         " Undo history graph
+        " Usage: Open tree with <leader>u (custom map)
         Plugin 'mbbill/undotree'
+
         " Easily delete, change and add surroundings
+        " Usage: https://github.com/tpope/vim-surround
         Plugin 'tpope/vim-surround'
     " }
 
@@ -59,24 +65,30 @@
             " Code completion
             Plugin 'Shougo/neocomplcache'
         else
-            " Code completion
+            " Code completion (fallback)
             Plugin 'Valloric/YouCompleteMe'
         endif
+
         " Code comments wrangle
         Plugin 'scrooloose/nerdcommenter'
+
         if executable('ctags')
             " Navigation via file tags
+            " Usage: Open the side bar with <leader>tt (custom map)
             Plugin 'majutsushi/tagbar'
         endif
 
     " Snippets {
-        " Snippets completion
+        " Snippets completion (doesn't provide snippets itself)
+        " Usage: Autocomplete snippets using ** (custom map)
         Plugin 'garbas/vim-snipmate'
-        " Various snippets collection
-        Plugin 'honza/vim-snippets'
+
         " Dependencies of vim-snipmate
         Plugin 'MarcWeber/vim-addon-mw-utils'
         Plugin 'tomtom/tlib_vim'
+
+        " Various snippets collection
+        Plugin 'honza/vim-snippets'
     " }
 
     " Python {
@@ -87,12 +99,16 @@
     " }
 
     " Html {
-        " Expand abbreviation like emmet
-        Plugin 'mattn/emmet-vim'
         " Autoclose html tags
         Plugin 'vim-scripts/HTML-AutoCloseTag'
+
         " Jump between opening and closing HTML tags
+        " Usage: Type % while on a tag
         Plugin 'edsono/vim-matchit'
+
+        " Expand abbreviation like emmet (quickly generate html code)
+        " Usage: https://raw.githubusercontent.com/mattn/emmet-vim/master/TUTORIAL
+        Plugin 'mattn/emmet-vim'
     " }
 
     " Themes {
@@ -431,7 +447,7 @@
 
 " Plugins Configuration {
     " snipmate {
-        imap <expr> * pumvisible() ? '<esc><Plug>snipMateNextOrTrigger' : '<Plug>snipMateNextOrTrigger'
+        imap <expr> ** pumvisible() ? '<esc><Plug>snipMateNextOrTrigger' : '<Plug>snipMateNextOrTrigger'
     " }
 
     " Ctags {
