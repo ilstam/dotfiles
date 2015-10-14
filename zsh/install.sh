@@ -21,11 +21,16 @@ if [ -f ~/.zshenv ]; then
 	mv ~/.zshenv ~/.zshenv.orig
 fi
 
-echo "--> install (symlink) custom zshrc"
-ln -s "$DOTFILES/zsh/zshrc" ~/.zshrc
+echo "--> install custom zshrc"
+cat > ~/.zshrc <<EOF
+source "$DOTFILES/zsh/zshrc"
+source "$DOTFILES/zsh/zsh_aliases"
+EOF
 
-echo "--> install (symlink) custom zshenv"
-ln -s "$DOTFILES/zsh/zshenv" ~/.zshenv
+echo "--> install custom zshenv"
+cat > ~/.zshenv <<EOF
+source "$DOTFILES/zsh/zshenv"
+EOF
 
 if [ ! -f ~/.oh-my-zsh/themes/mytheme.zsh-theme -a ! -h ~/.oh-my-zsh/themes/mytheme.zsh-theme ]; then
 	echo "--> install custom theme"

@@ -13,9 +13,6 @@ unsetopt correctall
 # print an empty line before the prompt is rendered
 precmd() { echo }
 
-# load aliases and functions
-source "$DOTFILES/zsh/zsh_aliases"
-
 ### Append folders to path
 # custom scripts
 path+=("$DOTFILES/scripts/")
