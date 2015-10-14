@@ -431,7 +431,7 @@
 
 " Plugins Configuration {
     " snipmate {
-        imap <expr> ss pumvisible() ? '<esc><Plug>snipMateNextOrTrigger' : '<Plug>snipMateNextOrTrigger'
+        imap <expr> * pumvisible() ? '<esc><Plug>snipMateNextOrTrigger' : '<Plug>snipMateNextOrTrigger'
     " }
 
     " Ctags {
