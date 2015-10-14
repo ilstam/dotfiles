@@ -45,7 +45,7 @@
 
     " General {
         " File explorer
-        " Usage: Open explorer with <leader>e (custom map)
+        " Usage: Open explorer and find current file with <leader>e (custom map)
         Plugin 'scrooloose/nerdtree'
 
         " Autoclose brackets, parnes, quotes, etc.
@@ -456,8 +456,10 @@
 
     " NerdTree {
         nnoremap <leader>e :NERDTreeFind<cr>
+        nnoremap <C-e> :NERDTreeToggle<cr>
 
         let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
+        " Close the tree window after opening a file.
         let NERDTreeQuitOnOpen=1
     " }
 
