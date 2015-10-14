@@ -16,8 +16,12 @@ if [ -f ~/.vimrc ]; then
 	mv ~/.vimrc ~/.vimrc.orig
 fi
 
-echo "--> install (symlink) custom vimrc"
-ln -s "$DOTFILES/vim/vimrc" ~/.vimrc
+echo "--> install custom vimrc"
+cat > ~/.vimrc <<EOF
+if filereadable(expand("$DOTFILES/vim/vimrc"))
+    source $DOTFILES/vim/vimrc
+endif
+EOF
 
 echo "--> install vim plugins"
 vim +PluginInstall +qall
