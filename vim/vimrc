@@ -48,7 +48,7 @@
         " Usage: Open explorer and find current file with <leader>e (custom map)
         Plugin 'scrooloose/nerdtree'
 
-        " Autoclose brackets, parnes, quotes, etc.
+        " Autoclose brackets, parens, quotes, etc.
         Plugin 'Townk/vim-autoclose'
 
         " Undo history graph
@@ -66,10 +66,10 @@
 
     " General Programming {
         if v:version < 704
-            " Code completion
+            " Code completion (fallback)
             Plugin 'Shougo/neocomplcache'
         else
-            " Code completion (fallback)
+            " Code completion
             Plugin 'Valloric/YouCompleteMe'
         endif
 
