@@ -5,6 +5,9 @@
 [core]
 	editor = vim
 
+[push]
+	default = simple
+
 [merge]
 	tool = vimdiff
 
