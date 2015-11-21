@@ -501,8 +501,11 @@
             " Choose syntax checkers
             let g:pymode_lint_checkers = ['pyflakes', 'mccabe']
 
-            " Check code when opening a python file
-            autocmd VimEnter,FileType python PymodeLint
+            " Do not check code on every save
+            let g:pymode_lint_on_write = 0
+
+            " Check code manually
+            cnoremap check PymodeLint
         " }
     endif
 
