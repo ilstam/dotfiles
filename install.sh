@@ -14,7 +14,7 @@ if [ $(readlink -f .) != "$DOTFILES" ]; then
 fi
 
 
-for i in vim zsh git; do
+for i in vim zsh git i3; do
 	echo -n "Install ${i} configuration? (y/n) "
 	an=$(read a && echo "$a" | tr '[:upper:]' '[:lower:]')
 	echo ""
