@@ -171,7 +171,7 @@ mode "$mode_system" {
     bindsym t exec --no-startup-id systemctl poweroff -i, mode "default"
     bindsym s exec --no-startup-id systemctl suspend, mode "default"
     bindsym r exec --no-startup-id systemctl reboot, mode "default"
-    bindsym l exec --no-startup-id i3lock --color "$bg-color"
+    bindsym l exec --no-startup-id i3lock --color "$bg-color", mode "default"
     bindsym e exec --no-startup-id i3-msg exit, mode "default"
 
     # back to normal: Enter or Escape
