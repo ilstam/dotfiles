@@ -71,6 +71,11 @@ set $workspace8 "8 "
 set $workspace9 "9 "
 set $workspace10 "10 "
 
+# assign workspaces to applications
+assign [class="Firefox"] $workspace1
+assign [title="Popcorn Time"] $workspace10
+assign [class="stremio"] $workspace10
+
 # switch to workspace
 bindsym $mod+1 workspace $workspace1
 bindsym $mod+2 workspace $workspace2
@@ -110,11 +115,6 @@ bindsym $mod+Shift+0 move container to workspace $workspace10, workspace $worksp
 # switch back and forth between the last two workspaces that you visited
 bindsym $mod+z workspace back_and_forth
 
-# assign workspaces to applications
-assign [class="Firefox"] $workspace1
-assign [title="Popcorn Time"] $workspace10
-assign [class="stremio"] $workspace10
-
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -135,6 +135,9 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+# hide borders adjacent to the screen edges
+hide_edge_borders both
+
 # set color variables
 set $bg-color 	         #2f343f
 set $inactive-bg-color   #2f343f
@@ -148,8 +151,6 @@ client.focused          $bg-color           $bg-color          $text-color      
 client.unfocused        $inactive-bg-color  $inactive-bg-color $inactive-text-color #00ff00
 client.focused_inactive $inactive-bg-color  $inactive-bg-color $inactive-text-color #00ff00
 client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          #00ff00
-
-hide_edge_borders both
 
 # bar
 bar {
