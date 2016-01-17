@@ -18,6 +18,7 @@
 
 # Personal {
 	alias d='cd /media/data/'
+	alias dot='cd $DOTFILES'
 	alias teithevpn='cd $DOTFILES/vpn/teithe/ && sudo openvpn tux-full-udp.ovpn'
 	alias mysensors='sensors | egrep -A2 "k10temp|radeon"'
 	alias aetos='ssh istamati@aetos.it.teithe.gr'
