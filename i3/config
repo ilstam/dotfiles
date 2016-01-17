@@ -17,7 +17,7 @@ bindsym $mod+Shift+q kill
 
 # start rofi (program launcher)
 bindsym $mod+d exec rofi -show run -lines 3 -eh 2 -width 100 -padding 450 -opacity "85" -bw 0 \
-    -bc "$bg-color" -bg "$bg-color" -fg "$text-color" -hlbg "$bg-color" -hlfg "#9575cd" -font "sans 23"
+    -bc "#2f343f" -bg "#2f343f" -fg "#f3f4f5" -hlbg "#2f343f" -hlfg "#9575cd" -font "sans 23"
 #bindsym $mod+d exec dmenu_run
 #bindsym $mod+d exec --no-startup-id j4-dmenu-desktop
 
@@ -138,31 +138,22 @@ bindsym $mod+r mode "resize"
 # hide borders adjacent to the screen edges
 hide_edge_borders both
 
-# set color variables
-set $bg-color 	         #2f343f
-set $inactive-bg-color   #2f343f
-set $text-color          #f3f4f5
-set $inactive-text-color #676E7D
-set $urgent-bg-color     #E53935
-
 # window colors
-#                       border              background         text                 indicator
-client.focused          $bg-color           $bg-color          $text-color          #00ff00
-client.unfocused        $inactive-bg-color  $inactive-bg-color $inactive-text-color #00ff00
-client.focused_inactive $inactive-bg-color  $inactive-bg-color $inactive-text-color #00ff00
-client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          #00ff00
+#                        border         background     text           indicator
+client.focused           #000000        #000000        #FFFFFF        #000000
+client.focused_inactive  #333333        #333333        #FFFFFF        #000000
+client.unfocused         #333333        #333333        #FFFFFF        #333333
 
-# bar
 bar {
-  	status_command i3blocks -c $HOME/.dotfiles/i3/i3blocks.conf
-	colors {
-		background $bg-color
-	    	separator #757575
-		#                  border             background         text
-		focused_workspace  $bg-color          $bg-color          $text-color
-		inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
-		urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
-	}
+    status_command i3blocks -c $HOME/.dotfiles/i3/i3blocks.conf
+    colors {
+        background #333333
+        statusline #AAAAAA
+        separator  #757575
+        focused_workspace  #282828 #282828 #FFFFFF
+        inactive_workspace #333333 #333333 #AAAAAA
+        urgent_workspace   #E53935 #E53935  #f3f4f5
+    }
 }
 
 # system power menu
@@ -171,7 +162,7 @@ mode "$mode_system" {
     bindsym t exec --no-startup-id systemctl poweroff -i, mode "default"
     bindsym s exec --no-startup-id systemctl suspend, mode "default"
     bindsym r exec --no-startup-id systemctl reboot, mode "default"
-    bindsym l exec --no-startup-id i3lock --color "$bg-color", mode "default"
+    bindsym l exec --no-startup-id i3lock --color "#333333", mode "default"
     bindsym e exec --no-startup-id i3-msg exit, mode "default"
 
     # back to normal: Enter or Escape
