@@ -16,9 +16,8 @@ bindsym $mod+Return exec terminator
 bindsym $mod+Shift+q kill
 
 # start rofi (program launcher)
-bindsym $mod+d exec rofi -show run -lines 3 -eh 2 -width 100 -padding 450 \
-	-opacity "85" -bw 0 -bc "$bg-color" -bg "$bg-color" -fg "$text-color" \
-	-hlbg "$bg-color" -hlfg "#9575cd" -font "sans 18"
+bindsym $mod+d exec rofi -show run -lines 3 -eh 2 -width 100 -padding 450 -opacity "85" -bw 0 \
+    -bc "$bg-color" -bg "$bg-color" -fg "$text-color" -hlbg "$bg-color" -hlfg "#9575cd" -font "sans 23"
 #bindsym $mod+d exec dmenu_run
 #bindsym $mod+d exec --no-startup-id j4-dmenu-desktop
 
