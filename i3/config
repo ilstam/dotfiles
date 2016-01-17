@@ -189,7 +189,9 @@ exec_always feh --bg-scale $HOME/.dotfiles/i3/wallpaper.jpg                  # s
 
 # application launch shortcuts
 bindsym Print exec gnome-screenshot
+bindsym $mod+c exec orage
 bindsym $mod+y workspace $workspace4, layout tabbed, exec pcmanfm
 
 # other
 for_window [class="Lxappearance"] floating enable
+for_window [class="Orage"] floating enable
