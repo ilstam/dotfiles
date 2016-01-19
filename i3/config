@@ -3,7 +3,7 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:DejaVu Sans Mono, Awesome 10
+font pango: FontAwesome 10.5
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -190,7 +190,7 @@ exec_always feh --bg-scale $HOME/.dotfiles/i3/wallpaper.jpg                  # s
 
 # application launch shortcuts
 bindsym Print exec gnome-screenshot
-bindsym $mod+c exec orage
+bindsym $mod+c exec --no-startup-id orage
 
 # other
 bindsym $mod+Shift+f [class="Pcmanfm"] focus
