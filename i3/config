@@ -5,7 +5,7 @@ set $mod Mod4
 # is used in the bar {} block below.
 font pango: FontAwesome 10.5
 
-# Use Mouse+$mod to drag floating windows to their wanted position
+# use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
 # start a terminal
@@ -14,11 +14,15 @@ bindsym $mod+Return exec terminator
 # kill focused window
 bindsym $mod+Shift+q kill
 
+# middle button over a titlebar kills the window
+bindsym --release button2 kill
+
+# the middle button and a modifer over any part of the window kills the window
+bindsym --whole-window $mod+button2 kill
+
 # start rofi (program launcher)
 bindsym $mod+d exec rofi -show run -lines 3 -eh 2 -width 100 -padding 450 -opacity "85" -bw 0 \
     -bc "#2f343f" -bg "#2f343f" -fg "#f3f4f5" -hlbg "#2f343f" -hlfg "#9575cd" -font "sans 23"
-#bindsym $mod+d exec dmenu_run
-#bindsym $mod+d exec --no-startup-id j4-dmenu-desktop
 
 # change focus
 bindsym $mod+h focus left
