@@ -72,7 +72,7 @@ set $workspace6 "6 "
 set $workspace7 "7 "
 set $workspace8 "8 "
 set $workspace9 "9 "
-set $workspace10 "10 "
+set $workspace10 "10 "
 
 # assign workspaces to applications
 assign [class="Firefox"] $workspace1
@@ -177,9 +177,9 @@ mode "$mode_system" {
 bindsym $mod+Pause mode "$mode_system"
 
 # audio controls
-bindsym XF86AudioRaiseVolume exec amixer set Master 5%+ -q
-bindsym XF86AudioLowerVolume exec amixer set Master 5%- -q
-bindsym XF86AudioMute exec amixer set Master toggle -q
+bindsym XF86AudioRaiseVolume exec amixer set Master 5%+ -q && pkill -RTMIN+1 i3blocks
+bindsym XF86AudioLowerVolume exec amixer set Master 5%- -q && pkill -RTMIN+1 i3blocks
+bindsym XF86AudioMute exec amixer set Master toggle -q && pkill -RTMIN+1 i3blocks
 
 # disable screensaver
 exec xcreensaver -no-splash
@@ -189,8 +189,12 @@ exec xset -dpms s off
 exec firefox
 exec --no-startup-id i3-msg 'workspace $workspace5, exec pcmanfm, workspace $workspace1'
 exec --no-startup-id compton -f
-exec --no-startup-id "setxkbmap -layout us,gr -option grp:alt_shift_toggle"  # change keyboard layout
-exec_always feh --bg-scale $HOME/.dotfiles/i3/wallpaper.jpg                  # set custom walppaper
+exec_always feh --bg-scale $HOME/.dotfiles/i3/wallpaper.jpg # set custom walppaper
+
+# change language layout
+exec --no-startup-id "setxkbmap -layout us,gr -option grp:alt_shift_toggle"
+# send a signal to i3blocks after pressing alt+shift to update the bar
+bindcode Mod1+50 exec --no-startup-id pkill -RTMIN+1 i3blocks
 
 # application launch shortcuts
 bindsym Print exec gnome-screenshot
