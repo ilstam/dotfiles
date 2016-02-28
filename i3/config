@@ -206,3 +206,5 @@ bindsym $mod+Shift+f [class="Pcmanfm"] focus
 
 for_window [class="Lxappearance"] floating enable
 for_window [class="Orage"] floating enable
+for_window [class="PacketTracer*"] floating enable
+for_window [title="FF Multi Converter"] floating enable
