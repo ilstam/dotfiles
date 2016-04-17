@@ -70,14 +70,15 @@ set $workspace4 "4 "
 set $workspace5 "5 "
 set $workspace6 "6 "
 set $workspace7 "7 "
-set $workspace8 "8 "
+set $workspace8 "8 "
 set $workspace9 "9 "
-set $workspace10 "10 "
+set $workspace10 "10 "
 
 # assign workspaces to applications
 assign [class="Firefox"] $workspace1
-assign [title="Popcorn Time"] $workspace10
-assign [class="stremio"] $workspace10
+assign [title="Popcorn Time"] $workspace8
+assign [class="stremio"] $workspace8
+assign [class="Skype"] $workspace10
 for_window [class="Spotify"] move to workspace $workspace9
 
 # switch to workspace
@@ -200,6 +201,7 @@ bindcode Mod1+50 exec --no-startup-id pkill -RTMIN+1 i3blocks
 # application launch shortcuts
 bindsym Print exec gnome-screenshot
 bindsym $mod+c exec --no-startup-id orage
+bindsym $mod+Shift+b exec --no-startup-id chromium
 
 # other
 bindsym $mod+Shift+f [class="Pcmanfm"] focus
