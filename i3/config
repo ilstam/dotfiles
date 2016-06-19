@@ -191,12 +191,15 @@ exec xset -dpms s off
 exec firefox
 exec --no-startup-id i3-msg 'workspace $workspace5, exec pcmanfm, workspace $workspace1'
 exec --no-startup-id compton -f
+exec --no-startup-id redshift -l 40.6:22.9 -t 6500:3500
 exec_always feh --bg-scale $HOME/.dotfiles/i3/wallpaper.jpg # set custom walppaper
 
 # change language layout
 exec --no-startup-id "setxkbmap -layout us,gr -option grp:alt_shift_toggle"
 # send a signal to i3blocks after pressing alt+shift to update the bar
 bindcode Mod1+50 exec --no-startup-id pkill -RTMIN+1 i3blocks
+# toggle redshift on/off
+bindsym $mod+Shift+m exec --no-startup-id pkill -USR1 redshift
 
 # application launch shortcuts
 bindsym Print exec gnome-screenshot
