@@ -175,7 +175,6 @@
 
     " <Esc> is inconvinient as it requires stretching to the top of the keyboard.
     inoremap jk <Esc>
-    vnoremap jk <Esc>
 
     " <Del> key is too far...
     inoremap <leader>d <Del>
