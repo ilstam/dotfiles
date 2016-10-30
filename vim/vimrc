@@ -108,7 +108,7 @@
 
         " Jump between opening and closing HTML tags
         " Usage: Type % while on a tag
-        Plugin 'edsono/vim-matchit'
+        "Plugin 'edsono/vim-matchit'
 
         " Expand abbreviation like emmet (quickly generate html code)
         " Usage: https://raw.githubusercontent.com/mattn/emmet-vim/master/TUTORIAL
