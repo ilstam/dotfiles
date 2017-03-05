@@ -28,20 +28,28 @@
 	cloneaur() { git clone ssh://aur@aur4.archlinux.org/$1.git }
 # }
 
-# Pacman {
-	if [ -f /var/log/pacman.log ]; then
-		alias up='sudo pacman -Syu'
-		alias orphansls='pacman -Qdt'
-		alias orphansrm='sudo pacman -Rns $(pacman -Qtdq)'
-		alias cacheclean='sudo pacman -Sc'
-		alias fromaur='pacman -Qm'
-	fi
-# }
+# Package Management {
+	# pacman {
+		if [ -f /var/log/pacman.log ]; then
+			alias up='sudo pacman -Syu'
+			alias orphansls='pacman -Qdt'
+			alias orphansrm='sudo pacman -Rns $(pacman -Qtdq)'
+			alias cacheclean='sudo pacman -Sc'
+			alias fromaur='pacman -Qm'
+		fi
+	# }
 
-# Apt {
-	if [ -d /var/log/apt/ ] || [ -f /var/log/apt.log ]; then
-		alias up='sudo apt-get update && sudo apt-get upgrade'
-	fi
+	# apt {
+		if [ -d /var/log/apt/ ] || [ -f /var/log/apt.log ]; then
+			alias up='sudo apt-get update && sudo apt-get upgrade'
+		fi
+	# }
+
+	# dnf {
+		if [ -f /var/log/dnf.log ]; then
+			alias up='sudo dnf upgrade'
+		fi
+	# }
 # }
 
 # Systemd {
