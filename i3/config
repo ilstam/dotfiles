@@ -69,17 +69,18 @@ set $workspace3 "3 "
 set $workspace4 "4 "
 set $workspace5 "5 "
 set $workspace6 "6 "
-set $workspace7 "7 "
+set $workspace7 "7 "
 set $workspace8 "8 "
-set $workspace9 "9 "
-set $workspace10 "10 "
+set $workspace9 "9 "
+set $workspace10 "10 "
 
 # assign workspaces to applications
 assign [class="Firefox"] $workspace1
+for_window [class="Spotify"] move to workspace $workspace7
 assign [title="Popcorn Time"] $workspace8
 assign [class="stremio"] $workspace8
-assign [class="Skype"] $workspace10
-for_window [class="Spotify"] move to workspace $workspace9
+assign [class="Skype"] $workspace9
+assign [class="Hexchat"] $workspace10
 
 # switch to workspace
 bindsym $mod+1 workspace $workspace1
