@@ -15,4 +15,4 @@ precmd() { echo }
 
 ### Append folders to path
 # custom scripts
-path+=("$DOTFILES/scripts/")
+path+=("$DOTFILES/scripts/" /opt/dirsrv/sbin/ /opt/dirsrv/bin/)
