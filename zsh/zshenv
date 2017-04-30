@@ -9,8 +9,15 @@ export DOTFILES="$HOME"/.dotfiles
 
 export BROWSER=firefox
 
-export EDITOR=vim
-export VISUAL=vim
+if [ -f /var/log/dnf.log ]; then
+	# Fedora
+	export EDITOR=vimx
+	export VISUAL=vimx
+else
+	export EDITOR=vim
+	export VISUAL=vim
+fi
+
 export PAGER=less
 
 if [[ -z "$LANG" ]]; then

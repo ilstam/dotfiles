@@ -28,26 +28,31 @@
 	cloneaur() { git clone ssh://aur@aur4.archlinux.org/$1.git }
 # }
 
-# Package Management {
-	# pacman {
+# Distro Specific {
+	# Arch {
 		if [ -f /var/log/pacman.log ]; then
 			alias up='sudo pacman -Syu'
 			alias orphansls='pacman -Qdt'
 			alias orphansrm='sudo pacman -Rns $(pacman -Qtdq)'
 			alias cacheclean='sudo pacman -Sc'
 			alias fromaur='pacman -Qm'
+
+			alias vi='vim'
 		fi
 	# }
 
-	# apt {
-		if [ -d /var/log/apt/ ] || [ -f /var/log/apt.log ]; then
-			alias up='sudo apt-get update && sudo apt-get upgrade'
-		fi
-	# }
-
-	# dnf {
+	# Fedora {
 		if [ -f /var/log/dnf.log ]; then
 			alias up='sudo dnf upgrade'
+
+			alias vi='vimx'
+			alias vim='vimx'
+		fi
+	# }
+
+	# apt based distros {
+		if [ -d /var/log/apt/ ] || [ -f /var/log/apt.log ]; then
+			alias up='sudo apt-get update && sudo apt-get upgrade'
 		fi
 	# }
 # }
