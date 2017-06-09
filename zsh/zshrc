@@ -15,4 +15,6 @@ precmd() { echo }
 
 ### Append folders to path
 # custom scripts
-path+=("$DOTFILES/scripts/" /opt/dirsrv/sbin/ /opt/dirsrv/bin/)
+path+=("$DOTFILES/scripts/")
+
+source $DOTFILES/zsh/dirsrv
