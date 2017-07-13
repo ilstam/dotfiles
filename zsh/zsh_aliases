@@ -7,6 +7,8 @@
 	# Change the default behavior of the following commands.
 	alias ls='ls --group-directories-first --color=auto'
 	alias packer='packer --noedit --auronly'
+
+	alias gitamend='git commit --amend --date="`date`"'
 # }
 
 # Applications (quick launch) {
@@ -20,7 +22,6 @@
 	alias d='cd /media/data/'
 	alias dot='cd $DOTFILES'
 	alias teithevpn='cd $DOTFILES/vpn/teithe/ && sudo openvpn tux-full-udp.ovpn'
-	alias mysensors='sensors | egrep -A2 "k10temp|radeon"'
 	alias aetos='ssh istamati@aetos.it.teithe.gr'
 
 	# Easy clone my git repos.

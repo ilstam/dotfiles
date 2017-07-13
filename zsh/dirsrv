@@ -1,4 +1,4 @@
-# shell conveniences for working with 389 Directory Server
+# shell stuff for doing 389 Directory Server development
 
 path+=(/opt/dirsrv/sbin/ /opt/dirsrv/bin/)
 
@@ -11,3 +11,5 @@ alias ds='python3 /home/ilias/lib389/cli/dsconf ldap://localhost -D "cn=Director
 alias st='sudo start-dirsrv localhost'
 alias stp='sudo stop-dirsrv localhost'
 alias dse='sudo vim /opt/dirsrv/etc/dirsrv/slapd-localhost/dse.ldif'
+
+alias pl='/home/ilias/389-ds-base/ldap/servers/plugins'
