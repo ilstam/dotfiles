@@ -6,6 +6,16 @@ fi
 
 echo -e "configuring i3...\n"
 
+if [ ! -d ~/.i3blocks ]; then
+	echo "--> install i3blocks"
+	git clone https://github.com/vivien/i3blocks ~/.i3blocks
+fi
+
+if [ ! -d ~/.i3blocks-contrib ]; then
+	echo "--> install i3blocks-contrib"
+	git clone https://github.com/vivien/i3blocks-contrib ~/.i3blocks-contrib
+fi
+
 if [ -f ~/.config/i3/config ]; then
 	echo "--> backup existing ~/.config/i3/config file to ~/.config/i3/config.orig"
 	mv ~/.config/i3/config ~/.config/i3/config.orig
