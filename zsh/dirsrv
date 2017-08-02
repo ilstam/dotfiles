@@ -6,10 +6,10 @@ export PYTHONPATH="/home/ilias/lib389"
 
 alias clone389='git clone https://pagure.io/389-ds-base.git'
 alias phase1='autoreconf -fiv'
-alias phase2='./configure --enable-debug --with-openldap --enable-cmocka --enable-asan'
+alias phase2='CFLAGS=-O0 ./configure --enable-debug --with-openldap --enable-cmocka --enable-asan'
 alias ds='python3 /home/ilias/lib389/cli/dsconf ldap://localhost -D "cn=Directory Manager"'
 alias st='sudo start-dirsrv localhost'
 alias stp='sudo stop-dirsrv localhost'
 alias dse='sudo vim /opt/dirsrv/etc/dirsrv/slapd-localhost/dse.ldif'
 
-alias pl='/home/ilias/389-ds-base/ldap/servers/plugins'
+alias pl='cd /home/ilias/389-ds-base/ldap/servers/plugins'
