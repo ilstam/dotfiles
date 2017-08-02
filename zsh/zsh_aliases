@@ -9,6 +9,8 @@
 	alias packer='packer --noedit --auronly'
 
 	alias gitamend='git commit --amend --date="`date`"'
+
+	filefind() { sudo find $1 -name "*$2*" -type f }
 # }
 
 # Applications (quick launch) {
