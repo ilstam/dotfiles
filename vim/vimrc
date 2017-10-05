@@ -188,17 +188,15 @@
 " }
 
 " Indentation, Tabs, Spaces {
-    set tabstop=8                   " show tabs as 8 spaces
-    set shiftwidth=8                " use indents of 8 spaces
+    set tabstop=4                   " show tabs as 8 spaces
+    set shiftwidth=4                " use indents of 8 spaces
     set shiftround                  " always round to multiple of 'shiftwidth'
-    set softtabstop=8               " let backspace delete indent
-    set noexpandtab                 " tabs are tabs, not spaces
+    set softtabstop=4               " let backspace delete indent
+    "set noexpandtab                 " tabs are tabs, not spaces
+    set expandtab                   " tabs are spaces, not tabs
     set smarttab
     set formatoptions=qrn1
     set autoindent                  " indent at the same level of the previous line
-
-    autocmd FileType python,javascript,html,css call g:ToggleIndentation(4)
-    autocmd FileType python,javascript,html,css set expandtab  " tabs are spaces
 
     " all html files are html, no htmldjango etc.
     au BufNewFile,BufRead *.html set filetype=html
@@ -369,8 +367,8 @@
 
     " Compile {
         autocmd FileType c,cpp,java nnoremap <leader>m :w<cr> :Shell clear; make<cr>
-        autocmd FileType c nnoremap <leader>c8 :w<cr> :Shell gcc -Wall -W -pedantic -ansi -std=c89 -o %:r %<cr>
-        autocmd FileType c nnoremap <leader>c9 :w<cr> :Shell gcc -Wall -W -pedantic -ansi -std=c99 -o %:r %<cr>
+        autocmd FileType c nnoremap <leader>c8 :w<cr> :Shell gcc -O0 -Wall -W -pedantic -ansi -std=c89 -ggdb3 -o %:r %<cr>
+        autocmd FileType c nnoremap <leader>c9 :w<cr> :Shell gcc -O0 -Wall -W -pedantic -ansi -std=c99 -ggdb3 -o %:r %<cr>
         autocmd FileType cpp nnoremap <leader>c1 :w<cr> :Shell g++ -std=c++11 -o %:r %<cr>
         autocmd FileType java nnoremap <leader>c9 :w<cr> :Shell javac %<cr>
     " }
@@ -492,7 +490,3 @@
             cnoremap check PymodeLint
         " }
     endif
-
-" Modeline {
-" vim: set tabstop=4 shiftwidth=4 softtabstop=4 expandtab:
-" }
