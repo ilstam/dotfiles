@@ -1,85 +1,86 @@
 # General {
-	alias pingg='ping www.google.com'
+    alias pingg='ping www.google.com'
 
-	# When using sudo, use alias expansion (otherwise sudo ignores your aliases).
-	alias sudo='sudo '
+    # When using sudo, use alias expansion (otherwise sudo ignores your aliases).
+    alias sudo='sudo '
 
-	# Change the default behavior of the following commands.
-	alias ls='ls --group-directories-first --color=auto'
-	alias packer='packer --noedit --auronly'
+    # Change the default behavior of the following commands.
+    alias ls='ls --group-directories-first --color=auto'
+    alias packer='packer --noedit --auronly'
 
-	alias gitamend='git commit --amend --date="`date`"'
+    alias mygcc='gcc -O0 -Wall -W -pedantic -ansi -std=c99 -ggdb3'
+    alias gitamend='git commit --amend --date="`date`"'
 
-	filefind() { sudo find $1 -name "*$2*" -type f }
+    filefind() { sudo find $1 -name "*$2*" -type f }
 # }
 
 # Applications (quick launch) {
-	alias p2='python2'
-	alias p3='python3'
-	alias ip2='ipython2'
-	alias ip3='ipython3'
+    alias p2='python2'
+    alias p3='python3'
+    alias ip2='ipython2'
+    alias ip3='ipython3'
 # }
 
 # Personal {
-	alias d='cd /media/data/'
-	alias dot='cd $DOTFILES'
-	alias teithevpn='cd $DOTFILES/vpn/teithe/ && sudo openvpn tux-full-udp.ovpn'
-	alias aetos='ssh istamati@aetos.it.teithe.gr'
+    alias d='cd /media/data/'
+    alias dot='cd $DOTFILES'
+    alias teithevpn='cd $DOTFILES/vpn/teithe/ && sudo openvpn tux-full-udp.ovpn'
+    alias aetos='ssh istamati@aetos.it.teithe.gr'
 
-	# Easy clone my git repos.
-	clone() { git clone https://github.com/Ilias95/$1 }
-	cloneaur() { git clone ssh://aur@aur4.archlinux.org/$1.git }
+    # Easy clone my git repos.
+    clone() { git clone https://github.com/Ilias95/$1 }
+    cloneaur() { git clone ssh://aur@aur4.archlinux.org/$1.git }
 # }
 
 # Distro Specific {
-	# Arch {
-		if [ -f /var/log/pacman.log ]; then
-			alias up='sudo pacman -Syu'
-			alias orphansls='pacman -Qdt'
-			alias orphansrm='sudo pacman -Rns $(pacman -Qtdq)'
-			alias cacheclean='sudo pacman -Sc'
-			alias fromaur='pacman -Qm'
+    # Arch {
+        if [ -f /var/log/pacman.log ]; then
+            alias up='sudo pacman -Syu'
+            alias orphansls='pacman -Qdt'
+            alias orphansrm='sudo pacman -Rns $(pacman -Qtdq)'
+            alias cacheclean='sudo pacman -Sc'
+            alias fromaur='pacman -Qm'
 
-			alias vi='vim'
-		fi
-	# }
+            alias vi='vim'
+        fi
+    # }
 
-	# Fedora {
-		if [ -f /var/log/dnf.log ]; then
-			alias up='sudo dnf upgrade'
+    # Fedora {
+        if [ -f /var/log/dnf.log ]; then
+            alias up='sudo dnf upgrade'
 
-			alias vi='vimx'
-			alias vim='vimx'
-		fi
-	# }
+            alias vi='vimx'
+            alias vim='vimx'
+        fi
+    # }
 
-	# apt based distros {
-		if [ -d /var/log/apt/ ] || [ -f /var/log/apt.log ]; then
-			alias up='sudo apt-get update && sudo apt-get upgrade'
-		fi
-	# }
+    # apt based distros {
+        if [ -d /var/log/apt/ ] || [ -f /var/log/apt.log ]; then
+            alias up='sudo apt-get update && sudo apt-get upgrade'
+        fi
+    # }
 # }
 
 # Systemd {
-	# End in the letter 'd' to avoid conflicts with zsh builtins such as enable.
-	alias listd='find /etc/systemd/system -mindepth 1 -type d | xargs ls -l --color'
+    # End in the letter 'd' to avoid conflicts with zsh builtins such as enable.
+    alias listd='find /etc/systemd/system -mindepth 1 -type d | xargs ls -l --color'
 
-	# Append .service to service name if needed.
-	filterservicename() { if echo $1 | grep ".service" 1>/dev/null; then echo $1; else echo $1.service; fi }
+    # Append .service to service name if needed.
+    filterservicename() { if echo $1 | grep ".service" 1>/dev/null; then echo $1; else echo $1.service; fi }
 
-	statusd() { sudo systemctl status $(filterservicename $1); }
-	startd() { sudo systemctl start $(filterservicename $1); }
-	stopd() { sudo systemctl stop $(filterservicename $1); }
-	restartd() { sudo systemctl restart $(filterservicename $1); }
-	enabled() { sudo systemctl enable $(filterservicename $1); }
-	disabled() { sudo systemctl disable $(filterservicename $1); }
-	maskd() { sudo systemctl mask $(filterservicename $1); }
-	unmaskd() { sudo systemctl unmask $(filterservicename $1); }
+    statusd() { sudo systemctl status $(filterservicename $1); }
+    startd() { sudo systemctl start $(filterservicename $1); }
+    stopd() { sudo systemctl stop $(filterservicename $1); }
+    restartd() { sudo systemctl restart $(filterservicename $1); }
+    enabled() { sudo systemctl enable $(filterservicename $1); }
+    disabled() { sudo systemctl disable $(filterservicename $1); }
+    maskd() { sudo systemctl mask $(filterservicename $1); }
+    unmaskd() { sudo systemctl unmask $(filterservicename $1); }
 
-	listmasked() { systemctl list-unit-files | awk '$2 == "masked" {print $1}' }
+    listmasked() { systemctl list-unit-files | awk '$2 == "masked" {print $1}' }
 
-	# Power control.
-	alias s1='systemctl poweroff'
-	alias s2='systemctl suspend'
-	alias s3='systemctl reboot'
+    # Power control.
+    alias s1='systemctl poweroff'
+    alias s2='systemctl suspend'
+    alias s3='systemctl reboot'
 # }
