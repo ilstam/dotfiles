@@ -20,9 +20,8 @@ bindsym --release button2 kill
 # the middle button and a modifer over any part of the window kills the window
 bindsym --whole-window $mod+button2 kill
 
-# start rofi (program launcher)
-bindsym $mod+d exec rofi -show run -lines 3 -eh 2 -width 100 -padding 450 -opacity "85" -bw 0 \
-    -bc "#2f343f" -bg "#2f343f" -fg "#f3f4f5" -hlbg "#2f343f" -hlfg "#9575cd" -font "sans 23"
+# start dmenu (program launcher)
+bindsym $mod+d exec dmenu_run -l 5 -i -p "run: " -fn "sans-15"
 
 # change focus
 bindsym $mod+h focus left
