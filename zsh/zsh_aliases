@@ -24,8 +24,6 @@
 # Personal {
     alias d='cd /media/data/'
     alias dot='cd $DOTFILES'
-    alias teithevpn='cd $DOTFILES/vpn/teithe/ && sudo openvpn tux-full-udp.ovpn'
-    alias aetos='ssh istamati@aetos.it.teithe.gr'
 
     # Easy clone my git repos.
     clone() { git clone https://github.com/Ilias95/$1 }
