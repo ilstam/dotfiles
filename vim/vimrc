@@ -222,9 +222,9 @@
 
 " Line Numbers {
     set number                      " in case relative line numbers are not supported
-    if exists('+relativenumber')
-        set relativenumber
-    endif
+    "if exists('+relativenumber')
+        "set relativenumber
+    "endif
 
     " Switch between relative and absolute line number.
     function! g:ToggleNuMode()
