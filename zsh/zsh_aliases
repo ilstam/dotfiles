@@ -9,6 +9,7 @@
     alias packer='packer --noedit --auronly'
 
     alias mygcc='gcc -O0 -Wall -W -pedantic -ansi -std=c99 -ggdb3'
+    alias myg++='g++ -O0 -Wall -W -pedantic -ggdb3'
     alias gitamend='git commit --amend --date="`date`"'
 
     filefind() { sudo find $1 -name "*$2*" -type f }
