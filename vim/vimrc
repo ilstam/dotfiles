@@ -96,8 +96,7 @@
     " }
 
     " Themes {
-        " The solarized colorscheme for gvim
-        Plugin 'altercation/vim-colors-solarized'
+        Plugin 'tomasr/molokai'
     " }
 
     call vundle#end()               " required
@@ -114,6 +113,8 @@
     if has('statusline')
         set laststatus=2            " always show a status line
     endif
+
+    let loaded_matchparen = 1       " don't do paren matching
 
     if has('cmdline_info')
         set ruler                   " show the ruler
@@ -133,11 +134,7 @@
     set ttimeoutlen=10
 
     set background=dark
-    if has('gui_running')
-        colorscheme solarized
-    else
-        colorscheme darkblue
-    endif
+    colorscheme molokai
 " }
 
 " Basic Stuff {
