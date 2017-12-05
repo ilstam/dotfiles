@@ -201,6 +201,9 @@ bindcode Mod1+50 exec --no-startup-id pkill -RTMIN+1 i3blocks
 # toggle redshift on/off
 bindsym $mod+Shift+m exec --no-startup-id pkill -USR1 redshift
 
+# no title bar for firefox please!
+for_window [class="Firefox"] border pixel 1
+
 # application launch shortcuts
 bindsym Print exec gnome-screenshot
 bindsym $mod+c exec --no-startup-id orage
