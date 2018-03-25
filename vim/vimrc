@@ -203,6 +203,17 @@
         execute 'set shiftwidth='.a:num
         execute 'set softtabstop='.a:num
     endfunc
+
+    " JOS is in C but I want to use real tabs instead of spaces
+    " I leave this here as an example of how to add exceptions for specific projects or files
+    function! SetupEnvironment()
+      let l:path = expand('%:p')
+      if l:path =~ '/home/ilias/jos'
+        setlocal noexpandtab  " tabs are tabs, not spaces
+      endif
+    endfunction
+
+    autocmd! BufReadPost,BufNewFile * call SetupEnvironment()
 " }
 
 " Whitespace {
