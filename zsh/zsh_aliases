@@ -39,6 +39,7 @@
             alias orphansrm='sudo pacman -Rns $(pacman -Qtdq)'
             alias cacheclean='sudo pacman -Sc'
             alias fromaur='pacman -Qm'
+            alias belongsto='pacman -Qo'
 
             alias vi='vim'
         fi
@@ -47,6 +48,7 @@
     # Fedora {
         if [ -f /var/log/dnf.log ]; then
             alias up='sudo dnf upgrade'
+            alias belongsto='rpm -qf'
 
             alias vi='vimx'
             alias vim='vimx'
