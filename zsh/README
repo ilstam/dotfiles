@@ -1,4 +1,0 @@
-My zsh installation uses the oh-my-zsh framework.
-
-It would also apply my own custom theme (with git and mercurial support),
-and ask you if you wish to make zsh your default shell.
