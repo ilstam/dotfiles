@@ -375,10 +375,9 @@
 
     " Compile {
         autocmd FileType c,cpp,java nnoremap <leader>m :w<cr> :Shell clear; make<cr>
-        autocmd FileType c nnoremap <leader>c8 :w<cr> :Shell gcc -O0 -Wall -W -pedantic -ansi -std=c89 -ggdb3 -o %:r %<cr>
-        autocmd FileType c nnoremap <leader>c9 :w<cr> :Shell gcc -O0 -Wall -W -pedantic -ansi -std=c99 -ggdb3 -o %:r %<cr>
+        autocmd FileType c nnoremap <leader>c8 :w<cr> :Shell gcc -O0 -Wall -W -pedantic -std=c89 -ggdb3 -o %:r %<cr>
+        autocmd FileType c nnoremap <leader>c9 :w<cr> :Shell gcc -O0 -Wall -W -pedantic -std=c11 -ggdb3 -o %:r %<cr>
         autocmd FileType cpp nnoremap <leader>c9 :w<cr> :Shell g++ -O0 -Wall -W -pedantic -ggdb3 -o %:r %<cr>
-        autocmd FileType cpp nnoremap <leader>c1 :w<cr> :Shell g++ -std=c++11 -o %:r %<cr>
         autocmd FileType java nnoremap <leader>c9 :w<cr> :Shell javac %<cr>
     " }
 
