@@ -77,7 +77,6 @@ set $workspace10 "10 "
 assign [class="Firefox"] $workspace1
 for_window [class="Spotify"] move to workspace $workspace7
 assign [title="Popcorn Time"] $workspace8
-assign [class="stremio"] $workspace8
 assign [class="Skype"] $workspace9
 assign [class="Hexchat"] $workspace10
 
@@ -93,18 +92,6 @@ bindsym $mod+8 workspace $workspace8
 bindsym $mod+9 workspace $workspace9
 bindsym $mod+0 workspace $workspace10
 
-# move focused container to workspace
-#bindsym $mod+Shift+1 move container to workspace $workspace1
-#bindsym $mod+Shift+2 move container to workspace $workspace2
-#bindsym $mod+Shift+3 move container to workspace $workspace3
-#bindsym $mod+Shift+4 move container to workspace $workspace4
-#bindsym $mod+Shift+5 move container to workspace $workspace5
-#bindsym $mod+Shift+6 move container to workspace $workspace6
-#bindsym $mod+Shift+7 move container to workspace $workspace7
-#bindsym $mod+Shift+8 move container to workspace $workspace8
-#bindsym $mod+Shift+9 move container to workspace $workspace9
-#bindsym $mod+Shift+0 move container to workspace $workspace10
-
 # move focused container to workspace and jump to that workspace
 bindsym $mod+Shift+1 move container to workspace $workspace1, workspace $workspace1
 bindsym $mod+Shift+2 move container to workspace $workspace2, workspace $workspace2
@@ -118,6 +105,7 @@ bindsym $mod+Shift+9 move container to workspace $workspace9, workspace $workspa
 bindsym $mod+Shift+0 move container to workspace $workspace10, workspace $workspace10
 
 # switch back and forth between the last two workspaces that you visited
+# this is soooooooooo awesome!
 bindsym $mod+z workspace back_and_forth
 
 # reload the configuration file
@@ -207,7 +195,7 @@ for_window [class="Firefox"] border pixel 1
 # application launch shortcuts
 bindsym Print exec gnome-screenshot
 bindsym $mod+c exec --no-startup-id orage
-bindsym $mod+Shift+b exec --no-startup-id chromium
+bindsym $mod+Shift+b exec --no-startup-id google-chrome
 
 # other
 bindsym $mod+Shift+f [class="Pcmanfm"] focus
