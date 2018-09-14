@@ -88,13 +88,6 @@
         Plugin 'honza/vim-snippets'
     " }
 
-    " Python {
-        if has("python")
-            " Python support (mainly used for syntax checking)
-            Plugin 'klen/python-mode'
-        endif
-    " }
-
     " Themes {
         Plugin 'tomasr/molokai'
     " }
@@ -466,35 +459,3 @@
         let g:undotree_setfocuswhentoggle=1
         nnoremap <leader>u :UndotreeToggle<cr>
     " }
-
-    if has("python")
-        " python-mode {
-            " Don't trim unused white spaces on save (I handle this anyway)
-            let g:pymode_trim_whitespaces = 0
-            " I prefer using my options
-            let g:pymode_options = 0
-            " I handle indentation too
-            let g:pymode_indent = 0
-            " No folding please
-            let g:pymode_folding = 0
-            " No motions
-            let g:pymode_motion = 0
-            " No virtualenv support
-            let g:pymode_virtualenv = 0
-            " I handle running python code as well
-            let g:pymode_run = 0
-            " No rope support
-            let g:pymode_rope = 0
-            " No pymode syntax
-            let g:pymode_syntax = 0
-
-            " Choose syntax checkers
-            let g:pymode_lint_checkers = ['pyflakes', 'mccabe']
-
-            " Do not check code on every save
-            let g:pymode_lint_on_write = 0
-
-            " Check code manually
-            cnoremap check PymodeLint
-        " }
-    endif
