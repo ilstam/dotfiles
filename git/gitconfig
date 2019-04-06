@@ -24,3 +24,9 @@
 
 [credential]
 	helper = cache
+
+[sendemail]
+	smtpEncryption = tls
+	smtpServer = smtp.gmail.com
+	smtpUser = stamatis.iliass@gmail.com
+	smtpServerPort = 587
