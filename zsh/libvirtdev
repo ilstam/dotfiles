@@ -1,7 +1,7 @@
 # few aliases to make working with libvirt easier
 
 alias virtgit='git clone https://libvirt.org/git/libvirt.git'
-alias virtautogen='CC=/usr/lib64/ccache/bin/gcc ./autogen.sh --system --with-dnsmasq-path=/usr/bin/dnsmasq'
+alias virtautogen='CFLAGS="-g -O0" LTCFLAGS="-g -O0" CC=/usr/lib64/ccache/bin/gcc ./autogen.sh --system --with-dnsmasq-path=/usr/bin/dnsmasq'
 
 alias virshq='virsh -c qemu:///system'
 alias virsht='virsh -c test:///default'
@@ -9,3 +9,5 @@ alias virsht='virsh -c test:///default'
 alias virttags='ctags --exclude="*.in" --exclude="*.html" --exclude="*.xsl" -R .'
 alias tst='cd ~/libvirt/src/test && vim test_driver.c'
 alias qem='cd ~/libvirt/src/qemu && vim qemu_domain.c'
+
+alias grepvirt='grep -Irni --color=auto --exclude-dir={po,.bzr,CVS,.git,.hg,.svn}'
