@@ -5,6 +5,7 @@
     alias sudo='sudo '
 
     # Change the default behavior of the following commands.
+    alias make='make -j$[$(nproc)+1]'
     alias ls='ls --group-directories-first --color=auto'
     alias grep='grep -I --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn}'
 
