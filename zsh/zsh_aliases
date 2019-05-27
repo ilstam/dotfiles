@@ -8,6 +8,7 @@
     alias make='make -j$[$(nproc)+1]'
     alias ls='ls --group-directories-first --color=auto'
     alias grep='grep -I --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn}'
+    alias objdump='objdump -M intel'
 
     mygcc() {
         filename_noext=$(echo ${@: -1} | cut -d'.' -f1)
