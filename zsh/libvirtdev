@@ -8,6 +8,7 @@ alias virsht='virsh -c test:///default'
 
 alias virttags='ctags --exclude="*.in" --exclude="*.html" --exclude="*.xsl" -R .'
 alias tst='cd ~/libvirt/src/test && vim test_driver.c'
-alias qem='cd ~/libvirt/src/qemu && vim qemu_domain.c'
+alias qem='cd ~/libvirt/src/qemu && vim qemu_driver.c'
+alias qem2='cd ~/libvirt/src/qemu && vim qemu_domain.c'
 
 alias grepvirt='grep -Irni --color=auto --exclude-dir={po,.bzr,CVS,.git,.hg,.svn}'
