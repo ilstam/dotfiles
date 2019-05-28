@@ -1,32 +1,31 @@
 [user]
-	email = stamatis.iliass@gmail.com
-	name = Ilias Stamatis
+    email = stamatis.iliass@gmail.com
+    name = Ilias Stamatis
 
 [core]
-	editor = vim
+    editor = vim
 
 [push]
-	default = simple
+    default = simple
 
 [merge]
-	tool = vimdiff
+    tool = vimdiff
 
 [alias]
-	unstage = reset HEAD
-	uns = reset HEAD
-	co = checkout
+    amend = !sh -c 'git commit --amend --date=\"$(date)\"'
 
-	br = branch
-	ci = commit
-	st = status
+    co = checkout
+    st = status
+    br = branch
 
-	last = log -1 HEAD
+    unstage = reset HEAD
+    last = log -1 HEAD
 
 [credential]
-	helper = cache
+    helper = cache
 
 [sendemail]
-	smtpEncryption = tls
-	smtpServer = smtp.gmail.com
-	smtpUser = stamatis.iliass@gmail.com
-	smtpServerPort = 587
+    smtpEncryption = tls
+    smtpServer = smtp.gmail.com
+    smtpUser = stamatis.iliass@gmail.com
+    smtpServerPort = 587

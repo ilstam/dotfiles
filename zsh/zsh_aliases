@@ -21,8 +21,6 @@
         g++ -O0 -Wall -W -pedantic -ggdb3 -o $filename_noext $@
     }
 
-    alias gitamend='git commit --amend --date="`date`"'
-
     filefind() { sudo find $1 -name "*$2*" -type f }
 # }
 
