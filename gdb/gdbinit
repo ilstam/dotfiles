@@ -1,0 +1,8 @@
+set disassembly-flavor intel
+set disable-randomization off
+
+set prompt \033[31mgdb$ \033[0m
+
+# These make gdb never pause in its output
+set height 0
+set width 0
