@@ -71,12 +71,15 @@
 # }
 
 # Systemd {
-    # End in the letter 'd' to avoid conflicts with zsh builtins such as enable.
     alias listd='find /etc/systemd/system -mindepth 1 -type d | xargs ls -l --color'
+    alias listenabled='systemctl list-unit-files --state=enabled'
+    alias listdisabled='systemctl list-unit-files --state=disabled'
+    alias listmasked='systemctl list-unit-files --state=masked'
 
     # Append .service to service name if needed.
     filterservicename() { if echo $1 | grep ".service" 1>/dev/null; then echo $1; else echo $1.service; fi }
 
+    # End in the letter 'd' to avoid conflicts with zsh builtins such as enable.
     statusd() { sudo systemctl status $(filterservicename $1); }
     startd() { sudo systemctl start $(filterservicename $1); }
     stopd() { sudo systemctl stop $(filterservicename $1); }
@@ -85,6 +88,4 @@
     disabled() { sudo systemctl disable $(filterservicename $1); }
     maskd() { sudo systemctl mask $(filterservicename $1); }
     unmaskd() { sudo systemctl unmask $(filterservicename $1); }
-
-    listmasked() { systemctl list-unit-files | awk '$2 == "masked" {print $1}' }
 # }
