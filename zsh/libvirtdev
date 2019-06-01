@@ -1,7 +1,7 @@
 # few aliases to make working with libvirt easier
 
 alias virtgit='git clone https://libvirt.org/git/libvirt.git'
-alias virtautogen='CFLAGS="-g -O0" LTCFLAGS="-g -O0" CC=/usr/lib64/ccache/bin/gcc ./autogen.sh --system --with-dnsmasq-path=/usr/bin/dnsmasq'
+alias virtautogen='CFLAGS="-g -O0" LTCFLAGS="-g -O0" CC=/usr/lib64/ccache/bin/gcc ./autogen.sh --system --with-dnsmasq-path=/usr/bin/dnsmasq --with-netcf=no'
 
 alias virshq='virsh -c qemu:///system'
 alias virsht='virsh -c test:///default'
