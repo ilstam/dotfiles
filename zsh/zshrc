@@ -4,17 +4,10 @@ export ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="mytheme" # must be in $ZSH/themes
 source $ZSH/oh-my-zsh.sh
 
-# use vi key bindings
-bindkey -v
-
-# This feature is annoying sometimes. It corrects you, when you are trying to create new files, for example.
-unsetopt correctall
-
 # print an empty line before the prompt is rendered
 precmd() { echo }
 
-### Append folders to path
-# custom scripts
-path+=("$DOTFILES/scripts/")
+# Append folders to path
+#path+=("$DOTFILES/scripts/")
 
 source $DOTFILES/zsh/libvirtdev
