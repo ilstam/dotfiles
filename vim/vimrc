@@ -44,10 +44,6 @@
     " }
 
     " General {
-        " File explorer
-        " Usage: Open explorer and find current file with <leader>e (custom map)
-        Plugin 'scrooloose/nerdtree'
-
         " Autoclose brackets, parens, quotes, etc.
         Plugin 'Townk/vim-autoclose'
 
@@ -437,21 +433,9 @@
         imap <expr> ** pumvisible() ? '<esc><Plug>snipMateNextOrTrigger' : '<Plug>snipMateNextOrTrigger'
     " }
 
-    " Ctags {
-        set tags=./tags;/,~/.vimtags
-    " }
-
-    " NerdTree {
-        nnoremap <leader>e :NERDTreeFind<cr>
-        nnoremap <C-e> :NERDTreeToggle<cr>
-
-        let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
-        " Close the tree window after opening a file.
-        let NERDTreeQuitOnOpen=1
-    " }
-
     " TagBar {
-         nnoremap <silent> <leader>tt :TagbarToggle<cr>
+        set tags=./tags;/,~/.vimtags
+        nnoremap <silent> <leader>tt :TagbarToggle<cr>
     " }
 
     " undotree {

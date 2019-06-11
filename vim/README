@@ -19,9 +19,7 @@ Name                   Description
 YouCompleteMe          code-completion
 vim-snipmate           code snippets completion
 vim-easymotion         vim motions
-tagbar                 navigation via file tags
-nerdtree               file explorer
+tagbar                 tags display
 undotree               undo history graph
 nerdcommenter          code comments wrangle
 vim-autoclose          autoclose brackets, parens, quotes, etc
-python-mode            python support (syntax checking etc.)
