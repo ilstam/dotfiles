@@ -23,6 +23,7 @@
 "       -> Compile and Run Code
 "       -> Languages
 "       -> Shell Command
+"       -> Misc
 "       -> Plugins Configuration
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -421,6 +422,11 @@
     endfunction
 
     command! -complete=shellcmd -nargs=* -bang Shell call s:ExecuteInShell(<q-args>, '<bang>')
+" }
+
+" Misc {
+    " quickly sign patches
+    map <leader>ss iSigned-off-by: Ilias Stamatis <stamatis.iliass@gmail.com><esc>
 " }
 
 " Plugins Configuration {
