@@ -162,6 +162,11 @@
 
     " For when you forget to sudo.. Really Write the file.
     cnoremap w!! w !sudo tee % >/dev/null
+
+    " Use the blowfish2 algo when encrypting files.
+    if v:version >= 704
+        set cm=blowfish2
+    endif
 " }
 
 " Clipboard {
