@@ -58,9 +58,9 @@
     " }
 
     " General Programming {
-        if v:version >= 704
+        if v:version >= 703 && has('lua')
             " Code completion
-            Plugin 'Valloric/YouCompleteMe'
+            Plugin 'Shougo/neocomplete.vim'
         endif
 
         " Code comments wrangle
@@ -430,9 +430,16 @@
 " }
 
 " Plugins Configuration {
-    " YouCompleteMe {
-        nnoremap <leader>jc :YcmCompleter GoToDeclaration<CR>
-        nnoremap <leader>jf :YcmCompleter GoToDefinition<CR>
+    " neocomplete {
+        " Use neocomplete.
+        let g:neocomplete#enable_at_startup = 1
+        " Use smartcase.
+        let g:neocomplete#enable_smart_case = 1
+        " Set minimum syntax keyword length.
+        let g:neocomplete#sources#syntax#min_keyword_length = 3
+
+        " <TAB>: completion.
+        inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
     " }
 
     " snipmate {
