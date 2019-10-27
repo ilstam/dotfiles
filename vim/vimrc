@@ -170,12 +170,17 @@
 " }
 
 " Clipboard {
-    nnoremap <leader>p :set paste<cr>"+p<cr>:set nopaste<cr>
-    nnoremap <leader>P :set paste<cr>"+P<cr>:set nopaste<cr>
+    "nnoremap <leader>p :set paste<cr>"+p<cr>:set nopaste<cr>
+    "nnoremap <leader>P :set paste<cr>"+P<cr>:set nopaste<cr>
+    "nnoremap <leader>y "+y
+    "vnoremap <leader>y "+ygv
+
+    nnoremap <leader>p "+p
+    nnoremap <leader>P "+P
     nnoremap <leader>y "+y
     vnoremap <leader>y "+ygv
 
-    " Yank from the cursor to the end of the line, to be consistent with C and D.
+    " Yank from the cursor to the end of the line
     nnoremap Y y$
 " }
 
