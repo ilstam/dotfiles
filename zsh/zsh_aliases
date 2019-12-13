@@ -9,6 +9,7 @@
     alias grep='grep -I --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn}'
     alias objdump='objdump -M intel'
     alias gdb='gdb -q'
+    alias ctags='ctags --exclude="*.in" --exclude="*.html" --exclude="*.xsl"'
 
     # forget cached gpg passphrases
     alias forgetgpg='echo RELOADAGENT | gpg-connect-agent'
