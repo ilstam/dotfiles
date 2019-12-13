@@ -1,11 +1,11 @@
-# path to your oh-my-zsh installation
+# path to the oh-my-zsh installation
 export ZSH=$HOME/.oh-my-zsh
-
-ZSH_THEME="mytheme" # must be in $ZSH/themes
-source $ZSH/oh-my-zsh.sh
 
 # automatically update oh-my-zsh without prompting
 DISABLE_UPDATE_PROMPT="true"
+
+ZSH_THEME="mytheme" # must be in $ZSH/themes
+source $ZSH/oh-my-zsh.sh
 
 # print an empty line before the prompt is rendered
 precmd() { echo }
