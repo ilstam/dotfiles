@@ -105,7 +105,6 @@ bindsym $mod+Shift+9 move container to workspace $workspace9, workspace $workspa
 bindsym $mod+Shift+0 move container to workspace $workspace10, workspace $workspace10
 
 # switch back and forth between the last two workspaces that you visited
-# this is soooooooooo awesome!
 bindsym $mod+z workspace back_and_forth
 
 # reload the configuration file
@@ -176,7 +175,6 @@ bindsym XF86MonBrightnessUp exec xbacklight -inc 10 && pkill -RTMIN+1 i3blocks
 bindsym XF86MonBrightnessDown exec xbacklight -dec 10 && pkill -RTMIN+1 i3blocks
 
 # disable screensaver
-exec xcreensaver -no-splash
 exec xset -dpms s off
 
 # startup programs
@@ -184,7 +182,7 @@ exec firefox
 exec --no-startup-id i3-msg 'workspace $workspace5, exec pcmanfm, workspace $workspace1'
 exec --no-startup-id nm-applet
 exec --no-startup-id compton -f
-exec --no-startup-id redshift -l 40.6:22.9 -t 6500:3500
+exec --no-startup-id redshift -l 51.0:13.7 -t 6500:3500
 exec_always feh --bg-scale $HOME/.dotfiles/i3/wallpaper.jpg # set custom walppaper
 
 # change language layout
@@ -200,7 +198,6 @@ for_window [class="Firefox"] border pixel 1
 # application launch shortcuts
 bindsym Print exec gnome-screenshot
 bindsym $mod+c exec --no-startup-id orage
-bindsym $mod+Shift+b exec --no-startup-id google-chrome
 
 # other
 bindsym $mod+Shift+f [class="Pcmanfm"] focus
