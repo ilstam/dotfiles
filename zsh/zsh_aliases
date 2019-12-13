@@ -13,31 +13,18 @@
     # forget cached gpg passphrases
     alias forgetgpg='echo RELOADAGENT | gpg-connect-agent'
 
+    alias d='cd /media/data/'
+    alias dot='cd $DOTFILES'
+
     mygcc() {
         filename_noext=$(echo ${@: -1} | cut -d'.' -f1)
-        gcc -O0 -Wall -W -pedantic -std=c11 -ggdb3 -o $filename_noext $@
+        gcc -O0 -Wall -W -pedantic -ggdb3 -o $filename_noext $@
     }
 
     myg++() {
         filename_noext=$(echo ${@: -1} | cut -d'.' -f1)
         g++ -O0 -Wall -W -pedantic -ggdb3 -o $filename_noext $@
     }
-
-    filefind() { sudo find $1 -name "*$2*" -type f }
-# }
-
-# Applications (quick launch) {
-    alias p2='python2'
-    alias p3='python3'
-# }
-
-# Personal {
-    alias d='cd /media/data/'
-    alias dot='cd $DOTFILES'
-
-    # Easily clone my git repos.
-    clone() { git clone git@github.com:ilstam/$1.git }
-    cloneaur() { git clone ssh://aur@aur4.archlinux.org/$1.git }
 # }
 
 # Distro Specific {

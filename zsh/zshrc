@@ -9,5 +9,3 @@ DISABLE_UPDATE_PROMPT="true"
 
 # print an empty line before the prompt is rendered
 precmd() { echo }
-
-source $DOTFILES/zsh/libvirtdev
