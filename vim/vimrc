@@ -170,11 +170,6 @@
 " }
 
 " Clipboard {
-    "nnoremap <leader>p :set paste<cr>"+p<cr>:set nopaste<cr>
-    "nnoremap <leader>P :set paste<cr>"+P<cr>:set nopaste<cr>
-    "nnoremap <leader>y "+y
-    "vnoremap <leader>y "+ygv
-
     nnoremap <leader>p "+p
     nnoremap <leader>P "+P
     nnoremap <leader>y "+y
@@ -229,10 +224,7 @@
 " }
 
 " Line Numbers {
-    set number                      " in case relative line numbers are not supported
-    "if exists('+relativenumber')
-        "set relativenumber
-    "endif
+    set number
 
     " Switch between relative and absolute line number.
     function! g:ToggleNuMode()
