@@ -20,6 +20,5 @@ neocomplete            code-completion
 vim-snipmate           code snippets completion
 vim-easymotion         vim motions
 tagbar                 tags display
-undotree               undo history graph
 nerdcommenter          code comments wrangle
 vim-autoclose          autoclose brackets, parens, quotes, etc

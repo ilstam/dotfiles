@@ -48,10 +48,6 @@
         " Autoclose brackets, parens, quotes, etc.
         Plugin 'Townk/vim-autoclose'
 
-        " Undo history graph
-        " Usage: Open tree with <leader>u (custom map)
-        Plugin 'mbbill/undotree'
-
         " Vim motions. This plugin is really awesome!
         " Usage: for example type <leader><leader>w and navigate quickly
         Plugin 'easymotion/vim-easymotion'
