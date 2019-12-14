@@ -166,9 +166,9 @@ mode "$mode_system" {
 bindsym Pause mode "$mode_system"
 
 # audio controls
-bindsym XF86AudioRaiseVolume exec amixer set Master 5%+ -q && pkill -RTMIN+1 i3blocks
-bindsym XF86AudioLowerVolume exec amixer set Master 5%- -q && pkill -RTMIN+1 i3blocks
-bindsym XF86AudioMute exec amixer set Master toggle -q && pkill -RTMIN+1 i3blocks
+bindsym XF86AudioRaiseVolume exec amixer set Master 5%+ -q && pkill -RTMIN+2 i3blocks
+bindsym XF86AudioLowerVolume exec amixer set Master 5%- -q && pkill -RTMIN+2 i3blocks
+bindsym XF86AudioMute exec amixer set Master toggle -q && pkill -RTMIN+2 i3blocks
 
 # screen brightness controls
 bindsym XF86MonBrightnessUp exec xbacklight -inc 10 && pkill -RTMIN+1 i3blocks
@@ -188,7 +188,7 @@ exec_always feh --bg-scale $HOME/.dotfiles/i3/wallpaper.jpg # set custom walppap
 # change language layout
 exec --no-startup-id "setxkbmap -layout us,gr -option grp:alt_shift_toggle"
 # send a signal to i3blocks after pressing alt+shift to update the bar
-bindcode Mod1+50 exec --no-startup-id pkill -RTMIN+1 i3blocks
+bindcode Mod1+50 exec --no-startup-id pkill -RTMIN+3 i3blocks
 # toggle redshift on/off
 bindsym $mod+Shift+m exec --no-startup-id pkill -USR1 redshift
 
