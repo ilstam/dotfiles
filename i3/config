@@ -186,7 +186,7 @@ exec --no-startup-id redshift -l 51.0:13.7 -t 6500:3500
 exec_always feh --bg-scale $HOME/.dotfiles/i3/wallpaper.jpg # set custom walppaper
 
 # change language layout
-exec --no-startup-id "setxkbmap -layout us,gr -option grp:alt_shift_toggle"
+exec_always --no-startup-id "setxkbmap -layout us,gr -option grp:alt_shift_toggle"
 # send a signal to i3blocks after pressing alt+shift to update the bar
 bindcode Mod1+50 exec --no-startup-id pkill -RTMIN+3 i3blocks
 # toggle redshift on/off
