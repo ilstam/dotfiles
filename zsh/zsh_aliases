@@ -11,11 +11,15 @@
     alias gdb='gdb -q'
     alias ctags='ctags --exclude="*.in" --exclude="*.html" --exclude="*.xsl"'
 
-    # forget cached gpg passphrases
+    # Forget cached gpg passphrases
     alias forgetgpg='echo RELOADAGENT | gpg-connect-agent'
 
     alias d='cd /media/data/'
     alias dot='cd $DOTFILES'
+
+    # Quick launch
+    alias p2='python2'
+    alias p3='python3'
 
     mygcc() {
         filename_noext=$(echo ${@: -1} | cut -d'.' -f1)
