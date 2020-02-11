@@ -9,3 +9,8 @@ source $ZSH/oh-my-zsh.sh
 
 # print an empty line before the prompt is rendered
 precmd() { echo }
+
+# personal L4-related stuff
+if [ -f ~/.l4stuff/l4_sh ]; then
+    source ~/.l4stuff/l4_sh
+fi
