@@ -1,0 +1,6 @@
+# x86 specific configuration
+
+source ~/.gdbinit
+
+set disassembly-flavor intel
+set disable-randomization on
