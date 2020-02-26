@@ -33,6 +33,18 @@
         filename_noext=$(echo ${@: -1} | cut -d'.' -f1)
         g++ -O0 -Wall -W -pedantic -ggdb3 -o $filename_noext $@
     }
+
+    cscope_gen() {
+        find . -name '*.py' \
+            -o -name '*.java' \
+            -o -name '*.[ch]' \
+            -o -name '*.cpp' \
+            -o -name '*.cc' \
+            -o -name '*.hpp'  \
+            > cscope.files
+
+        cscope -b -q
+    }
 # }
 
 # Distro Specific {
