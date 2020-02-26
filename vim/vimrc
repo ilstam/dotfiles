@@ -296,6 +296,25 @@
 
         " Make CTRL-] search through cscope first, then ctags.
         set cscopetag
+
+        " Hit 'CTRL-\' followed by one of the cscope search types below.
+        " The result of the cscope search will be displayed in the current window.
+        nmap <C-\>g :cs find g <C-R>=expand("<cword>")<CR><CR>
+        nmap <C-\>s :cs find s <C-R>=expand("<cword>")<CR><CR>
+        nmap <C-\>c :cs find c <C-R>=expand("<cword>")<CR><CR>
+        nmap <C-\>a :cs find a <C-R>=expand("<cword>")<CR><CR>
+        nmap <C-\>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
+
+        " Using 'CTRL-spacebar' then a search type makes the vim window split horizontally.
+        " The search result will be displayed in the new window.
+        nmap <C-@>g :vert scs find g <C-R>=expand("<cword>")<CR><CR>
+        nmap <C-@>s :vert scs find s <C-R>=expand("<cword>")<CR><CR>
+        nmap <C-@>c :vert scs find c <C-R>=expand("<cword>")<CR><CR>
+        nmap <C-@>a :vert scs find a <C-R>=expand("<cfile>")<CR><CR>
+        nmap <C-@>f :vert scs find f <C-R>=expand("<cfile>")<CR><CR>
+
+        " The following is the most commonly used, so let's have an extra even easier mapping.
+        nmap <C-@><C-@> :vert scs find g <C-R>=expand("<cword>")<CR><CR>
     endif
 " }
 
