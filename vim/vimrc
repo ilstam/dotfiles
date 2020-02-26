@@ -2,10 +2,6 @@
 " Maintainer:
 "       Ilias Stamatis <stamatis.iliass@gmail.com>
 "
-" Initially based on:
-"       https://github.com/spf13/spf13-vim
-"       https://bitbucket.org/pmav99/dotfiles/src/fdd48164c029/vim/vimrc
-"
 " Sections:
 "       -> Setup Environment
 "       -> Plugins
@@ -488,9 +484,4 @@
         set tags=./tags;/,~/.vimtags
         nnoremap <silent> <leader>tt :TagbarToggle<cr>
     " }
-
-    " undotree {
-        " If undotree is opened, it is likely one wants to interact with it.
-        let g:undotree_setfocuswhentoggle=1
-        nnoremap <leader>u :UndotreeToggle<cr>
-    " }
+" }
