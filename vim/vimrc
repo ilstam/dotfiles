@@ -163,6 +163,11 @@
     if v:version >= 704
         set cm=blowfish2
     endif
+
+    if has('cscope')
+        " Make CTRL-] search through cscope first, then ctags.
+        set cscopetag
+    endif
 " }
 
 " Clipboard {
