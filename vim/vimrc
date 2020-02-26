@@ -17,6 +17,7 @@
 "       -> Line Number
 "       -> Scrolling and Folding
 "       -> Wrap, Vertical Line
+"       -> Code Navigation
 "       -> Buffers, Windows, Tabs
 "       -> Highlight and Searching
 "       -> Backup and Swap
@@ -163,11 +164,6 @@
     if v:version >= 704
         set cm=blowfish2
     endif
-
-    if has('cscope')
-        " Make CTRL-] search through cscope first, then ctags.
-        set cscopetag
-    endif
 " }
 
 " Clipboard {
@@ -283,6 +279,24 @@
     endfunc
 
     nnoremap <leader>l :call g:ToggleColorColumn()<cr>
+" }
+
+" Code Navigation {
+    if has('cscope')
+        " Look for a 'cscope.out' file starting from the current directory, going up to the root directory.
+        let s:dirs = split(getcwd(), "/")
+        while s:dirs != []
+                let s:path = "/" . join(s:dirs, "/")
+                if (filereadable(s:path . "/cscope.out"))
+                        execute "cs add " . s:path . "/cscope.out " . s:path . " -v"
+                        break
+                endif
+                let s:dirs = s:dirs[:-2]
+        endwhile
+
+        " Make CTRL-] search through cscope first, then ctags.
+        set cscopetag
+    endif
 " }
 
 " Buffers, Windows, Tabs {
