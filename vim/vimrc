@@ -65,19 +65,6 @@
             Plugin 'majutsushi/tagbar'
         endif
 
-    " Snippets {
-        " Snippets completion (doesn't provide snippets itself)
-        " Usage: Autocomplete snippets using ** (custom map)
-        Plugin 'garbas/vim-snipmate'
-
-        " Dependencies of vim-snipmate
-        Plugin 'MarcWeber/vim-addon-mw-utils'
-        Plugin 'tomtom/tlib_vim'
-
-        " Various snippets collection
-        Plugin 'honza/vim-snippets'
-    " }
-
     " Themes {
         Plugin 'tomasr/molokai'
     " }
@@ -474,10 +461,6 @@
 
         " <TAB>: completion.
         inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-    " }
-
-    " snipmate {
-        imap <expr> ** pumvisible() ? '<esc><Plug>snipMateNextOrTrigger' : '<Plug>snipMateNextOrTrigger'
     " }
 
     " TagBar {
