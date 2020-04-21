@@ -36,38 +36,32 @@
 " }
 
 " Plugins {
-    " Dependencies {
-        " The plugin manager
-        Plugin 'gmarik/Vundle.vim'
-    " }
+    " Let Vundle manage Vundle, required
+    Plugin 'VundleVim/Vundle.vim'
 
-    " General {
-        " Autoclose brackets, parens, quotes, etc.
-        Plugin 'Townk/vim-autoclose'
+    " Autoclose brackets, parens, quotes, etc.
+    Plugin 'Townk/vim-autoclose'
 
-        " Vim motions. This plugin is really awesome!
-        " Usage: for example type <leader><leader>w and navigate quickly
-        Plugin 'easymotion/vim-easymotion'
-    " }
+    " Vim motions. This plugin is really awesome!
+    " Usage: for example type <leader><leader>w and navigate quickly
+    Plugin 'easymotion/vim-easymotion'
 
-    " General Programming {
-        if v:version >= 703 && has('lua')
-            " Code completion
-            Plugin 'Shougo/neocomplete.vim'
-        endif
+    " Toggle code comments on/off
+    Plugin 'preservim/nerdcommenter'
 
-        " Code comments wrangle
-        Plugin 'scrooloose/nerdcommenter'
+    if v:version >= 703 && has('lua')
+        " Code completion
+        Plugin 'Shougo/neocomplete.vim'
+    endif
 
-        if executable('ctags')
-            " Navigation via file tags
-            " Usage: Open the side bar with <leader>tt (custom map)
-            Plugin 'majutsushi/tagbar'
-        endif
+    if executable('ctags')
+        " Navigation via file tags
+        " Usage: Open the side bar with <leader>tt (custom map)
+        Plugin 'majutsushi/tagbar'
+    endif
 
-    " Themes {
-        Plugin 'tomasr/molokai'
-    " }
+    " The molokai theme
+    Plugin 'tomasr/molokai'
 
     call vundle#end()               " required
     filetype plugin indent on       " required, automatically detect file types
