@@ -233,10 +233,8 @@
     set whichwrap=b,s,h,l,<,>,[,]   " backspace and cursor keys wrap to
 
     " Wrapped lines goes down/up to next row, rather than next line in file.
-    nnoremap j gj
-    nnoremap k gk
-    vnoremap j gj
-    vnoremap k gk
+    noremap j gj
+    noremap k gk
 
     if exists('+colorcolumn')
         " Automatically show the vertical line for files containing source code.
