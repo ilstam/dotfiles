@@ -3,7 +3,6 @@
 "       Ilias Stamatis <stamatis.iliass@gmail.com>
 "
 " Sections:
-"       -> Setup Environment
 "       -> Plugins
 "       -> General
 "       -> Basic Stuff
@@ -27,17 +26,13 @@
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Setup Environment {
-    " The following two lines are required by Vundle.
+" Plugins {
+    " The following 4 lines are required by the Vundle plugin manager
     set nocompatible                " be iMproved (must be first line)
-    filetype off                    " required!
-
-    " Set the runtime path to include Vundle and initialize.
+    filetype off
     set rtp+=~/.vim/bundle/Vundle.vim
     call vundle#begin()
-" }
 
-" Plugins {
     " Let Vundle manage Vundle, required
     Plugin 'VundleVim/Vundle.vim'
 
