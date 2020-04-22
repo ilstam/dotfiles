@@ -39,9 +39,6 @@
     " Let Vundle manage Vundle, required
     Plugin 'VundleVim/Vundle.vim'
 
-    " Autoclose brackets, parens, quotes, etc.
-    Plugin 'Townk/vim-autoclose'
-
     " Vim motions. This plugin is really awesome!
     " Usage: for example type <leader><leader>w and navigate quickly
     Plugin 'easymotion/vim-easymotion'
