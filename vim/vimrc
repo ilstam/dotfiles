@@ -200,8 +200,11 @@
 " }
 
 " Whitespace {
-    " Remove trailing whitespaces when saving.
+    " Remove trailing whitespace when saving.
     autocmd BufWritePre * :%s/\s\+$//e
+
+    " But don't remove trailing whitespace when explicitly requested.
+    nnoremap <leader>no :autocmd! BufWritePre<cr>
 
     " Clear a line quickly.
     nnoremap <leader><space> ^D
