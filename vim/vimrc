@@ -9,6 +9,7 @@
 "       -> Basic Stuff
 "       -> Clipboard
 "       -> Indentation, Tabs, Spaces
+"       -> Auto-closing
 "       -> Whitespace
 "       -> Line Number
 "       -> Scrolling and Folding
@@ -180,6 +181,22 @@
     "endfunction
 
     "autocmd! BufReadPost,BufNewFile * call SetupEnvironment()
+" }
+
+" Auto-closing {
+    " I only care about auto-closing brackets of code blocks
+    function! s:CloseBracket()
+        if getline('.') =~# '^\s*\(struct\|class\|enum\) '
+            return "{\<CR>};\<Esc>O"
+        else
+            return "{\<CR>}\<Esc>O"
+        endif
+    endfunction
+
+    inoremap <expr> {<CR> <SID>CloseBracket()
+
+    " This is also useful for languages like C
+    inoremap (; ();<left><left>
 " }
 
 " Whitespace {
