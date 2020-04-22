@@ -13,7 +13,7 @@
 "       -> Whitespace
 "       -> Line Number
 "       -> Scrolling and Folding
-"       -> Wrap, Vertical Line
+"       -> Vertical Line
 "       -> Code Navigation
 "       -> Buffers, Windows, Tabs
 "       -> Highlight and Searching
@@ -111,7 +111,14 @@
     " Quick save.
     nnoremap <leader>w :w!<cr>
 
-    nnoremap 0 ^
+    " Wrapped lines goes down/up to next row, rather than next line in file.
+    noremap j gj
+    noremap k gk
+    noremap $ g$
+
+    " Revert the functionality of ^ and 0
+    noremap 0 g^
+    noremap ^ g0
 
     " <Esc> is inconvinient as it requires stretching to the top of the keyboard.
     inoremap jk <Esc>
@@ -249,20 +256,12 @@
     nnoremap <leader>f9 :set foldlevel=9<cr>
 " }
 
-" Wrap, Vertical Line {
-    set wrap                        " wrap long lines
-    set whichwrap=b,s,h,l,<,>,[,]   " backspace and cursor keys wrap to
-
-    " Wrapped lines goes down/up to next row, rather than next line in file.
-    noremap j gj
-    noremap k gk
-
+" Vertical Line {
     if exists('+colorcolumn')
         " Automatically show the vertical line for files containing source code.
         autocmd FileType c,cpp,java,python,javascript set colorcolumn=80
     endif
 
-    " Show/hide vertical line.
     function! g:ToggleColorColumn()
         if(&colorcolumn == 0)
             set colorcolumn=80
