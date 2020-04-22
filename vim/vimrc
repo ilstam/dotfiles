@@ -19,6 +19,7 @@
 "       -> Highlight and Searching
 "       -> Backup and Swap
 "       -> Compile and Run Code
+"       -> Code snippets
 "       -> Languages
 "       -> Shell Command
 "       -> Misc
@@ -405,6 +406,13 @@
     nnoremap <leader>x :!chmod +x %<cr> :e %<cr>
 " }
 
+" Code snippets {
+    inoremap pr** printf("\n");<esc>4hi
+    inoremap pri** printf("value: %d\n", );<left><left>
+
+    inoremap main** #include <stdio.h><cr>#include <stdlib.h><cr><cr><cr>int main(void)<cr>{<cr>puts("hello");<cr>return 0;<cr>}<esc>kk
+" }
+
 " Languages {
     " Greek {
         set keymap=greek_utf-8
@@ -456,7 +464,7 @@
 
 " Misc {
     " quickly sign patches
-    map <leader>ss iSigned-off-by: Ilias Stamatis <stamatis.iliass@gmail.com><esc>
+    noremap <leader>ss iSigned-off-by: Ilias Stamatis <stamatis.iliass@gmail.com><esc>
 " }
 
 " Plugins Configuration {
