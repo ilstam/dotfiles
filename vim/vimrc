@@ -6,21 +6,19 @@
 "       -> Plugins
 "       -> General
 "       -> Clipboard
-"       -> Indentation, Tabs, Spaces
+"       -> Indentation
 "       -> Auto-closing
 "       -> Whitespace
 "       -> Line Number
-"       -> Scrolling and Folding
 "       -> Vertical Line
 "       -> Code Navigation
-"       -> Buffers, Windows, Tabs
+"       -> Windows
 "       -> Highlight and Searching
 "       -> Backup and Swap
 "       -> Compile and Run Code
 "       -> Code snippets
 "       -> Languages
 "       -> Shell Command
-"       -> Misc
 "       -> Plugins Configuration
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -74,11 +72,14 @@
     endif
 
     set backspace=2                 " backspace as it needs to be
+    set scrolloff=3                 " minimum lines to keep above and below cursor
 
     " Time out on key codes but not mappings.
     set notimeout
     set ttimeout
     set ttimeoutlen=10
+
+    set hidden                      " allow buffer switching without saving
 
     syntax on                       " enable syntax highlighting
     colorscheme molokai
@@ -97,7 +98,6 @@
     " Wrapped lines goes down/up to next row, rather than next line in file.
     noremap j gj
     noremap k gk
-    noremap $ g$
 
     " Revert the functionality of ^ and 0
     noremap 0 g^
@@ -117,16 +117,17 @@
 " }
 
 " Clipboard {
-    nnoremap <leader>p "+p
-    nnoremap <leader>P "+P
-    nnoremap <leader>y "+y
-    vnoremap <leader>y "+ygv
+    if has('clipboard')
+        nnoremap <leader>p "+p
+        nnoremap <leader>P "+P
+        noremap  <leader>y "+y
 
-    " Yank from the cursor to the end of the line
-    nnoremap Y y$
+        " Yank from the cursor to the end of the line
+        nnoremap Y "+y$
+    endif
 " }
 
-" Indentation, Tabs, Spaces {
+" Indentation {
     set tabstop=4                   " show tabs as 8 spaces
     set shiftwidth=4                " use indents of 8 spaces
     set shiftround                  " always round to multiple of 'shiftwidth'
@@ -145,17 +146,6 @@
         execute 'set shiftwidth='.a:num
         execute 'set softtabstop='.a:num
     endfunc
-
-    " JOS is in C but I want to use real tabs instead of spaces
-    " I leave this here as an example of how to add exceptions for specific projects or files
-    "function! SetupEnvironment()
-      "let l:path = expand('%:p')
-      "if l:path =~ '/home/ilias/jos'
-        "setlocal noexpandtab  " tabs are tabs, not spaces
-      "endif
-    "endfunction
-
-    "autocmd! BufReadPost,BufNewFile * call SetupEnvironment()
 " }
 
 " Auto-closing {
@@ -190,7 +180,7 @@
 " }
 
 " Line Numbers {
-    set number
+    set number                      " line numbers on
 
     " Switch between relative and absolute line number.
     function! g:ToggleNuMode()
@@ -202,25 +192,6 @@
     endfunc
 
     nnoremap <leader>nn :call g:ToggleNuMode()<cr>
-" }
-
-" Scrolling and Folding {
-    set foldenable                  " enable folding
-    set scrolloff=3                 " minimum lines to keep above and below cursor
-
-    " Map space to toggle the current fold open/closed.
-    nnoremap <space> za
-
-    nnoremap <leader>f0 :set foldlevel=0<cr>
-    nnoremap <leader>f1 :set foldlevel=1<cr>
-    nnoremap <leader>f2 :set foldlevel=2<cr>
-    nnoremap <leader>f3 :set foldlevel=3<cr>
-    nnoremap <leader>f4 :set foldlevel=4<cr>
-    nnoremap <leader>f5 :set foldlevel=5<cr>
-    nnoremap <leader>f6 :set foldlevel=6<cr>
-    nnoremap <leader>f7 :set foldlevel=7<cr>
-    nnoremap <leader>f8 :set foldlevel=8<cr>
-    nnoremap <leader>f9 :set foldlevel=9<cr>
 " }
 
 " Vertical Line {
@@ -277,13 +248,11 @@
     endif
 " }
 
-" Buffers, Windows, Tabs {
-    set hidden                      " allow buffer switching without saving
-    set winminheight=0              " windows can be 0 lines high
+" Windows {
     set splitbelow                  " when splitting put new window below of the current one
     set splitright                  " when splitting put new window to the right of the current one
 
-    " Fast close window.
+    " Close window quickly.
     nnoremap <leader>q :q<cr>
     nnoremap <leader><leader>q :q!<cr>
 
@@ -292,37 +261,13 @@
     nnoremap <C-K> <C-W>k
     nnoremap <C-L> <C-W>l
     nnoremap <C-H> <C-W>h
-
-    " Make all windows (almost) equally high and wide.
-    nnoremap <Leader>= <C-w>=
-
-    " Useful mappings for managing tabs.
-    nnoremap <leader>tn :tabnew<cr>
-    nnoremap <leader>to :tabonly<cr>
-    nnoremap <leader>tc :tabclose<cr>
-    nnoremap <leader>tm :tabmove
-
-    " Go to right/left tab.
-    nnoremap > gt
-    nnoremap < gT
 " }
 
 " Highlight and Searching {
     set incsearch                   " incremental search
     set hlsearch                    " highlight search terms
     set ignorecase                  " case insensitive search
-    set smartcase                   " case sensitive when uc present
-
-    " Use sane regexes.
-    nnoremap / /\v
-    vnoremap / /\v
-
-    " Matching pairs.
-    set matchtime=3                 " time to show matching paren
-    set matchpairs+=(:)
-    set matchpairs+=[:]
-    set matchpairs+={:}
-    set matchpairs+=<:>
+    set smartcase                   " case sensitive only when a capital letter appears
 
     " Clear highlighted search.
     nnoremap <silent> <leader>/ :nohlsearch<cr>
@@ -335,21 +280,16 @@
 " }
 
 " Backup and Swap {
-    " Backup {
-        let directory = $HOME . "/.vim/backup/"
+    set noswapfile              " turn swap off
+    set backup                  " enable backups
 
-        " Create backup directory if it doesn't exists.
-        if !isdirectory(directory)
-            silent! execute "!mkdir -p ".directory
-        endif
+    let directory = $HOME . "/.vim/backup/"
+    execute "set backupdir=".directory
 
-        set backup                  " enable backups
-        execute "set backupdir=".directory
-    " }
-
-    " Swap {
-        set noswapfile              " turn swap off
-    " }
+    " Create backup directory if it doesn't exist.
+    if !isdirectory(directory)
+        silent! execute "!mkdir -p ".directory
+    endif
 " }
 
 " Compile and Run Code {
@@ -361,7 +301,6 @@
 
     " Compile {
         autocmd FileType c,cpp,java nnoremap <leader>m :w<cr> :Shell clear; make<cr>
-        autocmd FileType c nnoremap <leader>c8 :w<cr> :Shell gcc -O0 -Wall -W -pedantic -std=c89 -ggdb3 -o %:r %<cr>
         autocmd FileType c nnoremap <leader>c9 :w<cr> :Shell gcc -O0 -Wall -W -pedantic -ggdb3 -o %:r %<cr>
         autocmd FileType cpp nnoremap <leader>c9 :w<cr> :Shell g++ -O0 -Wall -W -pedantic -ggdb3 -o %:r %<cr>
         autocmd FileType java nnoremap <leader>c9 :w<cr> :Shell javac %<cr>
@@ -376,6 +315,9 @@
     inoremap pri** printf("value: %d\n", );<left><left>
 
     inoremap main** #include <stdio.h><cr>#include <stdlib.h><cr><cr><cr>int main(void)<cr>{<cr>puts("hello");<cr>return 0;<cr>}<esc>kk
+
+    " Quickly sign patches
+    nnoremap <leader>ss iSigned-off-by: Ilias Stamatis <stamatis.iliass@gmail.com><esc>
 " }
 
 " Languages {
@@ -425,11 +367,6 @@
     endfunction
 
     command! -complete=shellcmd -nargs=* -bang Shell call s:ExecuteInShell(<q-args>, '<bang>')
-" }
-
-" Misc {
-    " quickly sign patches
-    noremap <leader>ss iSigned-off-by: Ilias Stamatis <stamatis.iliass@gmail.com><esc>
 " }
 
 " Plugins Configuration {
