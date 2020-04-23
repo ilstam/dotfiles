@@ -474,6 +474,14 @@
         inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
     " }
 
+    " nerdcommenter {
+        " Add spaces after comment delimiters by default
+        let g:NERDSpaceDelims = 1
+
+        " Use // style comments for C since nesting /* */ comments isn't legal
+        let g:NERDCustomDelimiters = { 'c': { 'left': '//','right': '' } }
+    " }
+
     " TagBar {
         set tags=./tags;/,~/.vimtags
         nnoremap <silent> <leader>tt :TagbarToggle<cr>
