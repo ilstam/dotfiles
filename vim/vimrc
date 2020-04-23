@@ -5,7 +5,6 @@
 " Sections:
 "       -> Plugins
 "       -> General
-"       -> Basic Stuff
 "       -> Clipboard
 "       -> Indentation, Tabs, Spaces
 "       -> Auto-closing
@@ -62,43 +61,32 @@
 " }
 
 " General {
-    syntax on                       " syntax highlighting
-    set encoding=utf-8
-    scriptencoding utf-8
-
     set title                       " set window title
+    set encoding=utf-8
 
     if has('statusline')
         set laststatus=2            " always show a status line
     endif
 
-    let loaded_matchparen = 1       " don't do paren matching
-
     if has('cmdline_info')
         set ruler                   " show the ruler
         set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%)
-        set showmode                " display the current mode
-        set showcmd                 " show partial commands in status line and
-                                    " selected characters/lines in visual mode
     endif
 
-    set backspace=indent,eol,start  " backspace for dummies
-    set history=1000                " store a ton of history (default is 20)
-    set shell=$SHELL                " use user's default shell
+    set backspace=2                 " backspace as it needs to be
 
     " Time out on key codes but not mappings.
     set notimeout
     set ttimeout
     set ttimeoutlen=10
 
-    set background=dark
+    syntax on                       " enable syntax highlighting
     colorscheme molokai
-" }
 
-" Basic Stuff {
+    let loaded_matchparen = 1       " don't do paren matching
+
     " With a map leader it's possible to do extra key combinations.
     let mapleader = ","
-    let maplocalleader = '\\'
 
     " Save typing and eliminate :Q style typos due to lazy holding shift.
     nnoremap ; :
@@ -121,27 +109,11 @@
     " <Del> key is too far...
     inoremap <leader>d <Del>
 
-    " Use s (insert before) or S (insert after) to insert a single character.
-    " Returns to normal mode automatically. It allows repetitions as well.
-    function! RepeatChar(char, count)
-        return repeat(a:char, a:count)
-    endfunction
-    nnoremap s :<C-U>exec "normal i".RepeatChar(nr2char(getchar()), v:count1)<cr>
-    nnoremap S :<C-U>exec "normal a".RepeatChar(nr2char(getchar()), v:count1)<cr>
-
     " Make sure Vim returns to the same line when you reopen a file.
     au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
-    " Automatically change working directory to that of the current file.
-    autocmd BufEnter * silent! lcd %:p:h
-
     " For when you forget to sudo.. Really Write the file.
     cnoremap w!! w !sudo tee % >/dev/null
-
-    " Use the blowfish2 algo when encrypting files.
-    if v:version >= 704
-        set cm=blowfish2
-    endif
 " }
 
 " Clipboard {
@@ -346,7 +318,6 @@
     vnoremap / /\v
 
     " Matching pairs.
-    set showmatch                   " show matching symbols (parens etc)
     set matchtime=3                 " time to show matching paren
     set matchpairs+=(:)
     set matchpairs+=[:]
