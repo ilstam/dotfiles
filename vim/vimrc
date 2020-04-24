@@ -6,7 +6,7 @@
 "       -> Plugins
 "       -> General
 "       -> Clipboard
-"       -> Indentation
+"       -> Indentation and Formatting
 "       -> Auto-closing
 "       -> Whitespace
 "       -> Line Number
@@ -140,7 +140,7 @@
     endif
 " }
 
-" Indentation {
+" Indentation and Formatting {
     set tabstop=4                   " show tabs as 8 spaces
     set shiftwidth=4                " use indents of 8 spaces
     set shiftround                  " always round to multiple of 'shiftwidth'
@@ -159,6 +159,10 @@
         execute 'set shiftwidth='.a:num
         execute 'set softtabstop='.a:num
     endfunc
+
+    " Use Q for formatting the current paragraph or visually selected lines
+    vmap Q gq
+    nmap Q gqap
 " }
 
 " Auto-closing {
