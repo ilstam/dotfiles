@@ -118,12 +118,25 @@
 
 " Clipboard {
     if has('clipboard')
-        nnoremap <leader>p "+p
-        nnoremap <leader>P "+P
-        noremap  <leader>y "+y
+        " I don't set clipboard=unnamedplus because vim will then copy to the
+        " clipboard when deleting too, which I find annoying. In the way
+        " I configure things below I can just yank without thinking which
+        " register is the data copied to. I only have to think about registers
+        " and where I am pasting from (clipboard or unnamed register) when
+        " hitting p.
+
+        " Let y copy both to the unnamed register *and* the X11 clipboard
+        autocmd TextYankPost *
+            \ if v:event.operator == 'y' && v:event.regname == '' |
+            \     call setreg('+', v:event.regcontents, v:event.regtype) |
+            \ endif
 
         " Yank from the cursor to the end of the line
-        nnoremap Y "+y$
+        nnoremap Y y$
+
+        " Use the following to paste from the clipboard
+        nnoremap <leader>p "+p
+        nnoremap <leader>P "+P
     endif
 " }
 
