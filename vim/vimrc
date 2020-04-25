@@ -16,7 +16,7 @@
 "       -> Highlight and Searching
 "       -> Backup and Swap
 "       -> Compile and Run Code
-"       -> Code snippets
+"       -> Code Snippets
 "       -> Languages
 "       -> Shell Command
 "       -> Plugins Configuration
@@ -327,14 +327,26 @@
     nnoremap <leader>x :!chmod +x %<cr> :e %<cr>
 " }
 
-" Code snippets {
-    inoremap pr** printf("\n");<esc>4hi
-    inoremap pri** printf("value: %d\n", );<left><left>
+" Code Snippets {
+    function! g:ExpandSnippet()
+        if getline('.') =~# '^\s*pr$'
+            execute "normal! Aintf(\"\\n\");\<esc>4h"
+            startinsert
+        elseif getline('.') =~# '^\s*pri$'
+            execute "normal! Antf(\"value: %d\\n\", );\<esc>h"
+            startinsert
+        elseif getline('.') =~# '^\s*main$'
+            execute "normal! ^d$i#include <stdio.h>\<cr>#include <stdlib.h>\<cr>\<cr>\<cr>int main(void)\<cr>{\<cr>puts(\"hello\");\<cr>return 0;\<cr>}\<esc>kk"
+        else
+            execute "normal! A**"
+            startinsert!
+        endif
+    endfunction
 
-    inoremap main** #include <stdio.h><cr>#include <stdlib.h><cr><cr><cr>int main(void)<cr>{<cr>puts("hello");<cr>return 0;<cr>}<esc>kk
+    inoremap ** <esc>:call g:ExpandSnippet()<cr>
 
-    " Quickly sign patches
-    nnoremap <leader>ss iSigned-off-by: Ilias Stamatis <stamatis.iliass@gmail.com><esc>
+    " Preload register 's' in order to quickly sign patches with "sp
+    let @s="Signed-off-by: Ilias Stamatis <stamatis.iliass@gmail.com>"
 " }
 
 " Languages {
