@@ -229,6 +229,13 @@
 " }
 
 " Code Navigation {
+    " Go to the start/end of the function that the cursor is currently inside.
+    "
+    " The following is supposed to work only in languages that use brackets
+    " such as C, and the opening/closing bracket is in column 1 (first char).
+    nnoremap <leader>s [[
+    nnoremap <leader>e ][
+
     if has('cscope')
         " Look for a 'cscope.out' file starting from the current directory, going up to the root directory.
         let s:dirs = split(getcwd(), "/")
