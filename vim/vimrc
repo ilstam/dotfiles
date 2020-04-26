@@ -39,6 +39,9 @@
     " Toggle code comments on/off
     Plugin 'preservim/nerdcommenter'
 
+    " Automatically detect indentation options per file
+    Plugin 'tpope/vim-sleuth'
+
     if v:version >= 703 && has('lua')
         " Code completion
         Plugin 'Shougo/neocomplete.vim'
@@ -137,15 +140,23 @@
 " }
 
 " Indentation and Formatting {
-    set tabstop=4                   " show tabs as 8 spaces
-    set shiftwidth=4                " use indents of 8 spaces
-    set shiftround                  " always round to multiple of 'shiftwidth'
-    set softtabstop=4               " let backspace delete indent
-    "set noexpandtab                 " tabs are tabs, not spaces
-    set expandtab                   " tabs are spaces, not tabs
-    set smarttab
-    set formatoptions=qrn1
+    " The vim-sleuth pluing is going to automatically detect and adjust
+    " 'shiftwidth' and 'expandtab' based on the current file, or by looking at
+    " other files of the same type in the current and parent directories.
+
     set autoindent                  " indent at the same level of the previous line
+    " set shiftwidth=4                " use indents of 4 spaces
+    " set expandtab                   " tabs are spaces, not tabs
+    " set noexpandtab                 " tabs are tabs, not spaces
+    set shiftround                  " always round to multiple of 'shiftwidth'
+    set smarttab                    " <BS> will delete a 'shiftwidth' indent
+
+    " The following is like kind of setting softtabstop to equal tabstop. If I
+    " remove it and paste somewhere <space><space>text and then hit Tab in the
+    " beggining of the indent, the spaces will remain there.
+    set softtabstop=-1
+
+    set formatoptions=croql
 
     " Use Q for formatting the current paragraph or visually selected lines
     vmap Q gq
