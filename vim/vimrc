@@ -9,7 +9,6 @@
 "       -> Indentation and Formatting
 "       -> Auto-closing
 "       -> Whitespace
-"       -> Line Number
 "       -> Vertical Line
 "       -> Code Navigation
 "       -> Windows
@@ -62,24 +61,21 @@
     set title                       " set window title
     set encoding=utf-8
 
-    if has('statusline')
+    if has('statusline') && has('cmdline_info')
         set laststatus=2            " always show a status line
-    endif
-
-    if has('cmdline_info')
         set ruler                   " show the ruler
         set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%)
     endif
 
+    set number                      " line numbers on
     set backspace=2                 " backspace as it needs to be
     set scrolloff=3                 " minimum lines to keep above and below cursor
+    set hidden                      " allow buffer switching without saving
 
     " Time out on key codes but not mappings.
     set notimeout
     set ttimeout
     set ttimeoutlen=10
-
-    set hidden                      " allow buffer switching without saving
 
     syntax on                       " enable syntax highlighting
     colorscheme molokai
@@ -151,15 +147,6 @@
     set formatoptions=qrn1
     set autoindent                  " indent at the same level of the previous line
 
-    " all html files are html, no htmldjango etc.
-    au BufNewFile,BufRead *.html set filetype=html
-
-    function! g:ToggleIndentation(num)
-        execute 'set tabstop='.a:num
-        execute 'set shiftwidth='.a:num
-        execute 'set softtabstop='.a:num
-    endfunc
-
     " Use Q for formatting the current paragraph or visually selected lines
     vmap Q gq
     nmap Q gqap
@@ -194,21 +181,6 @@
     " Insert empty line above or below while staying in normal mode.
     nnoremap <leader>o :set paste<cr>m`o<Esc>``:set nopaste<cr>
     nnoremap <leader>O :set paste<cr>m`O<Esc>``:set nopaste<cr>
-" }
-
-" Line Numbers {
-    set number                      " line numbers on
-
-    " Switch between relative and absolute line number.
-    function! g:ToggleNuMode()
-        if(&relativenumber == 1)
-            set norelativenumber
-        else
-            set relativenumber
-        endif
-    endfunc
-
-    nnoremap <leader>nn :call g:ToggleNuMode()<cr>
 " }
 
 " Vertical Line {
@@ -295,9 +267,6 @@
 
     " Clear highlighted search.
     nnoremap <silent> <leader>/ :nohlsearch<cr>
-
-    " Keep search matches in the middle of the window.
-    nnoremap n nzzzv
 
     " Highlight word occurrences but do not jump to the next result.
     nnoremap <leader>* *N
