@@ -180,11 +180,34 @@
 " }
 
 " Whitespace {
-    " Remove trailing whitespace when saving.
-    autocmd BufWritePre * :%s/\s\+$//e
+    " Detect trailing whitespace on buffer load
+    autocmd BufReadPost * call g:DetectTrailing()
 
-    " But don't remove trailing whitespace when explicitly requested.
-    nnoremap <leader>no :autocmd! BufWritePre<cr>
+    function! g:DetectTrailing()
+        if !search('\s\+$')                     " if there is trailing whitespace
+            " setup an autocmd that removes it on every write
+            execute "autocmd BufWritePre * :%s/\\s\\+$//e"
+            let g:whitespace_autoremove=1
+        else
+            set list                            " show whitespace
+            set listchars=tab:\ \ ,trail:.      " only display trailing spaces using a dot
+            execute "normal! g'\"" |            " jump back to last cursor position
+            let g:whitespace_autoremove=0
+        endif
+    endfunction
+
+    " Use the following func to toggle automatic whitespace removal
+    nnoremap <leader>no :call g:ToggleWhitespaceAutocmd()<cr>
+
+    function! g:ToggleWhitespaceAutocmd()
+        if (g:whitespace_autoremove == 1)
+            execute "autocmd! BufWritePre"
+            let g:whitespace_autoremove=0
+        else
+            execute "autocmd BufWritePre * :%s/\\s\\+$//e"
+            let g:whitespace_autoremove=1
+        endif
+    endfunction
 
     " Clear a line quickly.
     nnoremap <leader><space> ^D
