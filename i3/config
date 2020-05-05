@@ -136,15 +136,29 @@ client.focused           #333333        #333333        #FFFFFF        #000000
 client.focused_inactive  #262626        #262626        #595959        #000000
 client.unfocused         #262626        #262626        #595959        #000000
 
+# define DOTFILES variable (this is not set in the environment at this point)
+set $DOTFILES /home/ilstam/.dotfiles/
+
+# Generate the i3blocks.conf file on the fly.
+# If we are not running on a laptop, delete everything between the laptop_begin
+# and laptop_end markers in the file, otherwise copy the file as is. To check
+# if the current machine is a laptop we try to detect whether it has a battery.
+# Even though this technique is not perfect, it's good enough for my purposes.
+exec_always $SHELL -c "if [ ! -f /sys/module/battery/initstate ] && [ ! -d /proc/acpi/battery/BAT0 ]; \
+        then sed '/#laptop_begin/,/#laptop_end/d' $DOTFILES/i3/i3blocks.conf > $HOME/.config/i3/i3blocks.conf; \
+        else cp $DOTFILES/i3/i3blocks.conf $HOME/.config/i3/; fi;"
+
 bar {
-    status_command i3blocks -c $HOME/.dotfiles/i3/i3blocks.conf
+    # use the generated i3blocks config file
+    status_command i3blocks -c $HOME/.config/i3/i3blocks.conf
+
     colors {
         background #333333
         statusline #AAAAAA
         separator  #757575
-	focused_workspace  #000000 #282828 #FFFFFF
+        focused_workspace  #000000 #282828 #FFFFFF
         inactive_workspace #333333 #333333 #AAAAAA
-	urgent_workspace   #E53935 #282828 #f3f4f5
+        urgent_workspace   #E53935 #282828 #f3f4f5
     }
 }
 
@@ -183,7 +197,7 @@ exec --no-startup-id i3-msg 'workspace $workspace5, exec pcmanfm, workspace $wor
 exec --no-startup-id nm-applet
 exec --no-startup-id compton -f
 exec --no-startup-id redshift -l 51.0:13.7 -t 6500:3500
-exec_always feh --bg-scale $HOME/.dotfiles/i3/wallpaper.jpg # set custom walppaper
+exec_always feh --bg-scale $DOTFILES/i3/wallpaper.jpg # set custom walppaper
 
 # change language layout
 exec_always --no-startup-id "setxkbmap -layout us,gr -option grp:alt_shift_toggle"
