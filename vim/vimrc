@@ -164,6 +164,11 @@
     " Use Q for formatting the current paragraph or visually selected lines
     vmap Q gq
     nmap Q gqap
+
+    " All .tex are of type latex
+    let g:tex_flavor = "latex"
+    " Auto-wrap text for latex files
+    autocmd Filetype tex setlocal textwidth=79 formatoptions+=t
 " }
 
 " Auto-closing {
