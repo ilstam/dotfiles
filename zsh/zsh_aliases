@@ -21,6 +21,7 @@
     alias forgetgpg='echo RELOADAGENT | gpg-connect-agent'
 
     alias d='cd /media/data/'
+    [ -d "/home/ilstam/.data" ] && alias d='cd ~/.data'
     alias dot='cd $DOTFILES'
 
     # Quick launch
