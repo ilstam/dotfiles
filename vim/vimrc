@@ -347,16 +347,20 @@
 
 " Code Snippets {
     function! g:ExpandSnippet()
-        if getline('.') =~# '^\s*pr$'
+        if expand("<cword>") == 'pr'
             execute "normal! Aintf(\"\\n\");\<esc>4h"
             startinsert
-        elseif getline('.') =~# '^\s*pri$'
+        elseif expand("<cword>") == 'pri'
             execute "normal! Antf(\"value: %d\\n\", );\<esc>h"
             startinsert
+        elseif expand("<cword>") == 'em'
+            " used in latex; expands to \emph{
+            execute "normal! bi\\\<esc>eaph{\<esc>"
+            startinsert!
         elseif getline('.') =~# '^\s*main$'
             execute "normal! ^d$i#include <stdio.h>\<cr>#include <stdlib.h>\<cr>\<cr>\<cr>int main(void)\<cr>{\<cr>puts(\"hello\");\<cr>return 0;\<cr>}\<esc>kk"
         else
-            execute "normal! A**"
+            execute "normal! a**"
             startinsert!
         endif
     endfunction
