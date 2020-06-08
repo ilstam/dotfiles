@@ -77,7 +77,6 @@ set $workspace10 "10 "
 assign [class="Firefox"] $workspace1
 for_window [class="Spotify"] move to workspace $workspace7
 assign [title="Popcorn Time"] $workspace8
-assign [class="Skype"] $workspace9
 assign [class="Hexchat"] $workspace10
 
 # switch to workspace
@@ -202,11 +201,11 @@ exec_always --no-startup-id $SHELL -c 'if [[ $(xrandr -q | grep HDMI1 | cut -d" 
 exec firefox
 exec --no-startup-id i3-msg 'workspace $workspace5, exec pcmanfm, workspace $workspace1'
 exec --no-startup-id nm-applet
-exec --no-startup-id compton -f
+exec --no-startup-id picom -f # for the fading effect when changing workspaces
 exec --no-startup-id redshift -l 51.0:13.7 -t 6500:3500
 exec_always feh --bg-scale $DOTFILES/i3/wallpaper.jpg # set custom walppaper
 
-# change language layout
+# change language layout with alt+shift
 exec_always --no-startup-id "setxkbmap -layout us,gr -option grp:alt_shift_toggle"
 # send a signal to i3blocks after pressing alt+shift to update the bar
 bindcode Mod1+50 exec --no-startup-id pkill -RTMIN+3 i3blocks
@@ -225,6 +224,3 @@ bindsym $mod+Shift+f [class="Pcmanfm"] focus
 
 for_window [class="Lxappearance"] floating enable
 for_window [class="Orage"] floating enable
-for_window [class="PacketTracer*"] floating enable
-for_window [class="YaST2"] floating enable
-for_window [title="FF Multi Converter"] floating enable
