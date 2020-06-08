@@ -192,6 +192,12 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 10 && pkill -RTMIN+1 i3blocks
 # disable screensaver
 exec xset -dpms s off
 
+# if an HDMI display is found, turn off the eDP1 (laptop's screen),
+# else set the eDP1 resolution to 1600x900
+exec_always --no-startup-id $SHELL -c 'if [[ $(xrandr -q | grep HDMI1 | cut -d" " -f2) == "connected" ]]; \
+    then xrandr --output HDMI1 --mode 1920x1080 --output eDP1 --off; \
+    else sleep 1 && xrandr --output eDP1 --mode 1600x900; fi'
+
 # startup programs
 exec firefox
 exec --no-startup-id i3-msg 'workspace $workspace5, exec pcmanfm, workspace $workspace1'
