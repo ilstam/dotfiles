@@ -161,9 +161,13 @@ bar {
     }
 }
 
+# i3lock cannot scale images so we choose the appropriate one the fly
+set $locker i3lock -i /home/ilstam/.dotfiles/i3/imgs/screenlocker_$( \
+        xrandr | grep '*' | sed -r 's/^[^0-9]*([0-9]+x[0-9]+).*$/\1/').png
+
 # system power menu
 set $mode_system  (T)erminate     (S)uspend     (R)eboot     (L)ock     (E)xit
-set $locker i3lock --color "#666666"
+
 mode "$mode_system" {
     bindsym t exec --no-startup-id systemctl poweroff -i, mode "default"
     bindsym s exec --no-startup-id $locker && systemctl suspend, mode "default"
@@ -203,7 +207,7 @@ exec --no-startup-id i3-msg 'workspace $workspace5, exec pcmanfm, workspace $wor
 exec --no-startup-id nm-applet
 exec --no-startup-id picom -f # for the fading effect when changing workspaces
 exec --no-startup-id redshift -t 6500:4000
-exec_always feh --bg-scale $DOTFILES/i3/wallpaper.jpg # set custom walppaper
+exec_always feh --bg-scale $DOTFILES/i3/imgs/wallpaper.jpg # set custom walppaper
 
 # change language layout with alt+shift
 exec_always --no-startup-id "setxkbmap -layout us,gr -option grp:alt_shift_toggle"
