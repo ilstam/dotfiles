@@ -202,7 +202,7 @@ exec firefox
 exec --no-startup-id i3-msg 'workspace $workspace5, exec pcmanfm, workspace $workspace1'
 exec --no-startup-id nm-applet
 exec --no-startup-id picom -f # for the fading effect when changing workspaces
-exec --no-startup-id redshift -l 51.0:13.7 -t 6500:3500
+exec --no-startup-id redshift -t 6500:4000
 exec_always feh --bg-scale $DOTFILES/i3/wallpaper.jpg # set custom walppaper
 
 # change language layout with alt+shift
