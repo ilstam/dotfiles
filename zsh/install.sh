@@ -33,9 +33,7 @@ source "$DOTFILES/zsh/zsh_aliases"
 EOF
 
 echo "--> install custom zshenv"
-cat > ~/.zshenv <<EOF
-source "$DOTFILES/zsh/zshenv"
-EOF
+ln -s "$DOTFILES/zsh/zshenv" ~/.zshenv
 
 echo "--> install custom zprofile"
 ln -s "$DOTFILES/zsh/zprofile" ~/.zprofile

@@ -1,25 +1,16 @@
-# Defines environment variables.
-
-# Ensure that a non-login, non-interactive shell has a defined environment.
-if [[ "$SHLVL" -eq 1 && ! -o LOGIN && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; then
-  source "${ZDOTDIR:-$HOME}/.zprofile"
-fi
+# .zshenv is always sourced first before .zprofile, .zshrc or any other file
+# it is sourced independently of whether the shell is login, interactive, etc.
 
 export DOTFILES="$HOME"/.dotfiles
 
 export BROWSER=firefox
 
-if [ -f /var/log/dnf.log ]; then
-	# Fedora
-	export EDITOR=vimx
-	export VISUAL=vimx
-else
-	export EDITOR=vim
-	export VISUAL=vim
-fi
-
+export EDITOR=vim
+export VISUAL=vim
 export PAGER=less
 
-if [[ -z "$LANG" ]]; then
-  export LANG=en_US.UTF-8
+# in case we are on Fedora
+if [ -f /var/log/dnf.log ]; then
+    export EDITOR=vimx
+    export VISUAL=vimx
 fi
