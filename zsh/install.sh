@@ -21,6 +21,11 @@ if [ -f ~/.zshenv ]; then
 	mv ~/.zshenv ~/.zshenv.orig
 fi
 
+if [ -f ~/.zprofile ]; then
+	echo "--> backup existing ~/.zprofile file to ~/.zprofile.orig"
+	mv ~/.zprofile ~/.zprofile.orig
+fi
+
 echo "--> install custom zshrc"
 cat > ~/.zshrc <<EOF
 source "$DOTFILES/zsh/zshrc"
@@ -31,6 +36,9 @@ echo "--> install custom zshenv"
 cat > ~/.zshenv <<EOF
 source "$DOTFILES/zsh/zshenv"
 EOF
+
+echo "--> install custom zprofile"
+ln -s "$DOTFILES/zsh/zprofile" ~/.zprofile
 
 if [ ! -f ~/.oh-my-zsh/themes/mytheme.zsh-theme -a ! -h ~/.oh-my-zsh/themes/mytheme.zsh-theme ]; then
 	echo "--> install custom theme"
