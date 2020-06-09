@@ -1,16 +1,16 @@
+# .zshrc is sourced only when the shell is interactive
+
 # path to the oh-my-zsh installation
 export ZSH=$HOME/.oh-my-zsh
 
-# automatically update oh-my-zsh without prompting
-DISABLE_UPDATE_PROMPT="true"
+# theme must be in $ZSH/themes
+ZSH_THEME="mytheme"
 
-ZSH_THEME="mytheme" # must be in $ZSH/themes
+# automatically update oh-my-zsh without prompting
+DISABLE_UPDATE_PROMPT=true
+
 source $ZSH/oh-my-zsh.sh
+source $DOTFILES/zsh/zsh_aliases
 
 # print an empty line before the prompt is rendered
 precmd() { echo }
-
-# personal L4-related stuff
-if [ -f ~/.l4stuff/l4_sh ]; then
-    source ~/.l4stuff/l4_sh
-fi

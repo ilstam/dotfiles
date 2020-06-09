@@ -29,7 +29,6 @@ fi
 echo "--> install custom zshrc"
 cat > ~/.zshrc <<EOF
 source "$DOTFILES/zsh/zshrc"
-source "$DOTFILES/zsh/zsh_aliases"
 EOF
 
 echo "--> install custom zshenv"
