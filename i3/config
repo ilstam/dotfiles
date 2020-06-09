@@ -21,7 +21,7 @@ bindsym --release button2 kill
 bindsym --whole-window $mod+button2 kill
 
 # start dmenu (program launcher)
-bindsym $mod+d exec dmenu_run -l 5 -i -p "run: " -fn "sans-15"
+bindsym $mod+d exec --no-startup-id dmenu_run -l 5 -i -p "run: " -fn "sans-15"
 
 # change focus
 bindsym $mod+h focus left
@@ -143,7 +143,7 @@ set $DOTFILES /home/ilstam/.dotfiles/
 # and laptop_end markers in the file, otherwise copy the file as is. To check
 # if the current machine is a laptop we try to detect whether it has a battery.
 # Even though this technique is not perfect, it's good enough for my purposes.
-exec_always $SHELL -c "if [ ! -f /sys/module/battery/initstate ] && [ ! -d /proc/acpi/battery/BAT0 ]; \
+exec_always --no-startup-id $SHELL -c "if [ ! -f /sys/module/battery/initstate ] && [ ! -d /proc/acpi/battery/BAT0 ]; \
         then sed '/#laptop_begin/,/#laptop_end/d' $DOTFILES/i3/i3blocks.conf > $HOME/.config/i3/i3blocks.conf; \
         else cp $DOTFILES/i3/i3blocks.conf $HOME/.config/i3/; fi;"
 
@@ -184,16 +184,16 @@ mode "$mode_system" {
 bindsym Pause mode "$mode_system"
 
 # audio controls
-bindsym XF86AudioRaiseVolume exec amixer set Master 5%+ -q && pkill -RTMIN+2 i3blocks
-bindsym XF86AudioLowerVolume exec amixer set Master 5%- -q && pkill -RTMIN+2 i3blocks
-bindsym XF86AudioMute exec amixer set Master toggle -q && pkill -RTMIN+2 i3blocks
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer set Master 5%+ -q && pkill -RTMIN+2 i3blocks
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer set Master 5%- -q && pkill -RTMIN+2 i3blocks
+bindsym XF86AudioMute exec --no-startup-id amixer set Master toggle -q && pkill -RTMIN+2 i3blocks
 
 # screen brightness controls
-bindsym XF86MonBrightnessUp exec xbacklight -inc 10 && pkill -RTMIN+1 i3blocks
-bindsym XF86MonBrightnessDown exec xbacklight -dec 10 && pkill -RTMIN+1 i3blocks
+bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10 && pkill -RTMIN+1 i3blocks
+bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10 && pkill -RTMIN+1 i3blocks
 
 # disable screensaver
-exec xset -dpms s off
+exec --no-startup-id xset -dpms s off
 
 # if an HDMI display is found, turn off the eDP1 (laptop's screen),
 # else set the eDP1 resolution to 1600x900
@@ -207,7 +207,7 @@ exec --no-startup-id i3-msg 'workspace $workspace5, exec pcmanfm, workspace $wor
 exec --no-startup-id nm-applet
 exec --no-startup-id picom -f # for the fading effect when changing workspaces
 exec --no-startup-id redshift -t 6500:4000
-exec_always feh --bg-scale $DOTFILES/i3/imgs/wallpaper.jpg # set custom walppaper
+exec_always --no-startup-id feh --bg-scale $DOTFILES/i3/imgs/wallpaper.jpg # set custom walppaper
 
 # change language layout with alt+shift
 exec_always --no-startup-id "setxkbmap -layout us,gr -option grp:alt_shift_toggle"
@@ -220,7 +220,7 @@ bindsym $mod+Shift+m exec --no-startup-id pkill -USR1 redshift
 for_window [class="Firefox"] border pixel 1
 
 # application launch shortcuts
-bindsym Print exec gnome-screenshot
+bindsym Print exec --no-startup-id gnome-screenshot
 bindsym $mod+c exec --no-startup-id orage
 
 # other
