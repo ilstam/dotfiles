@@ -5,6 +5,10 @@
 [core]
     editor = vim
 
+[pull]
+    # only resolve the merge as a fast-forward, otherwise abort
+    ff = only
+
 [push]
     default = simple
 
