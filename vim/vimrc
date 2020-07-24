@@ -340,9 +340,6 @@
         autocmd FileType cpp nnoremap <leader>c9 :w<cr> :Shell g++ -O0 -Wall -W -pedantic -ggdb3 -o %:r %<cr>
         autocmd FileType java nnoremap <leader>c9 :w<cr> :Shell javac %<cr>
     " }
-
-    " Make file executable and reload it.
-    nnoremap <leader>x :!chmod +x %<cr> :e %<cr>
 " }
 
 " Code Snippets {
