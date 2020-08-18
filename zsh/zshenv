@@ -1,6 +1,9 @@
 # .zshenv is always sourced first before .zprofile, .zshrc or any other file
 # it is sourced independently of whether the shell is login, interactive, etc.
 
+# I want the date formats etc. used in Greece
+export LC_TIME=el_GR.UTF-8
+
 export DOTFILES="$HOME"/.dotfiles
 
 export BROWSER=firefox
