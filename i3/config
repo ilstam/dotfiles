@@ -204,7 +204,7 @@ exec_always --no-startup-id $SHELL -c 'if [[ $(xrandr -q | grep HDMI1 | cut -d" 
 # startup programs
 exec firefox
 exec --no-startup-id i3-msg 'workspace $workspace5, exec pcmanfm, workspace $workspace1'
-exec --no-startup-id picom -f # for the fading effect when changing workspaces
+exec --no-startup-id picom -f -i 1 # for the fading effect when changing workspaces
 exec --no-startup-id redshift -t 6500:4000
 exec_always --no-startup-id feh --bg-scale $DOTFILES/i3/imgs/wallpaper.jpg # set custom walppaper
 exec_always --no-startup-id nm-applet
