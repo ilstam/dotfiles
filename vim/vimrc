@@ -42,10 +42,10 @@
     " Automatically detect indentation options per file
     Plugin 'tpope/vim-sleuth'
 
-    if v:version >= 703 && has('lua')
-        " Code completion
-        Plugin 'Shougo/neocomplete.vim'
-    endif
+    " Deoplete and its dependencies for code completion
+    Plugin 'Shougo/deoplete.nvim'
+    Plugin 'roxma/nvim-yarp'
+    Plugin 'roxma/vim-hug-neovim-rpc'
 
     if executable('ctags')
         " Navigation via file tags
@@ -418,16 +418,14 @@
 " }
 
 " Plugins Configuration {
-    " neocomplete {
-        " Use neocomplete.
-        let g:neocomplete#enable_at_startup = 1
-        " Use smartcase.
-        let g:neocomplete#enable_smart_case = 1
-        " Set minimum syntax keyword length.
-        let g:neocomplete#sources#syntax#min_keyword_length = 3
+    " deoplete {
+        let g:deoplete#enable_at_startup = 1
+        call deoplete#custom#option('smart_case', 1)
+        call deoplete#custom#option('min_pattern_length', 3)
 
-        " <TAB>: completion.
-        inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+        " use TAB for completion - I think this is plugin agnostic
+        inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+        inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
     " }
 
     " nerdcommenter {
