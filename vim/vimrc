@@ -47,12 +47,6 @@
     Plugin 'roxma/nvim-yarp'
     Plugin 'roxma/vim-hug-neovim-rpc'
 
-    if executable('ctags')
-        " Navigation via file tags
-        " Usage: Open the side bar with <leader>tt (custom map)
-        Plugin 'majutsushi/tagbar'
-    endif
-
     " The molokai theme
     Plugin 'tomasr/molokai'
 
@@ -434,10 +428,5 @@
 
         " Use // style comments for C since nesting /* */ comments isn't legal
         let g:NERDCustomDelimiters = { 'c': { 'left': '//','right': '' } }
-    " }
-
-    " TagBar {
-        set tags=./tags;/,~/.vimtags
-        nnoremap <silent> <leader>tt :TagbarToggle<cr>
     " }
 " }
