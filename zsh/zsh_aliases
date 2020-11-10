@@ -66,7 +66,7 @@
             alias fromaur='pacman -Qm'
             alias belongsto='pacman -Qo'
 
-            alias packer='packer-aur --noedit --auronly'
+            alias yay='yay --aur --nodiffmenu'
             alias vi='vim'
         fi
     # }
