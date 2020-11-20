@@ -208,6 +208,7 @@ exec --no-startup-id xcompmgr -f -D 4 # for the fading effect when changing work
 exec --no-startup-id redshift -t 6500:4000
 exec_always --no-startup-id feh --bg-scale $DOTFILES/i3/imgs/wallpaper.jpg # set custom walppaper
 exec_always --no-startup-id nm-applet
+exec megasync
 
 # change language layout with alt+shift
 exec_always --no-startup-id "setxkbmap -layout us,gr -option grp:alt_shift_toggle"
