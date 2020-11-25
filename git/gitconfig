@@ -1,5 +1,5 @@
 [user]
-    email = stamatis.iliass@gmail.com
+    email = ilstam@mailbox.org
     name = Ilias Stamatis
 
 [core]
@@ -30,6 +30,6 @@
 
 [sendemail]
     smtpEncryption = tls
-    smtpServer = smtp.gmail.com
-    smtpUser = stamatis.iliass@gmail.com
+    smtpServer = smtp.mailbox.org
+    smtpUser = ilstam@mailbox.org
     smtpServerPort = 587
