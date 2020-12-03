@@ -15,7 +15,7 @@
     alias xelatex='xelatex -halt-on-error'
 
     # Start a new terminal with the cwd. Using ! disowns the new job.
-    alias new='terminator --working-directory=$(pwd) &!'
+    alias new='terminator --working-directory="$(pwd)" &!'
 
     # Forget cached gpg passphrases
     alias forgetgpg='echo RELOADAGENT | gpg-connect-agent'
