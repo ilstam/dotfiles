@@ -161,8 +161,9 @@ bar {
     }
 }
 
-# i3lock cannot scale images so we choose the appropriate one the fly
-set $locker i3lock -i /home/ilstam/.dotfiles/i3/imgs/screenlocker_$( \
+# switch the layout to US before locking and update the bar
+# also i3lock cannot scale images so we choose the appropriate one the fly
+set $locker xkb-switch -s us && pkill -RTMIN+3 i3blocks && i3lock -i /home/ilstam/.dotfiles/i3/imgs/screenlocker_$( \
         xrandr | grep '*' | sed -r 's/^[^0-9]*([0-9]+x[0-9]+).*$/\1/').png
 
 # system power menu
