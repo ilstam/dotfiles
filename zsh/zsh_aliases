@@ -49,11 +49,6 @@
 
         cscope -b -q
     }
-
-    # use this to increase the volume to more than 100%
-    vol() {
-        pactl set-sink-volume 0 $1%
-    }
 # }
 
 # Distro Specific {
