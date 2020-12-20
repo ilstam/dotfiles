@@ -78,6 +78,7 @@ assign [class="Firefox"] $workspace1
 for_window [class="Spotify"] move to workspace $workspace7
 assign [title="Popcorn Time"] $workspace8
 assign [class="Hexchat"] $workspace10
+assign [class="Signal"] $workspace10
 
 # switch to workspace
 bindsym $mod+1 workspace $workspace1
