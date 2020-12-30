@@ -74,7 +74,7 @@ set $workspace9 "9 "
 set $workspace10 "10 "
 
 # assign workspaces to applications
-assign [class="Firefox"] $workspace1
+assign [class="firefox"] $workspace1
 for_window [class="Spotify"] move to workspace $workspace7
 assign [title="Popcorn Time"] $workspace8
 assign [class="Hexchat"] $workspace10
@@ -220,7 +220,7 @@ bindcode Mod1+50 exec --no-startup-id pkill -RTMIN+3 i3blocks
 bindsym $mod+Shift+m exec --no-startup-id pkill -USR1 redshift
 
 # no title bar for firefox please!
-for_window [class="Firefox"] border pixel 1
+for_window [class="firefox"] border pixel 1
 
 # application launch shortcuts
 bindsym Print exec --no-startup-id gnome-screenshot
