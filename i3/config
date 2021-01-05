@@ -144,7 +144,7 @@ set $DOTFILES /home/ilstam/.dotfiles/
 # and laptop_end markers in the file, otherwise copy the file as is. To check
 # if the current machine is a laptop we try to detect whether it has a battery.
 # Even though this technique is not perfect, it's good enough for my purposes.
-exec_always --no-startup-id $SHELL -c "if [ ! -f /sys/module/battery/initstate ] && [ ! -d /proc/acpi/battery/BAT0 ]; \
+exec_always --no-startup-id $SHELL -c "if [ ! -d /sys/module/battery/ ] && [ ! -d /proc/acpi/battery/BAT0 ]; \
         then sed '/#laptop_begin/,/#laptop_end/d' $DOTFILES/i3/i3blocks.conf > $HOME/.config/i3/i3blocks.conf; \
         else cp $DOTFILES/i3/i3blocks.conf $HOME/.config/i3/; fi;"
 
