@@ -5,6 +5,8 @@ set $mod Mod4
 # is used in the bar {} block below.
 font pango: FontAwesome 10.5
 
+title_align center
+
 # use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
@@ -197,18 +199,12 @@ bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10 && pkill -
 # disable screensaver
 exec --no-startup-id xset -dpms s off
 
-# if an HDMI display is found, turn off the eDP1 (laptop's screen),
-# else set the eDP1 resolution to 1600x900
-exec_always --no-startup-id $SHELL -c 'if [[ $(xrandr -q | grep HDMI1 | cut -d" " -f2) == "connected" ]]; \
-    then xrandr --output HDMI1 --mode 1920x1080 --output eDP1 --off; \
-    else sleep 1 && xrandr --output eDP1 --mode 1600x900; fi'
-
 # startup programs
 exec firefox
 exec --no-startup-id i3-msg 'workspace $workspace5, exec pcmanfm, workspace $workspace1'
 exec --no-startup-id xcompmgr -f -D 4 # for the fading effect when changing workspaces
 exec --no-startup-id redshift -t 6500:4000
-exec_always --no-startup-id feh --bg-scale $DOTFILES/i3/imgs/wallpaper.jpg # set custom walppaper
+exec_always --no-startup-id feh --bg-fill $DOTFILES/i3/imgs/wallpaper.jpg # set custom walppaper
 exec_always --no-startup-id nm-applet
 exec megasync
 
