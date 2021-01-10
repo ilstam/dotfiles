@@ -61,7 +61,7 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
 
 # focus the child container
-#bindsym $mod+d focus child
+bindsym $mod+c focus child
 
 # set workspace variables
 set $workspace1 "1 "
@@ -220,7 +220,7 @@ for_window [class="firefox"] border pixel 1
 
 # application launch shortcuts
 bindsym Print exec --no-startup-id gnome-screenshot
-bindsym $mod+c exec --no-startup-id orage
+bindsym $mod+o exec --no-startup-id orage
 
 # other
 bindsym $mod+Shift+f [class="Pcmanfm"] focus
