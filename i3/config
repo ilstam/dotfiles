@@ -196,8 +196,6 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ to
 # so I just map F6, F7 in addition to the audio keys above for controlling the volume
 bindsym F7 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && pkill -RTMIN+2 i3blocks
 bindsym F6 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && pkill -RTMIN+2 i3blocks
-# quickly toggle the audio output between analog-stereo and hdmi-stereo by hitting F8
-bindsym F8 exec --no-startup-id pactl info | grep "Default Sink" | grep "hdmi-stereo" && pacmd set-card-profile 0 output:analog-stereo || pacmd set-card-profile 0 output:hdmi-stereo
 
 # screen brightness controls
 bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10 && pkill -RTMIN+1 i3blocks
