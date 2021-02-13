@@ -204,6 +204,18 @@ bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10 && pkill -
 # disable screensaver
 exec --no-startup-id xset -dpms s off
 
+# on startup if an external display is found, turn off the laptop's screen, else set laptop's resolution to 1600x900
+set $external $(xrandr | grep " connected" | grep -Eo "HDMI1|HDMI2|^DP1|^DP2|^DPI3")
+
+exec --no-startup-id $SHELL -c '[[ ! -z $external ]] \
+        && xrandr --output $external --auto --output eDP1 --off \
+        || xrandr --output eDP1 --mode 1600x900'
+
+# some bindings for easily switching between monitor configurations
+bindsym F1 exec --no-startup-id xrandr --output $external --off --output eDP1 --mode 1600x900
+bindsym F3 exec --no-startup-id xrandr --output $external --off --output eDP1 --mode 1920x1080
+bindsym F4 exec --no-startup-id xrandr --output $external --auto --output eDP1 --off
+
 # startup programs
 exec firefox
 exec --no-startup-id i3-msg 'workspace $workspace5, exec pcmanfm, workspace $workspace1'
