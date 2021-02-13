@@ -138,17 +138,14 @@ client.focused           #333333        #333333        #FFFFFF        #000000
 client.focused_inactive  #262626        #262626        #595959        #000000
 client.unfocused         #262626        #262626        #595959        #000000
 
-# define DOTFILES variable (this is not set in the environment at this point)
-set $DOTFILES /home/ilstam/.dotfiles/
-
 # Generate the i3blocks.conf file on the fly.
 # If we are not running on a laptop, delete everything between the laptop_begin
 # and laptop_end markers in the file, otherwise copy the file as is. To check
 # if the current machine is a laptop we try to detect whether it has a battery.
 # Even though this technique is not perfect, it's good enough for my purposes.
 exec_always --no-startup-id $SHELL -c "if [ ! -d /sys/module/battery/ ] && [ ! -d /proc/acpi/battery/BAT0 ]; \
-        then sed '/#laptop_begin/,/#laptop_end/d' $DOTFILES/i3/i3blocks.conf > $HOME/.config/i3/i3blocks.conf; \
-        else cp $DOTFILES/i3/i3blocks.conf $HOME/.config/i3/; fi;"
+        then sed '/#laptop_begin/,/#laptop_end/d' $HOME/.dotfiles/i3/i3blocks.conf > $HOME/.config/i3/i3blocks.conf; \
+        else cp $HOME/.dotfiles/i3/i3blocks.conf $HOME/.config/i3/; fi;"
 
 bar {
     # use the generated i3blocks config file
@@ -221,7 +218,7 @@ exec firefox
 exec --no-startup-id i3-msg 'workspace $workspace5, exec pcmanfm, workspace $workspace1'
 exec --no-startup-id xcompmgr -f -D 4 # for the fading effect when changing workspaces
 exec --no-startup-id redshift -t 6500:4000
-exec_always --no-startup-id feh --bg-fill $DOTFILES/i3/imgs/wallpaper.jpg # set custom walppaper
+exec_always --no-startup-id feh --bg-fill $HOME/.dotfiles/i3/imgs/wallpaper.jpg # set custom walppaper
 exec_always --no-startup-id nm-applet
 exec megasync
 
