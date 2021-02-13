@@ -66,21 +66,17 @@ bindsym $mod+c focus child
 # set workspace variables
 set $workspace1 "1 "
 set $workspace2 "2 "
-set $workspace3 "3 "
-set $workspace4 "4 "
+set $workspace3 "3 "
+set $workspace4 "4 "
 set $workspace5 "5 "
 set $workspace6 "6 "
-set $workspace7 "7 "
-set $workspace8 "8 "
-set $workspace9 "9 "
+set $workspace7 "7 "
+set $workspace8 "8 "
+set $workspace9 "9 "
 set $workspace10 "10 "
 
 # assign workspaces to applications
 assign [class="firefox"] $workspace1
-for_window [class="Spotify"] move to workspace $workspace7
-assign [title="Popcorn Time"] $workspace8
-assign [class="Hexchat"] $workspace10
-assign [class="Signal"] $workspace10
 
 # switch to workspace
 bindsym $mod+1 workspace $workspace1
@@ -234,10 +230,8 @@ for_window [class="firefox"] border pixel 1
 
 # application launch shortcuts
 bindsym Print exec --no-startup-id gnome-screenshot
-bindsym $mod+o exec --no-startup-id orage
 
 # other
 bindsym $mod+Shift+f [class="Pcmanfm"] focus
 
 for_window [class="Lxappearance"] floating enable
-for_window [class="Orage"] floating enable
