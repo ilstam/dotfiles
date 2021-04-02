@@ -213,6 +213,7 @@ bindsym F4 exec --no-startup-id xrandr --output $external --auto --output eDP1 -
 exec firefox
 exec --no-startup-id i3-msg 'workspace $workspace5, exec pcmanfm, workspace $workspace1'
 exec --no-startup-id xcompmgr -f -D 4 # for the fading effect when changing workspaces
+exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent # geoclue provides automatic location for redshift
 exec --no-startup-id redshift -t 6500:4000
 exec_always --no-startup-id feh --bg-fill $HOME/.dotfiles/i3/imgs/wallpaper.jpg # set custom walppaper
 exec_always --no-startup-id nm-applet
