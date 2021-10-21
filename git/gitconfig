@@ -15,6 +15,9 @@
 [merge]
     tool = vimdiff
 
+[log]
+    date = format:%a %Y-%m-%d %H:%M:%S %z
+
 [alias]
     amend = !sh -c 'git commit --amend --date=\"$(date)\"'
 
