@@ -8,7 +8,7 @@ echo -e "configuring zsh...\n"
 
 if [ ! -d ~/.oh-my-zsh/ ]; then
 	echo "--> install oh-my-zsh"
-	git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+	git clone https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh
 fi
 
 if [ -f ~/.zshrc ]; then
