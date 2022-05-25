@@ -441,5 +441,6 @@
 
         " Use // style comments for C since nesting /* */ comments isn't legal
         let g:NERDCustomDelimiters = { 'c': { 'left': '//','right': '' } }
+        let g:NERDCustomDelimiters = { 'cpp': { 'left': '//','right': '' } }
     " }
 " }
