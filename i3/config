@@ -77,6 +77,8 @@ set $workspace10 "10 "
 
 # assign workspaces to applications
 assign [class="firefox"] $workspace1
+assign [class="Evolution"] $workspace9
+assign [class="Slack"] $workspace10
 
 # switch to workspace
 bindsym $mod+1 workspace $workspace1
@@ -228,6 +230,7 @@ bindsym $mod+Shift+m exec --no-startup-id pkill -USR1 redshift
 
 # no title bar for firefox please!
 for_window [class="firefox"] border pixel 1
+for_window [class="Google-chrome"] border pixel 1
 
 # application launch shortcuts
 bindsym Print exec --no-startup-id gnome-screenshot
@@ -236,3 +239,4 @@ bindsym Print exec --no-startup-id gnome-screenshot
 bindsym $mod+Shift+f [class="Pcmanfm"] focus
 
 for_window [class="Lxappearance"] floating enable
+for_window [class="Yad"] floating enable # calendar
