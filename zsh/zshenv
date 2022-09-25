@@ -17,3 +17,5 @@ if [ -f /var/log/dnf.log ]; then
     export EDITOR=vimx
     export VISUAL=vimx
 fi
+
+export PYTHONSTARTUP=${DOTFILES}/misc/python.startup
