@@ -39,3 +39,6 @@
     smtpUser = ilstam@mailbox.org
     smtpServerPort = 587
     from = Ilias Stamatis <ilstam@mailbox.org>
+
+[include]
+    path = ~/.gitconfig.local
