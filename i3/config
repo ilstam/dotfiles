@@ -162,7 +162,7 @@ bar {
 # switch the layout to US before locking and update the bar
 # also i3lock cannot scale images so we choose the appropriate one the fly
 set $locker xkb-switch -s us && pkill -RTMIN+3 i3blocks && i3lock -t -i $HOME/.dotfiles/i3/imgs/screenlocker_$( \
-        xrandr | grep -Po '\d+x\d+\s+\d+.\d+\*' | cut -d' ' -f1).png
+        xrandr | grep -Po '\d+x\d+\s+\d+.\d+\*' | cut -d' ' -f1 | head -n 1).png
 
 # system power menu
 set $mode_system  (T)erminate     (S)uspend     (R)eboot     (L)ock     (E)xit
