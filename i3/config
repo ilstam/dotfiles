@@ -219,7 +219,6 @@ exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent # geoclue provides automat
 exec --no-startup-id redshift -t 6500:4000
 exec_always --no-startup-id feh --bg-fill $HOME/.dotfiles/i3/imgs/wallpaper.jpg # set custom walppaper
 exec_always --no-startup-id nm-applet
-exec megasync
 
 # change language layout with alt+shift
 exec_always --no-startup-id "setxkbmap -layout us,gr -option grp:alt_shift_toggle"
@@ -240,3 +239,10 @@ bindsym $mod+Shift+f [class="Pcmanfm"] focus
 
 for_window [class="Lxappearance"] floating enable
 for_window [class="Yad"] floating enable # calendar
+
+# load additional configuration depending on whether this is a work or personal machine
+exec_always --no-startup-id $SHELL -c "if [[ $HOME == /home/ANT.AMAZON.COM/ilstam ]]; \
+        then cp $HOME/.dotfiles/i3/config.work $HOME/.config/i3/config.extra; \
+        else cp $HOME/.dotfiles/i3/config.home $HOME/.config/i3/config.extra; fi;"
+
+include ~/.config/i3/config.extra

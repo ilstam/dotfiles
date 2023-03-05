@@ -1,0 +1,6 @@
+bindsym $mod+o exec ~/.i3_brim.sh
+bindsym $mod+p exec ~/.i3_brim_remote.sh
+
+exec --no-startup-id /usr/local/amazon/sbin/acmed-session.sh
+exec slack
+exec evolution
