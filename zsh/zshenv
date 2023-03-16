@@ -1,8 +1,8 @@
 # .zshenv is always sourced first before .zprofile, .zshrc or any other file
 # it is sourced independently of whether the shell is login, interactive, etc.
 
-# I prefer the UK date format (dd/mm/yy)
-export LC_TIME=en_GB.utf8
+# Use ISO date format
+export LC_TIME=en_DK.UTF-8
 
 export DOTFILES="$HOME"/.dotfiles
 
