@@ -8,6 +8,7 @@
     alias ls='ls -h --group-directories-first --color=auto'
     alias grep='grep -I --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn,tags} --exclude="cscope.*"'
     alias objdump='objdump -M intel'
+    alias indent='indent -ut -i8 -br -ce -ncs -npcs'
     alias gdb='gdb -q -x $DOTFILES/gdb/gdbinit.x86'
     alias gdbarm64='aarch64-linux-gnu-gdb -q'
     alias ctags='ctags --exclude="*.in" --exclude="*.html" --exclude="*.xsl"'
