@@ -351,12 +351,17 @@
         elseif expand("<cword>") == 'pri'
             execute "normal! Antf(\"value: %d\\n\", );\<esc>h"
             startinsert
+        elseif expand("<cword>") == 'cout'
+            execute "normal! Istd::\<esc>A <<  << std::endl;\<esc>4bh"
+            startinsert
         elseif expand("<cword>") == 'em'
             " used in latex; expands to \emph{
             execute "normal! bi\\\<esc>eaph{\<esc>"
             startinsert!
         elseif getline('.') =~# '^\s*main$'
             execute "normal! ^d$i#include <stdio.h>\<cr>#include <stdlib.h>\<cr>\<cr>\<cr>int main(void)\<cr>{\<cr>puts(\"hello\");\<cr>return 0;\<cr>}\<esc>kk"
+        elseif getline('.') =~# '^\s*maing$'
+            execute "normal! ^d$i#include <iostream>\<cr>\<cr>\<cr>int main()\<cr>{\<cr>std::cout << \"hello\" << std::endl;\<cr>return 0;\<cr>}\<esc>kk"
         else
             execute "normal! a**"
             startinsert!
