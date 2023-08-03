@@ -55,6 +55,9 @@
     " The molokai theme
     Plugin 'tomasr/molokai'
 
+    " This is worth it for the ":Git blame" command
+    Plugin 'tpope/vim-fugitive'
+
     call vundle#end()               " required
     filetype plugin indent on       " required, automatically detect file types
 " }
