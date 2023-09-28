@@ -28,7 +28,8 @@
     unstage = reset HEAD
     last = log -1 HEAD
 
-    one = log --format=format:'%C(bold blue)%h%C(reset) - %C(dim white)%an%C(reset) %C(bold green)(%ar)%C(reset): %C(white)%s%C(reset) %C(bold yellow)%d%C(reset)'
+    showl = show --pretty=fuller
+    one = log --format=format:'%C(bold blue)%h%C(reset) - %C(dim white)%an%C(reset) %C(bold green)(%cr)%C(reset): %C(white)%s%C(reset) %C(bold yellow)%d%C(reset)'
 
 [credential]
     helper = cache
