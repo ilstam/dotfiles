@@ -171,6 +171,9 @@
     let g:tex_flavor = "latex"
     " Auto-wrap text for latex files
     autocmd Filetype tex setlocal textwidth=79 formatoptions+=t
+
+    " Also auto-wrap txt files, but set textwidth to 120
+    autocmd BufRead,BufNewFile *.txt setlocal textwidth=120 formatoptions+=t
 " }
 
 " Auto-closing {
