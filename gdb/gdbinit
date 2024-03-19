@@ -6,3 +6,6 @@ set width 0
 
 # Let gdb load scripts from anywhere in the fs
 set auto-load safe-path /
+
+# For work env
+handle SIGUSR1 ignore nostop noprint
