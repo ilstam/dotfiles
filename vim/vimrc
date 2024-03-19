@@ -42,7 +42,7 @@
     " Automatically detect indentation options per file
     Plugin 'tpope/vim-sleuth'
 
-    if v:version >= 801
+    if has('nvim') || has('patch-8.2.1978')
         " Deoplete and its dependencies for code completion
         Plugin 'Shougo/deoplete.nvim'
         Plugin 'roxma/nvim-yarp'
@@ -462,7 +462,7 @@
 
 " Plugins Configuration {
     " deoplete and neocomplete {
-        if v:version >= 801
+        if has('nvim') || has('patch-8.2.1978')
             let g:deoplete#enable_at_startup = 1
             call deoplete#custom#option('smart_case', 1)
             call deoplete#custom#option('min_pattern_length', 3)
