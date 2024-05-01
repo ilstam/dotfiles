@@ -269,6 +269,10 @@
                 let s:dirs = s:dirs[:-2]
         endwhile
 
+        " Look for a tags file in the directory of the current file, in the
+        " current directory and up and up until $HOME
+        set tags=./tags,tags;$HOME
+
         " Use both cscope and ctag for 'ctrl-]', ':ta', and 'vim -t'
         set cscopetag
 
