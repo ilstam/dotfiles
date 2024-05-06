@@ -11,7 +11,6 @@
     alias indent='indent -ut -i8 -br -ce -ncs -npcs'
     alias gdb='gdb -q -x $DOTFILES/gdb/gdbinit.x86'
     alias gdbarm64='aarch64-linux-gnu-gdb -q'
-    alias ctags='ctags --exclude="*.in" --exclude="*.html" --exclude="*.xsl"'
     alias pdflatex='pdflatex -halt-on-error'
     alias xelatex='xelatex -halt-on-error'
 
@@ -40,13 +39,11 @@
     }
 
     cscope_gen() {
-        find . -name '*.py' \
-            -o -name '*.java' \
-            -o -name '*.[ch]' \
-            -o -name '*.cpp' \
-            -o -name '*.cc' \
-            -o -name '*.hpp'  \
+        find . -type d \( -path ./tracers -o -path ./tools -o -path "./sysroot-*" -o -path "./build-*" -o -path ./tests \) \
+            -prune -o -type f -regex '.*\.\(py\|java\|c\|h\|cpp\|cc\|hpp\)$' -print \
             > cscope.files
+
+        ctags -L cscope.files
 
         cscope -b -q
     }
