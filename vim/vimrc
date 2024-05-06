@@ -407,9 +407,6 @@
     endfunction
 
     inoremap ** <esc>:call g:ExpandSnippet()<cr>
-
-    " Preload register 's' in order to quickly sign patches with "sp
-    let @s="Signed-off-by: Ilias Stamatis <stamatis.iliass@gmail.com>"
 " }
 
 " Languages {
