@@ -47,9 +47,6 @@
         Plugin 'Shougo/deoplete.nvim'
         Plugin 'roxma/nvim-yarp'
         Plugin 'roxma/vim-hug-neovim-rpc'
-    elseif v:version >= 703 && has('lua')
-        " Previous (deprecated) deoplete version
-        Plugin 'Shougo/neocomplete.vim'
     endif
 
     " The molokai theme
@@ -465,15 +462,11 @@
 " }
 
 " Plugins Configuration {
-    " deoplete and neocomplete {
+    " deoplete {
         if has('nvim') || has('patch-8.2.1978')
             let g:deoplete#enable_at_startup = 1
             call deoplete#custom#option('smart_case', 1)
             call deoplete#custom#option('min_pattern_length', 3)
-        elseif v:version >= 703 && has('lua')
-            let g:neocomplete#enable_at_startup = 1
-            let g:neocomplete#enable_smart_case = 1
-            let g:neocomplete#sources#syntax#min_keyword_length = 3
         endif
 
         " use TAB for completion - I think this is plugin agnostic
