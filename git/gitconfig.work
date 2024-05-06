@@ -1,0 +1,9 @@
+[user]
+    email = ilstam@amazon.com
+
+[sendemail]
+    smtpEncryption = tls
+    smtpServer = smtp.amazon.com
+    smtpUser = ilstam@amazon.com
+    smtpServerPort = 587
+    from = Ilias Stamatis <ilstam@amazon.com>
