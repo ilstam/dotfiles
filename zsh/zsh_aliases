@@ -59,7 +59,7 @@
             alias fromaur='pacman -Qm'
             alias belongsto='pacman -Qo'
 
-            alias yay='yay --aur --nodiffmenu'
+            alias yay='yay --aur'
             alias vi='vim'
         fi
     # }
