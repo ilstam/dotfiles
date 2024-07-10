@@ -3,7 +3,8 @@
 
 [sendemail]
     smtpEncryption = tls
-    smtpServer = smtp.amazon.com
-    smtpUser = ilstam@amazon.com
-    smtpServerPort = 587
+    smtpServer = ballard.amazon.com
+    smtpUser = ANT\\ilstam
+    smtpServerPort = 1587
+    smtpAuth = LOGIN
     from = Ilias Stamatis <ilstam@amazon.com>
