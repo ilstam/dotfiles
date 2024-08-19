@@ -227,7 +227,7 @@
 " Vertical Line {
     if exists('+colorcolumn')
         " Automatically show the vertical line for files containing source code.
-        autocmd FileType c,cpp,java,python,javascript set colorcolumn=80
+        autocmd FileType c,cpp,rust,java,python,javascript set colorcolumn=80
     endif
 
     function! g:ToggleColorColumn()
@@ -366,7 +366,7 @@
 " Compile and Run Code {
     " Run {
         autocmd FileType python,sh,bash,zsh nnoremap <leader>r :w<cr> :!clear; ./%<cr>
-        autocmd FileType c,cpp nnoremap <leader>r :!clear; ./%:r<cr>
+        autocmd FileType c,cpp,rust nnoremap <leader>r :!clear; ./%:r<cr>
         autocmd FileType java nnoremap <leader>r :!clear; java %:r<cr>
     " }
 
@@ -374,6 +374,7 @@
         autocmd FileType c,cpp,java nnoremap <leader>m :w<cr> :Shell clear; make<cr>
         autocmd FileType c nnoremap <leader>c9 :w<cr> :Shell gcc -Og -Wall -W -pedantic -ggdb3 -fno-omit-frame-pointer -o %:r %<cr>
         autocmd FileType cpp nnoremap <leader>c9 :w<cr> :Shell g++ -Og -Wall -W -pedantic -ggdb3 -fno-omit-frame-pointer -o %:r %<cr>
+        autocmd FileType rust nnoremap <leader>c9 :w<cr> :Shell rustc %<cr>
         autocmd FileType java nnoremap <leader>c9 :w<cr> :Shell javac %<cr>
     " }
 " }
@@ -383,8 +384,11 @@
         if expand("<cword>") == 'pr'
             execute "normal! Aintf(\"\\n\");\<esc>4h"
             startinsert
-        elseif expand("<cword>") == 'pri'
+        elseif expand("<cword>") == 'pri' && (expand('%:e') ==# 'c' || expand('%:e') ==# 'cpp')
             execute "normal! Antf(\"value: %d\\n\", );\<esc>h"
+            startinsert
+        elseif expand("<cword>") == 'pri' && expand('%:e') ==# 'rs'
+            execute "normal! Antln!(\"value: {}\", );\<esc>h"
             startinsert
         elseif expand("<cword>") == 'cout'
             execute "normal! Istd::\<esc>A <<  << std::endl;\<esc>4bh"
@@ -393,10 +397,12 @@
             " used in latex; expands to \emph{
             execute "normal! bi\\\<esc>eaph{\<esc>"
             startinsert!
-        elseif getline('.') =~# '^\s*main$'
+        elseif getline('.') =~# '^\s*main$' && expand('%:e') ==# 'c'
             execute "normal! ^d$i#include <stdio.h>\<cr>#include <stdlib.h>\<cr>\<cr>\<cr>int main(void)\<cr>{\<cr>puts(\"hello\");\<cr>return 0;\<cr>}\<esc>kk"
-        elseif getline('.') =~# '^\s*maing$'
+        elseif getline('.') =~# '^\s*main$' && expand('%:e') ==# 'cpp'
             execute "normal! ^d$i#include <iostream>\<cr>\<cr>\<cr>int main()\<cr>{\<cr>std::cout << \"hello\" << std::endl;\<cr>return 0;\<cr>}\<esc>kk"
+        elseif getline('.') =~# '^\s*main$' && expand('%:e') ==# 'rs'
+            execute "normal! ^d$ifn main() {\<cr>println!(\"Hello\");\<cr>}\<esc>kk"
         else
             execute "normal! a**"
             startinsert!
