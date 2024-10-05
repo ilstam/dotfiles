@@ -6,10 +6,9 @@ fi
 
 echo -e "configuring vim...\n"
 
-if [ ! -d ~/.vim/bundle/Vundle.vim/ ]; then
-	echo "--> install vundle"
-	git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/Vundle.vim
-fi
+echo "--> installing vim-plug"
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 if [ -f ~/.vimrc ]; then
 	echo "--> backup existing ~/.vimrc file to ~/vimrc.orig"
@@ -24,6 +23,6 @@ endif
 EOF
 
 echo "--> install vim plugins"
-vim +PluginInstall +qall
+vim +PlugInstall +qall
 
 echo -e "\ndone...\n"
