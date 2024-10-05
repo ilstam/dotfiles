@@ -270,8 +270,8 @@
         " Use both cscope and ctag for 'ctrl-]', ':ta', and 'vim -t'
         set cscopetag
 
-        " Check cscope for definition of a symbol before checking ctags
-        set csto=0
+        " Check ctags for definition of a symbol before checking cscope
+        set csto=1
 
         " The following maps all invoke one of the following cscope search types:
         "
