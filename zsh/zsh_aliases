@@ -40,7 +40,7 @@
 
     cscope_gen() {
         find . -type d \( -path ./tracers -o -path ./tools -o -path "./sysroot-*" -o -path "./build-*" -o -path ./tests \) \
-            -prune -o -type f -regex '.*\.\(py\|java\|c\|h\|cpp\|cc\|hpp\)$' -print \
+            -prune -o -type f -regex '.*\.\(py\|java\|c\|h\|cpp\|cc\|hpp\|rs\)$' -print \
             > cscope.files
 
         ctags -L cscope.files
