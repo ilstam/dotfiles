@@ -22,6 +22,14 @@ if filereadable(expand("$DOTFILES/vim/vimrc"))
 endif
 EOF
 
+if [ -f ~/.vim/coc-settings.json ]; then
+	echo "--> backing up existing ~/.vim/coc-settings.json file to ~/.vim/coc-settings.json.orig"
+	mv ~/.vim/coc-settings.json ~/.vim/coc-settings.json.orig
+fi
+
+echo "--> symlinking ~/.vim/coc-settings.json"
+ln -s "$DOTFILES/vim/coc-settings.json" ~/.vim/coc-settings.json
+
 echo "--> install vim plugins"
 vim +PlugInstall +qall
 
