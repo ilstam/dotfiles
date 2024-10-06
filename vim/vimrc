@@ -518,5 +518,18 @@
 
         " Symbol renaming
         nmap <leader>u <Plug>(coc-rename)
+
+        if has('nvim-0.4.0') || has('patch-8.2.0750')
+            " Close pop-ups with Esc
+            nmap <silent> <Esc> :if coc#float#has_float() \| call coc#float#close_all() \| endif<CR>
+
+            " Use C-f and C-b to scroll inside a pop-up window
+            nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+            nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+            inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
+            inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
+            vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+            vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+        endif
     " }
 " }
