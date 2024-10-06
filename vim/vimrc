@@ -499,6 +499,9 @@
         nmap <silent> gi <Plug>(coc-implementation)
         nmap <silent> gr <Plug>(coc-references)
 
+        " For Rust files make C-] use coc rather than cscope/ctags
+        autocmd FileType rust nmap <silent> <C-]> <Plug>(coc-definition)
+
         " Use K to show documentation in preview window
         nnoremap <silent> K :call ShowDocumentation()<CR>
 
