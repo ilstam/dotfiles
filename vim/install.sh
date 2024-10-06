@@ -33,4 +33,22 @@ ln -s "$DOTFILES/vim/coc-settings.json" ~/.vim/coc-settings.json
 echo "--> install vim plugins"
 vim +PlugInstall +qall
 
+if ! which node &> /dev/null; then
+	echo -n "Node.js is not installed. Do you want me to install it? (y/n) "
+	an=$(read a && echo "$a" | tr '[:upper:]' '[:lower:]')
+	echo ""
+
+	if [ -z "$an" -o "$an" == "y" -o "$an" == "yes" ]; then
+		curl -sL install-node.vercel.app/lts | sudo bash
+	fi
+fi
+
+echo -n "Do you want to instlal coc-rust-analyzer? (y/n) "
+an=$(read a && echo "$a" | tr '[:upper:]' '[:lower:]')
+echo ""
+
+if [ -z "$an" -o "$an" == "y" -o "$an" == "yes" ]; then
+	vim -c 'CocInstall coc-rust-analyzer' -c 'qa'
+fi
+
 echo -e "\ndone...\n"
