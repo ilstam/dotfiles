@@ -6,5 +6,6 @@
   "rust-analyzer.inlayHints.chainingHints.enable": false,
   "rust-analyzer.inlayHints.closingBraceHints.enable": false,
   "rust-analyzer.diagnostics.disabled": ["inactive-code"],
+  "suggest.noselect": true,
   "suggest.minTriggerInputLength": 2
 }
