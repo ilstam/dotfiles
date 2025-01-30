@@ -236,8 +236,12 @@
 " Code Navigation {
     " Go to the start/end of the function that the cursor is currently inside.
     "
-    " The following is supposed to work only in languages that use brackets
-    " such as C, and the opening/closing bracket is in column 1 (first char).
+    " The following mappings are supposed to work only in languages such as C
+    " that use brackets and the opening/closing bracket is in column 1 (first
+    " char). However, certain plugins may remap [[ and ][. For that reason we
+    " should use nmap rather than nnoremap in order to recursevily remap. For
+    " example, on Arch Linux or on Ubuntu you might have the following file
+    " remapping them: /usr/share/vim/vim91/ftplugin/rust.vim
     nmap <leader>s [[
     nmap <leader>e ][
 
