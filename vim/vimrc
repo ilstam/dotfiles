@@ -107,26 +107,41 @@
 " }
 
 " Clipboard {
-    if has('clipboard')
-        " I don't set clipboard=unnamedplus because vim will then copy to the
-        " clipboard when deleting too, which I find annoying. In the way
-        " I configure things below I can just yank without thinking which
-        " register is the data copied to. I only have to think about registers
-        " and where I am pasting from (clipboard or unnamed register) when
-        " hitting p.
+    " I don't set clipboard=unnamedplus because vim will then copy to the
+    " clipboard when deleting too, which I find annoying. In the way I
+    " configure things below I can just yank without thinking which register
+    " is the data copied to. I only have to think about registers and where I
+    " am pasting from (clipboard or unnamed register) when hitting p.
 
+    if has('clipboard')
         " Let y copy both to the unnamed register *and* the X11 clipboard
         autocmd TextYankPost *
             \ if v:event.operator == 'y' && v:event.regname == '' |
             \     call setreg('+', v:event.regcontents, v:event.regtype) |
             \ endif
 
-        " Yank from the cursor to the end of the line
-        nnoremap Y y$
-
-        " Use the following to paste from the clipboard
+        " Use the following to paste from the system clipboard
         nnoremap <leader>p "+p
         nnoremap <leader>P "+P
+    else
+        " Let y copy to ~/.clipboard too when there's no system clipboard
+        autocmd TextYankPost *
+            \ if v:event.operator == 'y' && v:event.regname == '' |
+            \     call writefile(v:event.regcontents, expand('~/.clipboard')) |
+            \ endif
+
+        " Use the following to paste from ~/.clipboard
+        nnoremap <leader>p :call PasteFromClipboardFile('after')<CR>
+        nnoremap <leader>P :call PasteFromClipboardFile('before')<CR>
+
+        function! PasteFromClipboardFile(direction)
+            let l:lines = readfile(expand('~/.clipboard'))
+            if a:direction ==# 'after'
+                call append('.', l:lines)
+            else
+                call append(line('.') - 1, l:lines)
+            endif
+        endfunction
     endif
 " }
 
