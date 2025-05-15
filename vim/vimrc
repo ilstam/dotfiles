@@ -195,10 +195,10 @@
 
 " Whitespace {
     " Detect trailing whitespace on buffer load
-    autocmd BufReadPost * call g:DetectTrailing()
+    autocmd BufEnter * call g:DetectTrailing()
 
     function! g:DetectTrailing()
-        if !search('\s\+$')                     " if there is trailing whitespace
+        if !search('\s\+$')                     " if there is no trailing whitespace
             " setup an autocmd that removes it on every write
             execute "autocmd BufWritePre * :%s/\\s\\+$//e"
             let g:whitespace_autoremove=1
@@ -206,6 +206,7 @@
             set list                            " show whitespace
             set listchars=tab:\ \ ,trail:.      " only display trailing spaces using a dot
             execute "normal! g'\"" |            " jump back to last cursor position
+            execute "autocmd! BufWritePre" |    " clear autocommands for BufWritePre
             let g:whitespace_autoremove=0
         endif
     endfunction
