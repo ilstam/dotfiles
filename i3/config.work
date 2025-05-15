@@ -1,5 +1,9 @@
 bindsym $mod+o exec ~/.i3_brim.sh
 bindsym $mod+p exec ~/.i3_brim_remote.sh
+# Push ~/.clipboard to remote host
+bindsym $mod+y exec "xclip -selection clipboard -o > ~/.clipboard && scp ~/.clipboard brim:~/.clipboard"
+# Pull ~/.clipboard from remote host
+bindsym $mod+u exec "scp brim:~/.clipboard ~/.clipboard && cat ~/.clipboard | xclip -selection clipboard"
 
 for_window [class="Evolution-alarm-notify"] floating enable
 for_window [class="Evolution-alarm-notify"] sticky enable
