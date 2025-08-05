@@ -44,3 +44,6 @@
 
 [include]
     path = ~/.gitconfig.local
+
+[guilt]
+    diffcontext = 3
