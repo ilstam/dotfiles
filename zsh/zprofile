@@ -1,7 +1,11 @@
 # .zprofile is sourced only by a login shell *before* .zshrc is sourced
 # the only difference with .zlogin is that .zlogin is sourced *after* .zshrc
 
+[[ -f "${HOME}/.local/share/amazon-q/shell/zprofile.pre.zsh" ]] && builtin source "${HOME}/.local/share/amazon-q/shell/zprofile.pre.zsh"
+
 # autostart X at login on virtual terminal 1 (if it is not already up)
 if systemctl -q is-active graphical.target && [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
     exec startx
 fi
+
+[[ -f "${HOME}/.local/share/amazon-q/shell/zprofile.post.zsh" ]] && builtin source "${HOME}/.local/share/amazon-q/shell/zprofile.post.zsh"
