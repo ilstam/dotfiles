@@ -12,8 +12,15 @@ exec --no-startup-id /usr/local/amazon/sbin/acmed-session.sh
 exec slack
 exec evolution
 
-bindsym F1 exec --no-startup-id xrandr --output eDP-1 --mode 1920x1080 --pos 0x0 --rotate normal --output DP-1 --off --output DP-2 --off --output DP-3 --off --output DP-2-8 --off --output DP-2-1 --off --output DP-3-8 --off --output DP-3-1 --off --output DP-3-1-8 --off --output DP-3-1-1 --off
-bindsym F4 exec --no-startup-id xrandr --output eDP-1 --off --output DP-1 --off --output DP-2 --mode 2560x1440 --pos 0x0 --rotate normal --output DP-3 --off --output DP-2-8 --off --output DP-2-1 --off --output DP-3-8 --mode 2560x1440 --pos 2560x0 --rotate normal --output DP-3-1 --off --output DP-3-1-8 --off --output DP-3-1-1 --off
+# office and home: only laptop monitor on
+bindsym F1 exec --no-startup-id xrandr --output eDP-1 --mode 1920x1080 --pos 0x0 --rotate normal --output DP-1 --off --output DP-2 --off --output DP-3 --off --output DP-2-8 --off --output DP-2-1 --off --output DP-3-8 --off --output DP-3-1 --off --output DP-2-1-8 --off --output DP-2-1-1 --off
 
-bindsym F9 exec --no-startup-id xrandr --output eDP-1 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output DP-1 --off --output DP-2 --off --output DP-3 --off --output DP-3-1 --off --output DP-3-8 --off --output DP-3-1-8 --mode 2560x1440 --pos 4480x0 --rotate normal --output DP-3-1-1 --mode 2560x1440 --pos 1920x0 --rotate normal
-bindsym F10 exec --no-startup-id xrandr --output eDP-1 --off --output DP-1 --off --output DP-2 --off --output DP-3 --off --output DP-3-1 --off --output DP-3-8 --off --output DP-3-1-8 --mode 2560x1440 --pos 2560x0 --rotate normal --output DP-3-1-1 --mode 2560x1440 --pos 0x0 --rotate normal
+# office: all 3 monitors on
+bindsym F3 exec --no-startup-id xrandr --output eDP-1 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output DP-1 --off --output DP-2 --mode 2560x1440 --pos 1920x0 --rotate normal --output DP-3 --off --output DP-3-8 --mode 2560x1440 --pos 4480x0 --rotate normal --output DP-3-1 --off --output DP-2-1 --off --output DP-2-1-8 --off --output DP-2-1-1 --off
+# office: only external monitors on
+bindsym F4 exec --no-startup-id xrandr --output eDP-1 --off --output DP-1 --off --output DP-2 --mode 2560x1440 --pos 0x0 --rotate normal --output DP-3 --off --output DP-2-8 --off --output DP-2-1 --off --output DP-3-8 --mode 2560x1440 --pos 2560x0 --rotate normal --output DP-3-1 --off --output DP-2-1-8 --off --output DP-2-1-1 --off
+
+# home: all 3 monitors on
+bindsym F9 exec --no-startup-id xrandr --output eDP-1 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output DP-1 --off --output DP-2 --off --output DP-3 --off --output DP-3-1 --off --output DP-3-8 --off --output DP-2-1-8 --mode 2560x1440 --pos 4480x0 --rotate normal --output DP-2-1-1 --mode 2560x1440 --pos 1920x0 --rotate normal
+# home: only external monitors on
+bindsym F10 exec --no-startup-id xrandr --output eDP-1 --off --output DP-1 --off --output DP-2 --off --output DP-3 --off --output DP-3-1 --off --output DP-3-8 --off --output DP-2-1-8 --mode 2560x1440 --pos 2560x0 --rotate normal --output DP-2-1-1 --mode 2560x1440 --pos 0x0 --rotate normal
