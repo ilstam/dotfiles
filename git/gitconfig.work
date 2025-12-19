@@ -1,5 +1,6 @@
 [user]
     email = ilstam@amazon.com
+    signingkey = 6DCCA3FC9E6E639E
 
 [sendemail]
     smtpEncryption = tls
@@ -8,3 +9,6 @@
     smtpServerPort = 1587
     smtpAuth = LOGIN
     from = Ilias Stamatis <ilstam@amazon.com>
+
+[commit]
+    gpgsign = true
