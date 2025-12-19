@@ -260,6 +260,8 @@
     " remapping them: /usr/share/vim/vim91/ftplugin/rust.vim
     nmap <leader>s [[
     nmap <leader>e ][
+    autocmd FileType rust nmap <buffer> <leader>s [m
+    autocmd FileType rust nmap <buffer> <leader>e ]M
 
     if has('cscope')
         " Look for a 'cscope.out' file starting from the current directory, going up to the root directory.
