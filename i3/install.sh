@@ -37,6 +37,16 @@ ln -s "$DOTFILES/i3/config" ~/.config/i3/config
 echo "--> symlink ~/.xinitrc to the real xinitrc"
 ln -s "$DOTFILES/i3/xinitrc" ~/.xinitrc
 
+echo -n "--> do you want to install ~/.xprofile (used by display managers such as GDM)? (y/n) "
+an=$(read a && echo "$a" | tr '[:upper:]' '[:lower:]')
+if [ -z "$an" -o "$an" == "y" -o "$an" == "yes" ]; then
+	if [ -f ~/.xprofile ]; then
+		echo "--> backup existing ~/.xprofile file to ~/.xprofile.orig"
+		mv ~/.xprofile ~/.xprofile.orig
+	fi
+	echo "--> symlink ~/.xprofile to the real xprofile"
+	ln -s "$DOTFILES/i3/xprofile" ~/.xprofile
+fi
 
 echo -n "--> do you want to have getty directly prompt just the password for $(whoami)? (y/n) "
 an=$(read a && echo "$a" | tr '[:upper:]' '[:lower:]')
