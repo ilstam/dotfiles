@@ -200,6 +200,9 @@ bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10 && pkill -
 # disable screensaver
 exec --no-startup-id xset -dpms s off
 
+# Start nonprimary monitor on workspace 8
+workspace $workspace8 output nonprimary
+
 # startup programs
 exec firefox
 exec --no-startup-id i3-msg 'workspace $workspace5, exec pcmanfm, workspace $workspace1'
