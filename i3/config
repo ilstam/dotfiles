@@ -204,8 +204,6 @@ exec --no-startup-id xset -dpms s off
 exec firefox
 exec --no-startup-id i3-msg 'workspace $workspace5, exec pcmanfm, workspace $workspace1'
 exec --no-startup-id xcompmgr -f -D 4 # for the fading effect when changing workspaces
-exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent # geoclue provides automatic location for redshift
-exec --no-startup-id redshift -t 6500:4000
 exec_always --no-startup-id feh --bg-fill $HOME/.dotfiles/i3/imgs/wallpaper.jpg # set custom walppaper
 exec_always --no-startup-id nm-applet
 
@@ -213,8 +211,6 @@ exec_always --no-startup-id nm-applet
 exec_always --no-startup-id "setxkbmap -layout us,gr -option grp:alt_shift_toggle"
 # send a signal to i3blocks after pressing alt+shift to update the bar
 bindcode Mod1+50 exec --no-startup-id pkill -RTMIN+3 i3blocks
-# toggle redshift on/off
-bindsym $mod+Shift+m exec --no-startup-id pkill -USR1 redshift
 
 # no title bar for firefox please!
 for_window [class="firefox"] border pixel 1
