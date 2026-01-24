@@ -205,7 +205,6 @@ workspace $workspace8 output nonprimary
 
 # startup programs
 exec firefox
-exec --no-startup-id i3-msg 'workspace $workspace5, exec pcmanfm, workspace $workspace1'
 exec --no-startup-id xcompmgr -f -D 4 # for the fading effect when changing workspaces
 exec_always --no-startup-id feh --bg-fill $HOME/.dotfiles/i3/imgs/wallpaper.jpg # set custom walppaper
 exec_always --no-startup-id nm-applet
@@ -221,9 +220,6 @@ for_window [class="Google-chrome"] border pixel 1
 
 # application launch shortcuts
 bindsym Print exec --no-startup-id gnome-screenshot
-
-# other
-bindsym $mod+Shift+f [class="Pcmanfm"] focus
 
 for_window [class="zoom"] floating enable
 for_window [class="Lxappearance"] floating enable
