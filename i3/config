@@ -203,6 +203,8 @@ workspace $workspace8 output nonprimary
 
 # startup programs
 exec firefox
+exec --no-startup-id dunst
+exec --no-startup-id pasystray --volume-inc=5
 exec --no-startup-id xcompmgr -f -D 4 # for the fading effect when changing workspaces
 exec_always --no-startup-id feh --bg-fill $HOME/.dotfiles/i3/imgs/wallpaper.jpg # set custom walppaper
 exec_always --no-startup-id nm-applet
