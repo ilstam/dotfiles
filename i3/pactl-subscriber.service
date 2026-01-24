@@ -1,0 +1,9 @@
+[Unit]
+After=sound.target
+
+[Service]
+ExecStart=%h/.dotfiles/i3/pactl_subscriber.sh
+Restart=on-failure
+
+[Install]
+WantedBy=default.target

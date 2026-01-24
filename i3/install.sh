@@ -34,6 +34,10 @@ fi
 echo "--> symlink ~/.config/i3/config to the real config file"
 ln -s "$DOTFILES/i3/config" ~/.config/i3/config
 
+mkdir -p ~/.config/systemd/user
+echo "--> symlink ~/.config/systemd/user/pactl-subscriber.service"
+ln -s "$DOTFILES/i3/pactl-subscriber.service" ~/.config/systemd/user/pactl-subscriber.service
+
 echo "--> symlink ~/.xinitrc to the real xinitrc"
 ln -s "$DOTFILES/i3/xinitrc" ~/.xinitrc
 
