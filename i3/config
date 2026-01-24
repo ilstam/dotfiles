@@ -136,14 +136,12 @@ client.focused           #333333        #333333        #FFFFFF        #000000
 client.focused_inactive  #262626        #262626        #595959        #000000
 client.unfocused         #262626        #262626        #595959        #000000
 
-# Generate the i3blocks.conf file on the fly.
-# If we are not running on a laptop, delete everything between the laptop_begin
-# and laptop_end markers in the file, otherwise copy the file as is. To check
-# if the current machine is a laptop we try to detect whether it has a battery.
-# Even though this technique is not perfect, it's good enough for my purposes.
-exec_always --no-startup-id $SHELL -c "if [ ! -d /sys/module/battery/ ] && [ ! -d /proc/acpi/battery/BAT0 ]; \
-        then sed '/#laptop_begin/,/#laptop_end/d' $HOME/.dotfiles/i3/i3blocks.conf > $HOME/.config/i3/i3blocks.conf; \
-        else cp $HOME/.dotfiles/i3/i3blocks.conf $HOME/.config/i3/; fi;"
+# Generate the i3blocks.conf file on the fly. Copy the file as is if we detect
+# a battery, otherwise delete everything between the #laptop_begin and
+# #laptop_end markers.
+exec_always --no-startup-id $SHELL -c "if grep -q "Battery" /sys/class/power_supply/*/type 2>/dev/null; \
+        then cp $HOME/.dotfiles/i3/i3blocks.conf $HOME/.config/i3/; \
+        else sed '/#laptop_begin/,/#laptop_end/d' $HOME/.dotfiles/i3/i3blocks.conf > $HOME/.config/i3/i3blocks.conf; fi;"
 
 bar {
     # use the generated i3blocks config file
