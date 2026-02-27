@@ -194,8 +194,9 @@
 " }
 
 " Whitespace {
-    " Detect trailing whitespace on buffer load
-    autocmd BufEnter * call g:DetectTrailing()
+    " Detect trailing whitespace on buffer load (but not for anonymous buffers
+    " because it will mess up with things like fugitive's 'Git blame')
+    autocmd BufEnter * if empty(&buftype) && !empty(expand('%')) | call g:DetectTrailing() | endif
 
     function! g:DetectTrailing()
         if !search('\s\+$')                     " if there is no trailing whitespace
