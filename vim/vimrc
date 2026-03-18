@@ -541,6 +541,9 @@
         " Highlight the symbol and its references when holding the cursor
         autocmd CursorHold * silent call CocActionAsync('highlight')
 
+        " Apply code actions at the cursor position
+        nmap <leader>ac <Plug>(coc-codeaction-cursor)
+
         " Symbol renaming
         nmap <leader>u <Plug>(coc-rename)
 
