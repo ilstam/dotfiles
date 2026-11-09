@@ -20,7 +20,9 @@ bindsym F3 exec xrandr --output eDP-1 --primary --mode 1920x1080 --pos 0x0 --rot
 # office: only external monitors on
 bindsym F4 exec --no-startup-id xrandr --output eDP-1 --off --output DP-2-8 --mode 2560x1440 --pos 0x0 --primary --rotate normal --output DP-2-1 --mode 2560x1440 --pos 2560x0 --rotate normal
 
+set $ext_mode_init xrandr --newmode 2560x1440_55 221.56 2560 2608 2640 2720 1440 1443 1448 1481 +hsync -vsync 2>/dev/null; xrandr --addmode DP-2-1-8 2560x1440_55 2>/dev/null; xrandr --addmode DP-2-1-1 2560x1440_55 2>/dev/null
+
 # home: all 3 monitors on
-bindsym F9 exec --no-startup-id xrandr --output eDP-1 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output DP-2-1-8 --mode 2560x1440 --primary --pos 4480x0 --rotate normal --output DP-2-1-1 --mode 2560x1440 --pos 1920x0 --rotate normal
+bindsym F9 exec --no-startup-id "$ext_mode_init; xrandr --output eDP-1 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output DP-2-1-8 --mode 2560x1440_55 --primary --pos 4480x0 --rotate normal --output DP-2-1-1 --mode 2560x1440_55 --pos 1920x0 --rotate normal"
 # home: only external monitors on
-bindsym F10 exec --no-startup-id xrandr --output eDP-1 --off --output DP-2-1-8 --mode 2560x1440 --pos 2560x0 --primary --rotate normal --output DP-2-1-1 --mode 2560x1440 --pos 0x0 --rotate normal
+bindsym F10 exec --no-startup-id "$ext_mode_init; xrandr --output eDP-1 --off --output DP-2-1-8 --mode 2560x1440_55 --pos 2560x0 --primary --rotate normal --output DP-2-1-1 --mode 2560x1440_55 --pos 0x0 --rotate normal"
